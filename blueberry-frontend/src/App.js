@@ -6,7 +6,9 @@ import {
 } from "react-router-dom";
 import './App.css';
 import Home from "./components/home/Home"
+import Organization from "./components/organization/Organization"
 import CompanyDetails from "./components/Company-details/companyDetails";
+
 
 function App() {
   return (
@@ -47,7 +49,7 @@ function App() {
             <h1>Individual</h1>
           </Route>
           <Route path="/organization">
-            <h1>Organization</h1>
+            <Organization />
           </Route>
         </Switch>
       </div>

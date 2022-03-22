@@ -1,0 +1,32 @@
+.org-menu{
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    margin-top: 10%;
+  
+
+}
+
+.sign-in{
+  color: white;
+  background-color: #0271BB;
+  width: 200px;
+  margin: 50px;
+  text-align: center;
+  font-size: 20px;
+  border-radius: 15px;
+    
+}
+
+.create-acc{
+    color: white;
+    background-color: #0271BB;
+    width: 200px;
+    margin: 50px;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 15px;
+    
+}
+
