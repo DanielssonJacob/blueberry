@@ -1,0 +1,18 @@
+.individual-page-header{
+    padding-left: 30px;
+    padding-top: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.individual-page-body{
+
+    background-color: whitesmoke;
+    height: 100vh;
+}
+
+.individual-page-searchfield{
+    padding:40px;
+    display: flex;
+
+}

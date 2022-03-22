@@ -1,0 +1,28 @@
+#logo{
+    color:white;
+    font-family: 'Open Sans', sans-serif;
+    background-color: #0271BB;
+    border-radius: 13px; 
+    height: 65px; 
+    color: "#0271BB"; 
+    width:160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
+}
+
+#logo h2, #logo p{
+    margin: 0;
+    margin-left: 20px;
+}
+#logo h2{
+    font-size: x-large;
+}
+
+#logo p{
+    font-size: small;
+}
+
+
+

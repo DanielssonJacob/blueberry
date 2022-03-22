@@ -31,6 +31,7 @@ function Home() {
       </div> 
         <div className="menu-item"><img src={blueberry} alt="" /></div>
       </div>
+
       <div className='divider'></div>
       <ColorRow color={"#E8340C"} height={"60px"}></ColorRow>
       <ColorRow color={"#F5FA70"} height={"60px"}></ColorRow>
