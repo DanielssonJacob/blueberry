@@ -9,6 +9,7 @@ import Home from "./components/home/Home"
 import Organization from "./components/organization/Organization"
 import CompanyDetails from "./components/Company-details/companyDetails";
 import Registration from "./components/Registration/Registration";
+import FullSearchResult from "./components/individual/FullSearchResult";
 
 
 function App() {
@@ -24,6 +25,9 @@ function App() {
           </li>
           <li>
             <Link to="/organization">Organization</Link>
+          </li>
+          <li>
+            <Link to="/fullsearchresult">FullSearchResult</Link>
           </li>
           <li>
             <Link to="/company">companyDetails</Link>
@@ -48,6 +52,9 @@ function App() {
           </Route>
           <Route path="/company">
             <CompanyDetails></CompanyDetails>
+          </Route>
+          <Route path="/fullsearchresult">
+            <FullSearchResult></FullSearchResult>
           </Route>
           <Route path="/individual">
             <h1>Individual</h1>

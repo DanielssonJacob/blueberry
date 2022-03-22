@@ -2,7 +2,7 @@
 
 .header{
     background-color: #0271BB;
-    height: 300px;
+    height: 230px;
     padding-left: 30px;
     padding-top: 25px;
 }
@@ -23,13 +23,44 @@
 
 .menu-choice{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     padding: 100px;
-    margin-left: 150px;
+    align-items: center;
 }
 
-.menu-item{
-    border: solid black 2px;
-    width: 200px;
-    border-radius: 20px;
+.menu-choice h2 {
+    color:white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: large;
+}
+.menu-item img {
+    width: 230px;
+    
+}
+
+.divider{
+    margin: 30px;
+}
+
+@media screen and (min-width: 992px){
+    .menu-item img {
+        width: 300px;
+        
+    }
+    .menu-choice{
+        height: 200px;
+    }
+    
+}
+@media screen and (max-width: 992px) {
+  .menu-choice{
+   flex-wrap: wrap;
+   padding-bottom: 20px;
+   
+}
+.menu-choice .menu-item{
+    padding-bottom: 20px;
+    
+ }
+
 }
