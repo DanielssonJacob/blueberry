@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+
+
+h1{
+    color: #000000;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 30px;
+    font-weight: lighter;
+}
+link{
+    text-decoration: none;
+}
+.searchResultCompanies{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 500px);  /*  226px 226px ... ett visst antal gånger */ 
+    grid-column-gap:10px;
+    grid-row-gap:10px;
+}
+.searchResultCompanies article{
+    position: relative;
+    padding: 10px;
+}
+.searchResultCompanies article .companyName{
+    font-size: 20px;
+    position: absolute;
+    left: 110px;
+}
+.searchResultCompanies article .companyImage img{
+    height: 70px;
+    border-radius: 50px;
+    border-style: solid;
+}
+.searchResultCompanies article .companyInfo{
+    position: absolute;
+    top: 30px;
+    left: 110px;
+}
