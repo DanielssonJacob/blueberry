@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 
-
+.wrapper{
+    margin: 15px;
+}
 h1{
     color: #000000;
     font-family: 'Open Sans', sans-serif;
@@ -11,28 +13,59 @@ h1{
 link{
     text-decoration: none;
 }
+.dropDown{
+    position: fixed;
+    right:2%;
+    top: 30%;
+}
+
 .searchResultCompanies{
     display: grid;
-    grid-template-columns: repeat(auto-fit, 500px);  /*  226px 226px ... ett visst antal gånger */ 
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+.searchResultCompanies article{
+    position: relative;
+    padding: 15px;
+    height: 150px;
+    border-style: solid;
+    overflow: hidden;
+    grid-template-columns: repeat(auto-fit, 560px);
     grid-column-gap:10px;
     grid-row-gap:10px;
 }
 .searchResultCompanies article{
     position: relative;
     padding: 10px;
+    height: 130px;
+    border-style: solid;
 }
 .searchResultCompanies article .companyName{
     font-size: 20px;
     position: absolute;
-    left: 110px;
+    left: 120px;
 }
 .searchResultCompanies article .companyImage img{
-    height: 70px;
+    height: 80px;
+    width: 80px;
     border-radius: 50px;
     border-style: solid;
 }
 .searchResultCompanies article .companyInfo{
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow-wrap: break-word;
     position: absolute;
-    top: 30px;
-    left: 110px;
+    top: 40px;
+    left: 120px;
 }
+
+@media only screen and (max-width: 600px) {
+    .searchResultCompanies{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+  }
