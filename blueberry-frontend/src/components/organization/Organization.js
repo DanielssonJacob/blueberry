@@ -20,7 +20,7 @@ function Organization() {
 
         <h1>Login</h1> 
 
-          <div className input-fields>
+          <div className="input-fields">
             <div>
               <input type="email" placeholder="username" className="username" />
             </div>
@@ -31,8 +31,9 @@ function Organization() {
           </div>
 
 
-          <button >Sign in</button>
+          <button className="sign-in">Sign in</button>
 
+      
 
           <div>
             <a className="link" href="/registration">Create account</a>
