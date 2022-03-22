@@ -10,6 +10,7 @@ import Organization from "./components/organization/Organization"
 import CompanyDetails from "./components/Company-details/companyDetails";
 import Registration from "./components/Registration/Registration";
 import FullSearchResult from "./components/individual/FullSearchResult";
+import IndividualPage from "./components/individual/IndividualPage";
 
 
 function App() {
@@ -57,7 +58,7 @@ function App() {
             <FullSearchResult></FullSearchResult>
           </Route>
           <Route path="/individual">
-            <h1>Individual</h1>
+            <IndividualPage></IndividualPage>
           </Route>
           <Route path="/organization">
             <Organization />
