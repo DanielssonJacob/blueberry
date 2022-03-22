@@ -9,7 +9,7 @@ function IndividualPage() {
         <div className="individual-page-body">
             <div className="individual-page-header">
                 <Logo></Logo>
-                <SignInField></SignInField>
+                <SignInField link="/"></SignInField>
             </div>
             <div className="individual-page-searchfield">
                 <input type="text" name="" id="" placeholder='Search' className="form-control search-donation-input"/>

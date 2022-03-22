@@ -7,7 +7,7 @@ function SignInField(props) {
 
     const history = useHistory(); 
     const routeChange = () =>{ 
-        history.push("/");
+        history.push(props.link);
     }
   return (
     <div className="sign-in-field">

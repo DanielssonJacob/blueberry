@@ -14,5 +14,6 @@
 .individual-page-searchfield{
     padding:40px;
     display: flex;
+    justify-content: space-evenly;
 
 }
