@@ -6,28 +6,36 @@ import {
   Link
 } from "react-router-dom";
 import './Organization.css'
+import DefaultButton from '../default/DefaultButton';
+
 
 function Organization() {
   return (
     <div className="org-main">
       <div className="sub-main">
 
-        <div>
-          <h1>Login</h1>
-          <div>
-            <input type="email" placeholder="username" className="input" />
-          </div>
 
-          <div>
-            <input type="password" placeholder="password" className="input" />
+
+        <div>
+
+        <h1>Login</h1> 
+
+          <div className input-fields>
+            <div>
+              <input type="email" placeholder="username" className="username" />
+            </div>
+
+            <div>
+              <input type="password" placeholder="password" className="password" />
+            </div>
           </div>
 
 
           <button >Sign in</button>
-          
+
 
           <div>
-          <a className="link" href="">Create account</a>
+            <a className="link" href="/registration">Create account</a>
           </div>
 
 
@@ -42,22 +50,6 @@ function Organization() {
   )
 }
 
-/*
-function Organization() {
-return (
-  <div className="org-menu">
-      <div className="sign-in">
-      <p>Sign in</p>
-      </div>
-      <div className="create-acc">
-      <p>Create account</p>
-      </div>
-  </div>
 
-
-  
-)
-}
-*/
 
 export default Organization
