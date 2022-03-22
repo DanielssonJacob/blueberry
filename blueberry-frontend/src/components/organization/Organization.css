@@ -1,32 +1,50 @@
-.org-menu{
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center; 
-    margin-top: 10%;
-  
-
-}
-
-.sign-in{
-  color: white;
-  background-color: #0271BB;
-  width: 200px;
-  margin: 50px;
+.org-main{
   text-align: center;
-  font-size: 20px;
+  justify-content: center; 
+  display: flex;
+  padding: 90px 0 90px 0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.sub-main{
+  justify-content: center; 
+  display: flex;
+  height: 400px;
+  width: 30%;
+  border: solid 2px #0271BB;
+  padding: 30px;
   border-radius: 15px;
-    
+  background-color: white;
 }
 
-.create-acc{
-    color: white;
-    background-color: #0271BB;
-    width: 200px;
-    margin: 50px;
-    text-align: center;
-    font-size: 20px;
-    border-radius: 15px;
-    
+.input{
+  width: 300px;
+  height: 50Px;
+  border-radius: 15px;
+  border: solid 2px #0271BB;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  padding-left: 30px;
+  font-size: 15px;
 }
 
+button{
+  width: 130px;
+  height: 50px;
+  border-radius: 15px;
+  background-color: #0271BB;
+  color: white;
+  font-size: 20px;
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+h1{
+  color: #0271BB;
+}
+
+.link{
+  color: #0271BB;
+  text-decoration: none;
+}
