@@ -1,5 +1,6 @@
     import React from 'react'
     import Image from "./companyImage.png";
+    import "./companyDetails.css"
     import {
         BrowserRouter as Router,
         Switch,
@@ -14,11 +15,37 @@
       import TableHead from '@mui/material/TableHead';
       import TableRow from '@mui/material/TableRow';
       import Paper from '@mui/material/Paper';
-
       import CssBaseline from '@mui/material/CssBaseline';
       import Box from '@mui/material/Box';
       import Container from '@mui/material/Container';
-      
+      import { styled } from '@mui/material/styles';
+      import Grid from '@mui/material/Grid';
+
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+import { positions } from '@mui/system';
+
+
+const bull = (
+  <Box
+    component="span"
+    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
+  >
+    •
+  </Box>
+);
+    
+    const Item = styled(Paper)(({ theme }) => ({
+      backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+      ...theme.typography.body2,
+      padding: theme.spacing(1),
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
+    }));
+    
       function createData(day,opening, closing) {
         return { day,opening, closing };
       }
@@ -33,24 +60,45 @@
         createData('Sunday',"10:00", "15.00"),
       ];
 
+      // const companyInfo = [{description: "We are an established helping organization with focus on helping people in poor countries with medical problems"},{name:"Röda Korset"},{map:"Google Map"},{feed:"FEEEEEEED"},{info:"General information"}]
+      const description = "We are an established helping organization with focus on helping people in poor countries with medical problems"
+      const name = "Röda Korset"
+      const map = "GOOGLE MAP"
+      const feed = "FEEEEEEEEEEED"
+      const info = "General information"
+      // const current = [{caption:"water for uganda"}, {bread:"Right now we need your help getting more fresh water for the people of Uganda."}]
+      const currentBread = "Right now we need your help getting more fresh water for the people of Uganda."
+      const currentCaption = "water for uganda"
+
 
     function companyDetails() {
       return (
     
-       
           <React.Fragment>
-             <h1>CompanyName</h1>
+             <h1 className='companyName' >{name}</h1>
       <CssBaseline />
-      <Container maxWidth="sm">
+        <Box sx={{ flexGrow: 1 }}>
+          <Grid container spacing={2}>
+            <Grid item xs={4}>
+              <Container maxWidth="sm">
       <img src={Image}></img>
         </Container>
-        <Container maxWidth="sm">
-      GOOGLE MAPS API
+            </Grid>
+            <Grid item xs={4}>
+            {description}
+            </Grid>
+            <Grid item xs={4}>
+            <Container maxWidth="sm">
+            {map}
         </Container>
-        <Container maxWidth="sm">
-      Description
+            </Grid>
+            <Grid item xs={4}>
+            <Container maxWidth="sm">
+            {info}
         </Container>
-      <Container maxWidth="sm">
+            </Grid>
+            <Grid item xs={4}>
+            <Container maxWidth="sm">
         <TableContainer component={Paper}>
         <Table sx={{ minWidth: 50 }} aria-label="simple table">
           <TableHead>
@@ -64,8 +112,7 @@
             {rows.map((row) => (
               <TableRow
                 key={row.day}
-                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-              >
+                sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                 <TableCell component="th" scope="row">
                   {row.day}
                 </TableCell>
@@ -77,12 +124,34 @@
         </Table>
       </TableContainer>
       </Container>
-      <Container maxWidth="sm">
-      General information
+            </Grid>
+            <Grid item xs={4}>
+            <Container maxWidth="sm">
+            <Card sx={{ minWidth: 275 }}>
+      <CardContent>
+        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          Current
+        </Typography>
+        <Typography sx={{ mb: 2.5 }} variant="h5" component="div">
+        {currentCaption}
+        </Typography>
+        <Typography variant="body2">
+        {currentBread}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Button size="small">Learn More</Button>
+      </CardActions>
+    </Card>
         </Container>
-        <Container maxWidth="sm">
-      FEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEED
+            </Grid>
+            <Grid item xs={12}>
+            <Container maxWidth="sm">
+      {feed}
         </Container>
+            </Grid>
+          </Grid>
+        </Box>
     </React.Fragment>
       
       )
@@ -90,4 +159,5 @@
    
     
     export default companyDetails
+
 
