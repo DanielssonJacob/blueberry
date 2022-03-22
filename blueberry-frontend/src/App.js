@@ -8,7 +8,9 @@ import './App.css';
 import Home from "./components/home/Home"
 import Organization from "./components/organization/Organization"
 import CompanyDetails from "./components/Company-details/companyDetails";
+import Registration from "./components/Registration/Registration";
 import FullSearchResult from "./components/individual/FullSearchResult";
+
 
 function App() {
   return (
@@ -29,6 +31,9 @@ function App() {
           </li>
           <li>
             <Link to="/company">companyDetails</Link>
+          </li>
+          <li>
+            <Link to="/registration">Company Registration</Link>
           </li>
         </ul>
 
@@ -56,6 +61,9 @@ function App() {
           </Route>
           <Route path="/organization">
             <Organization />
+          </Route>
+          <Route path="/registration">
+            <Registration />
           </Route>
         </Switch>
       </div>
