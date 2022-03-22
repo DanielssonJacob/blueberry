@@ -22,7 +22,7 @@ function FullSearchResult() {
                 <option value="donate">Choose action...</option>
                 <option value="donate">Donate</option>
                 <option value="volunteer">Volunteer</option>
-                <option value="pickup">Donation pickup</option>
+                <option value="pickup">Donation Pickup</option>
             </select>
        </div>
 
