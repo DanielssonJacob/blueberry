@@ -33,3 +33,9 @@
     width: 200px;
     border-radius: 20px;
 }
+
+.companyName {
+    position:relative;
+    left: 50%;
+
+}
