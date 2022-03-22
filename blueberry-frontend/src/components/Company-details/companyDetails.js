@@ -37,11 +37,18 @@
     function companyDetails() {
       return (
     
-        
+       
           <React.Fragment>
+             <h1>CompanyName</h1>
       <CssBaseline />
       <Container maxWidth="sm">
       <img src={Image}></img>
+        </Container>
+        <Container maxWidth="sm">
+      GOOGLE MAPS API
+        </Container>
+        <Container maxWidth="sm">
+      Description
         </Container>
       <Container maxWidth="sm">
         <TableContainer component={Paper}>
@@ -70,6 +77,12 @@
         </Table>
       </TableContainer>
       </Container>
+      <Container maxWidth="sm">
+      General information
+        </Container>
+        <Container maxWidth="sm">
+      FEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEED
+        </Container>
     </React.Fragment>
       
       )
