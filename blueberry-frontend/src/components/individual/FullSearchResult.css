@@ -13,13 +13,15 @@ link{
 }
 .searchResultCompanies{
     display: grid;
-    grid-template-columns: repeat(auto-fit, 500px);  /*  226px 226px ... ett visst antal gånger */ 
+    grid-template-columns: repeat(auto-fit, 560px);
     grid-column-gap:10px;
     grid-row-gap:10px;
 }
 .searchResultCompanies article{
     position: relative;
     padding: 10px;
+    height: 130px;
+    border-style: solid;
 }
 .searchResultCompanies article .companyName{
     font-size: 20px;
@@ -27,7 +29,8 @@ link{
     left: 110px;
 }
 .searchResultCompanies article .companyImage img{
-    height: 70px;
+    height: 80px;
+    width: 80px;
     border-radius: 50px;
     border-style: solid;
 }
