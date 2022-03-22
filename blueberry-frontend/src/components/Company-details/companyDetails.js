@@ -1,4 +1,4 @@
-    import React from 'react'
+    import React, { useState, useEffect} from 'react'
     import Image from "./companyImage.png";
     import "./companyDetails.css"
     import {
@@ -27,6 +27,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { positions } from '@mui/system';
+import CompanyList from './CompanyList';
 
 
 const bull = (
@@ -73,8 +74,10 @@ const bull = (
 
     function companyDetails() {
       return (
-    
+   
           <React.Fragment>
+            <CompanyList/>
+            
              <h1 className='companyName' >{name}</h1>
       <CssBaseline />
         <Box sx={{ flexGrow: 1 }}>
@@ -89,7 +92,7 @@ const bull = (
             </Grid>
             <Grid item xs={4}>
             <Container maxWidth="sm">
-            {map}
+            {map} 
         </Container>
             </Grid>
             <Grid item xs={4}>
