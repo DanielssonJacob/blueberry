@@ -23,8 +23,8 @@ function Registration() {
           <label for="cperson">Contact person:</label><br></br>
           <input type="text" id="cperson" name="cperson" ></input><br></br>
           <label for="cdescription">Company description:</label><br></br>
-          <input type="text" id="cdescription" name="cdescription"></input><br></br>
-          <label for="cdescription">Opening hours:</label><br></br>
+          <input type="textarea" id="cdescription" name="cdescription"></input><br></br>
+          <label for="openinghours">Opening hours:</label><br></br>
           <input type="text" id="openinghours" name="openinghours"></input><br></br>
       </div>
         
