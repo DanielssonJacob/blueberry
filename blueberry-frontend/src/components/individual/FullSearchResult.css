@@ -30,7 +30,15 @@ link{
     height: 150px;
     border-style: solid;
     overflow: hidden;
-    
+    grid-template-columns: repeat(auto-fit, 560px);
+    grid-column-gap:10px;
+    grid-row-gap:10px;
+}
+.searchResultCompanies article{
+    position: relative;
+    padding: 10px;
+    height: 130px;
+    border-style: solid;
 }
 .searchResultCompanies article .companyName{
     font-size: 20px;
