@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import './App.css';
 import Home from "./components/home/Home"
+import CompanyDetails from "./components/Company-details/companyDetails";
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
           <li>
             <Link to="/organization">Organization</Link>
           </li>
+          <li>
+            <Link to="/company">companyDetails</Link>
+          </li>
         </ul>
 
         <hr />
@@ -35,6 +39,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <Home></Home>
+          </Route>
+          <Route path="/company">
+            <CompanyDetails></CompanyDetails>
           </Route>
           <Route path="/individual">
             <h1>Individual</h1>
