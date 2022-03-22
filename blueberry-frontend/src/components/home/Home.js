@@ -10,6 +10,7 @@ import "./Home.css"
 import HomePageButton from './HomePageButton';
 import blueberry from './blueberry-img.png';
 import ColorRow from './ColorRow';
+import DefaultButton from '../default/DefaultButton';
 
 function Home() {
   return (
@@ -23,11 +24,10 @@ function Home() {
 
       <div className="menu-choice">
       <div className="menu-item">
-        <HomePageButton link="/individual" title="Individual"/>
+        <DefaultButton link="/individual" title="Individual"/>
       </div> 
-    
       <div className="menu-item">
-        <HomePageButton link="/organization" title="Organization"/>
+        <DefaultButton link="/organization" title="Organization"/>
       </div> 
         <div className="menu-item"><img src={blueberry} alt="" /></div>
       </div>
@@ -35,6 +35,7 @@ function Home() {
       <ColorRow color={"#E8340C"} height={"60px"}></ColorRow>
       <ColorRow color={"#F5FA70"} height={"60px"}></ColorRow>
       <ColorRow color={"#0271BB"} height={"60px"}></ColorRow>
+      
     </div>
   )
 }
