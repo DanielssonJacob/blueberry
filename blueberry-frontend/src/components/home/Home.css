@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+.header{
+    background-color: #0271BB;
+    height: 300px;
+    padding-left: 30px;
+    padding-top: 25px;
+}
+
+.logo{
+    color:white;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.logo h2 {
+    margin-bottom:0px;
+}
+
+.logo p {
+    margin-top:0px;
+    font-size: small;
+}
+
+.menu-choice{
+    display: flex;
+    justify-content: space-around;
+    padding: 100px;
+    margin-left: 150px;
+}
+
+.menu-item{
+    border: solid black 2px;
+    width: 200px;
+    border-radius: 20px;
+}
