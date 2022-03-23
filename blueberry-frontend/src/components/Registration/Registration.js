@@ -69,12 +69,12 @@ function Registration() {
         <div className="companyInformationInput">
           <div className="inputField">
             <label for="cname">Company name: </label>
-            <input type="text" id="companyName" value={companyName} onChange={e => setCompanyName(e.target.value)} />
+            <input type="text" id="companyName" maxLength={25} value={companyName} onChange={e => setCompanyName(e.target.value)} />
 
           </div>
           <div className="inputField">
             <label for="address">Address: </label>
-            <input type="text" id="companyAddress" value={companyAddress} onChange={e => setCompanyAddress(e.target.value)} />
+            <input type="text" id="companyAddress" value={companyAddress} onChange={e => setCompanyAddress(e.target.value) /*? (e.target.null == null) : alert(console.error)*/} />
           </div>
           <div className="inputField">
             <label for="cperson">Contact person: </label>
@@ -82,7 +82,7 @@ function Registration() {
           </div>
           <div className="inputField">
             <label for="cdescription">Company description: </label>
-            <textarea type="textarea" id="companyDescription" name="cdescription" rows="4" cols="50" value={companyDescription} onChange={e => setCompanyDescription(e.target.value)} />
+            <textarea type="textarea" id="companyDescription" name="cdescription" rows="4" cols="30" value={companyDescription} onChange={e => setCompanyDescription(e.target.value)} />
           </div>
           <div className="inputField">
             <label for="openinghours">Opening hours: </label>
