@@ -14,10 +14,36 @@ import { useState } from "react";
 
 function Registration() {
   const [companyName, setCompanyName] = useState("");
+  const [companyPassword, setCompanyPassword] = useState("");
   const [companyAddress, setCompanyAddress] = useState("");
   const [companyPerson, setCompanyPerson] = useState("");
   const [companyDescription, setCompanyDescription] = useState("");
   const [companyOpeningHours, setCompanyOpeningHours] = useState("");
+  const [showMessage, setShowMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const sendForm = () => {
+      setShowMessage(true)
+
+      if (companyName === "") {
+        setErrorMessage("Please insert company name.")
+      }
+      if (companyAddress === "") {
+        setErrorMessage("Please insert company address.")
+      }
+      if (companyPerson === "") {
+        setErrorMessage("Please insert a contact person.")
+      }
+      if (companyDescription === "") {
+        setErrorMessage("Please insert a company description.")
+      }
+      if (companyOpeningHours === "") {
+        setErrorMessage("Invalid opening hours.")
+      }
+      
+      setErrorMessage("")
+      
+  }
 
   const formData = {
     cName: companyName,
@@ -72,6 +98,11 @@ function Registration() {
 
           </div>
           <div className="inputField">
+            <label for="cname">Password: </label>
+            <input type="password" id="companyPassword" maxLength={25} value={companyPassword} onChange={e => setCompanyPassword(e.target.value)} />
+
+          </div>
+          <div className="inputField">
             <label for="address">Address: </label>
             <input type="text" id="companyAddress" value={companyAddress} onChange={e => setCompanyAddress(e.target.value) /*? (e.target.null == null) : alert(console.error)*/} />
           </div>
@@ -92,6 +123,7 @@ function Registration() {
           <DefaultButton type="submit" title="Register" />
         </div>
 
+        
         <Link to="/">Home</Link>
       </div>
     </form>
