@@ -29,7 +29,7 @@ function IndividualPage() {
     return (
         <div className="individual-page-body">
         {organization===""?<Alert hidden={!isAlert} severity="error">Error: You need to specify which organization you are looking for.</Alert>:<Alert hidden={!isAlert} severity="error">Error: Can't find {snapshot}.</Alert>}
-        
+
             <div className="individual-page-header">
                 <Logo></Logo>
                 <SignInField link="/"></SignInField>
@@ -61,7 +61,7 @@ function IndividualPage() {
                                     setSnapshot(organization)
                                     setIsAlert(true)
                                 }
-                                
+
                             }
                         }}/>
 
