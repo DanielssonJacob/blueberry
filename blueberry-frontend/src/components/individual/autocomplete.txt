@@ -1,0 +1,19 @@
+/*<Autocomplete
+                        freeSolo
+                        id="company-search-input"
+                        inputValue={organization}
+                        onInputChange={(event, newInputValue) => {
+                            setOrganization(newInputValue);
+                        }}
+                        options={data.map((c => c.name))}
+                        sx={{ width: 500, backgroundColor: "white" }}
+                        renderInput={(params) => <TextField {...params} label="Organizations" />}
+                        onKeyDown={(event) => {
+                            if (event.key === 'Enter') {
+                                // Prevent's default 'Enter' behavior.
+                                event.defaultMuiPrevented = true;
+                                // your handler code
+                                history.push(`/${organization}`)
+                            }
+                        }}
+                    />*/

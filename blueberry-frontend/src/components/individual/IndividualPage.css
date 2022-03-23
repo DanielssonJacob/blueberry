@@ -15,5 +15,9 @@
     padding:40px;
     display: flex;
     justify-content: space-evenly;
+    margin: 100px;
 
+}
+.company-search-individual{
+    width:70%;
 }
