@@ -35,38 +35,14 @@ function FullSearchResult() {
 
                 <div className='searchResultCompanies'>
                     {isLoading ? <h2>Loading...</h2> : data.map((c) =>
-                        <h2>{c.name}</h2>
-                    )}
-
-                    <article>
-                        <div className='companyName'>Name</div>
+                        <article>
+                        <div className='companyName'>{c.name}</div>
                         <div className='companyImage'>
                             <img src={redcross} alt="red cross" />
                         </div>
-                        <div className='companyInfo'>Lorem ipsum dolor sit amet, consectetur
-                            adipiscing elit. Vivamus ac ex augue. Duis bibendum ornare arcu, sed
-                            congue enim fermentum ut. Aliquam Duis bibendum ornare arcu, sed congue
-                            enim fermentum ut. Aliquam Duis bibendum ornare arcu, sed congue enim
-                            fermentum ut. Aliquam vestibulum laoreet nibh. Duis bibendum ornare arcu,
-                            sed congue enim fermentum ut. Aliquam ae volutpat...</div>
+                        <div className='companyInfo'>{c.city}</div>
                     </article>
-                    <article>
-                        <div className='companyName'>Name</div>
-                        <div className='companyImage'>
-                            <img src={amnesty} alt="amnesty" />
-                        </div>
-                        <div className='companyInfo'>Lorem Ipsum</div>
-                    </article>
-                    <article>
-                        <div className='companyName'>Name</div>
-                        <div className='companyImage'></div>
-                        <div className='companyInfo'>Lorem Ipsum</div>
-                    </article>
-                    <article>
-                        <div className='companyName'>Name</div>
-                        <div className='companyImage'></div>
-                        <div className='companyInfo'>Lorem Ipsum</div>
-                    </article>
+                    )}
                 </div>
             </div>
         </div>

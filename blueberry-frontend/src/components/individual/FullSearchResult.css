@@ -14,9 +14,9 @@ link{
     text-decoration: none;
 }
 .dropDown{
-    position: fixed;
+    position:absolute;
     right:2%;
-    top: 30%;
+    top: 28%;
 }
 
 .searchResultCompanies{
@@ -34,11 +34,18 @@ link{
     grid-column-gap:10px;
     grid-row-gap:10px;
 }
+
 .searchResultCompanies article{
     position: relative;
     padding: 10px;
     height: 130px;
-    border-style: solid;
+    border: 1px solid lightgray;
+    box-shadow: 3px 3px 3px rgba(192,192,192,0.3);
+    border-radius: 15px;
+    
+}
+.searchResultCompanies article:hover{
+    border: 2px solid #0271bb7a;  
 }
 .searchResultCompanies article .companyName{
     font-size: 20px;
@@ -48,8 +55,8 @@ link{
 .searchResultCompanies article .companyImage img{
     height: 80px;
     width: 80px;
+    border: 1px solid rgba(192,192,192,0.3);
     border-radius: 50px;
-    border-style: solid;
 }
 .searchResultCompanies article .companyInfo{
     display: -webkit-box;
