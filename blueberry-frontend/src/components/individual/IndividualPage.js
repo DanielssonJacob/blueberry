@@ -29,13 +29,14 @@ function IndividualPage() {
     return (
         <div className="individual-page-body">
         {organization===""?<Alert hidden={!isAlert} severity="error">Error: You need to specify which organization you are looking for.</Alert>:<Alert hidden={!isAlert} severity="error">Error: Can't find {snapshot}.</Alert>}
-        
+
             <div className="individual-page-header">
                 <Logo></Logo>
                 <SignInField link="/"></SignInField>
             </div>
             <div className="individual-page-searchfield">
                 <div className="company-search-individual">
+
                     <label htmlFor='company-search-input'></label>
                     <Autocomplete
                         freeSolo
@@ -60,9 +61,11 @@ function IndividualPage() {
                                     setSnapshot(organization)
                                     setIsAlert(true)
                                 }
-                                
+
                             }
                         }}/>
+
+
 
                 </div>
                 <div className="company-dropdown-individual">
