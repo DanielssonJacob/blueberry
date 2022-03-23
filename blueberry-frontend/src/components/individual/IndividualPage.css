@@ -20,4 +20,15 @@
 }
 .company-search-individual{
     width:70%;
+    
+}
+
+.donation-selection{
+}
+
+.company-dropdown-individual{
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    height: 70px;
 }
