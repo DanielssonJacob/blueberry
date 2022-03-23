@@ -36,9 +36,9 @@
 
 }
 .blogheader {
-    border-top: 1px blue;
     padding-top: 60px;
 }
 .blogpost{
     max-width: 1600px;
+    padding-bottom: 30px;
 }

@@ -144,7 +144,14 @@ function CompanyDetails() {
             <div className='blogheader'>
             <Grid item xs={12}>
                 <Container className='blogpost'>
-                <Card >
+                <Card>
+                    bla bla bla
+                </Card>
+                </Container>
+            </Grid>
+            <Grid item xs={12}>
+                <Container className='blogpost'>
+                <Card>
                     bla bla bla
                 </Card>
                 </Container>
