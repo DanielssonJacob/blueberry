@@ -17,5 +17,12 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-
+    private String adress;
+    private String person;
+    private String description;
+    private String openingHours;
+    public Company(Long id, String name){
+        this.id=id;
+        this.name=name;
+    }
 }
