@@ -25,7 +25,6 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { positions } from '@mui/system';
-import CompanyList from './CompanyList';
 
 import useFetch from "react-fetch-hook";
 
