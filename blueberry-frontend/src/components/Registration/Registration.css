@@ -22,15 +22,16 @@
 }
 
 .inputField {
+    display:flex;
+    flex-wrap: wrap;
     font-family: 'Open Sans', sans-serif;
     justify-content: space-evenly;
-    padding: 30px;
     align-items: center;
-    border-radius: 10px;
     border: solid 2px #0271BB;
-    width: 400px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    margin-left: 700px;
-    
+    width:400px;
+    padding:20px;
+    padding-bottom: 40px;
+    margin: auto;
+    border-radius: 15px;
+    margin-top: 40px;
 }
