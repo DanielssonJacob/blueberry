@@ -1,6 +1,6 @@
     import React from 'react'
     import Image from "./companyImage.png";
-    import "./companyDetails.css"
+    import "./CompanyDetails.css"
     import {
         BrowserRouter as Router,
         Switch,
