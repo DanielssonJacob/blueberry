@@ -44,7 +44,7 @@ function FullSearchResult() {
                         <div className='companyImage'>
                             <img src={redcross} alt="red cross" />
                         </div>
-                        <div className='companyInfo'>{c.city}</div>
+                        <div className='companyInfo'>{c.description}</div>
                         
                     </article>)}/>
                     )}
