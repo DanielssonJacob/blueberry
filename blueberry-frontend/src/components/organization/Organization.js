@@ -12,22 +12,47 @@ import DefaultButton from '../default/DefaultButton';
 
 function Organization() {
 
-  const [email, setEmail] = useState("")
+  const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
 
 
-  const inputEmail = (event) => {
-    setEmail(event.target.value)
+  const inputUsername = (event) => {
+    setUsername(event.target.value)
   }
 
   const inputPassword = (event) => {
     setPassword(event.target.value)
   }
 
+  /*
   const signIn = () => {
-    if(email != "" && password != "") {
+    if(username != "" && password != "") {
       window.location.href = '/fullsearchresult'
     }
+  }
+  */
+
+  const signInData = {
+    cName: username,
+    cPassword: password,
+  }
+
+  function signIn() {
+    console.log(JSON.stringify(signInData))
+    fetch("http://localhost:8080/logincompany", {
+      method: "post",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+
+      //make sure to serialize your JSON body
+      body: JSON.stringify(signInData)
+    })
+      .then((response) => {
+        //do something awesome that makes the world a better place
+        console.log(response)
+      });
   }
 
 
@@ -44,7 +69,7 @@ function Organization() {
 
             <div className="input-fields">
               <div>
-                <input type="email" placeholder="username" className="username" value={email} onChange={inputEmail} />
+                <input type="email" placeholder="username" className="username" value={username} onChange={inputUsername} />
               </div>
 
               <div>

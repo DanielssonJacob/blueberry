@@ -12,7 +12,6 @@ import { useState } from "react";
 
 
 
-
 function Registration() {
   const [companyName, setCompanyName] = useState("");
   const [companyAddress, setCompanyAddress] = useState("");
