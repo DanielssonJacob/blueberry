@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Image from "./companyImage.png";
-import "./CompanyDetails.css"
+import "./companyDetails.css"
 import {
     useParams,
     BrowserRouter as Router,
@@ -24,7 +24,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { positions } from '@mui/system';
+
 
 import useFetch from "react-fetch-hook";
 
@@ -48,7 +48,8 @@ const description = "We are an established helping organization with focus on he
 const name = "Röda Korset"
 const map = "GOOGLE MAP"
 const feed = "FEEEEEEEEEEED"
-const info = "General information"
+const info = "Adress: Kungstorget 12"
+const info2 = " Telefonnummer: 08 - 22 33 11"
 // const current = [{caption:"water for uganda"}, {bread:"Right now we need your help getting more fresh water for the people of Uganda."}]
 const currentBread = "Right now we need your help getting more fresh water for the people of Uganda."
 const currentCaption = "water for uganda"
@@ -86,7 +87,7 @@ function CompanyDetails() {
                             <Container maxWidth="sm">
                                 <Card sx={{ minWidth: 275 }}>
                                     <CardContent>
-                                        {info}
+                                        {info}<br></br>{info2}
                                     </CardContent>
                                 </Card>
                             </Container>

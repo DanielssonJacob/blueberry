@@ -53,8 +53,8 @@ public class CompanyController {
     }
 
     @PostMapping("/logincompany")
-    Company loginCompany(@RequestBody Map<String, Object> loginForm){
-        return companyRepository.findByName((String) loginForm.get("cName"));
+    Boolean loginCompany(@RequestBody Map<String, Object> loginForm){
+        return companyRepository.findByName((String) loginForm.get("cName")) != null;
     }
 
 }

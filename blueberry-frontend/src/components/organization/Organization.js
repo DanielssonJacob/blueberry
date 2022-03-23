@@ -49,8 +49,10 @@ function Organization() {
       //make sure to serialize your JSON body
       body: JSON.stringify(signInData)
     })
-      .then((response) => response.json()).then(data=>console.log(data));
-      
+      .then((response) => {
+        //do something awesome that makes the world a better place
+        console.log(response)
+      });
   }
 
 

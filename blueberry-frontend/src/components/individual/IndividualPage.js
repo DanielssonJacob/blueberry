@@ -36,6 +36,7 @@ function IndividualPage() {
             </div>
             <div className="individual-page-searchfield">
                 <div className="company-search-individual">
+
                     <label htmlFor='company-search-input'></label>
                     <Autocomplete
                         freeSolo
@@ -63,6 +64,8 @@ function IndividualPage() {
                                 
                             }
                         }}/>
+
+
 
                 </div>
                 <div className="company-dropdown-individual">
