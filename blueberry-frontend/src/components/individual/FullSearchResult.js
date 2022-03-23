@@ -11,6 +11,7 @@ import './FullSearchResult.css';
 import redcross from './companyImages/redcross.png';
 import amnesty from './companyImages/amnesty.png';
 import useFetch from "react-fetch-hook";
+import DefaultHeader from '../default/DefaultHeader';
 
 function FullSearchResult() {
     const { isLoading, data, error } = useFetch("http://localhost:8080/companies");
@@ -21,6 +22,7 @@ function FullSearchResult() {
     return (
 
         <div>
+            <DefaultHeader></DefaultHeader>
             <div className='wrapper'>
                 <Link to="/">Back</Link>
                 <h1>Search Results</h1>
