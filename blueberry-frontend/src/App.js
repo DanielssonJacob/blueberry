@@ -7,7 +7,7 @@ import {
 import './App.css';
 import Home from "./components/home/Home"
 import Organization from "./components/organization/Organization"
-import CompanyDetails from "./components/Company-details/companyDetails";
+import CompanyDetails from "./components/Company-details/CompanyDetails";
 import Registration from "./components/Registration/Registration";
 import FullSearchResult from "./components/individual/FullSearchResult";
 import IndividualPage from "./components/individual/IndividualPage";
