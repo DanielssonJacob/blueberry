@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Image from "./companyImage.png";
-import "./companyDetails.css"
+import "./CompanyDetails.css"
 import {
     useParams,
     BrowserRouter as Router,
