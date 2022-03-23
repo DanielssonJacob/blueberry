@@ -31,6 +31,14 @@
 
 .companyName {
     position:relative;
-    left: 50%;
+    left: 45%;
+    padding: 60px;
 
+}
+.blogheader {
+    padding-top: 60px;
+}
+.blogpost{
+    max-width: 1600px;
+    padding-bottom: 30px;
 }
