@@ -34,7 +34,7 @@ function IndividualPage() {
                     <input id="company-search-input" type="text" className="form-control" onChange={(e)=>setOrganization(e.target.value)}
                     onKeyPress={(e) => {
                         if (e.key === "Enter") {
-                            history.push(`/company_details/${organization}`)
+                            history.push(`/company/${organization}`)
                         }
                     }} />
                 </div>
