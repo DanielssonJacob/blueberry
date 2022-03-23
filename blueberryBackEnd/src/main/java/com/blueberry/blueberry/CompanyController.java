@@ -10,28 +10,34 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Arrays;
 import java.util.List;
 
+@CrossOrigin(origins ="http://localhost:3000")
 @RestController
 public class CompanyController {
 
     @Autowired
     CompanyRepository companyRepository;
 
-    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/companies")
     List<Company> getCompanies(){
-        companyRepository.saveAll(Arrays.asList(
-                new Company(null, "UNICEF"),
-                new Company(null, "RED CROSS"),
-                new Company(null, "AMNESTY")));
+        if(companyRepository.findAll().size()<10){
+            companyRepository.saveAll(Arrays.asList(
+                    new Company(null, "UNICEF"),
+                    new Company(null, "RED CROSS"),
+                    new Company(null, "AMNESTY")));
+        }
+
         return companyRepository.findAll();
     }
 
+
     @GetMapping("/company/{name}")
     Company getCompany(@PathVariable String name){
-        companyRepository.saveAll(Arrays.asList(
-                new Company(null, "UNICEF"),
-                new Company(null, "RED CROSS"),
-                new Company(null, "AMNESTY")));
+        if(companyRepository.findAll().size()<10){
+            companyRepository.saveAll(Arrays.asList(
+                    new Company(null, "UNICEF"),
+                    new Company(null, "RED CROSS"),
+                    new Company(null, "AMNESTY")));
+        }
         return companyRepository.findByName(name);
     }
 

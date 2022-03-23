@@ -7,13 +7,14 @@ import {
 import './App.css';
 import Home from "./components/home/Home"
 import Organization from "./components/organization/Organization"
-import CompanyDetails from "./components/Company-details/companyDetails";
+import CompanyDetails from "./components/Company-details/CompanyDetails";
 import Registration from "./components/Registration/Registration";
 import FullSearchResult from "./components/individual/FullSearchResult";
 import IndividualPage from "./components/individual/IndividualPage";
 
 
 function App() {
+
   return (
     <Router>
       <div>
@@ -51,12 +52,8 @@ function App() {
           <Route exact path="/">
             <Home></Home>
           </Route>
-          <Route path="/company">
-            <CompanyDetails></CompanyDetails>
-          </Route>
-          <Route path="/fullsearchresult">
-            <FullSearchResult></FullSearchResult>
-          </Route>
+          <Route path="/company" children={CompanyDetails}/>
+          <Route path="/fullsearchresult" component={FullSearchResult}/>
           <Route path="/individual">
             <IndividualPage></IndividualPage>
           </Route>
