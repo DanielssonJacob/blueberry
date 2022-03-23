@@ -52,7 +52,7 @@ function App() {
           <Route exact path="/">
             <Home></Home>
           </Route>
-          <Route path="/company" children={CompanyDetails}/>
+          <Route path="/company" component={CompanyDetails}/>
           <Route path="/fullsearchresult" component={FullSearchResult}/>
           <Route path="/individual">
             <IndividualPage></IndividualPage>

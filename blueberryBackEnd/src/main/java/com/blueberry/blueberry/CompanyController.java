@@ -17,7 +17,6 @@ public class CompanyController {
     @Autowired
     CompanyRepository companyRepository;
 
-
     @GetMapping("/companies")
     List<Company> getCompanies(){
         if(companyRepository.findAll().size()==0){
