@@ -35,13 +35,16 @@ function FullSearchResult() {
 
                 <div className='searchResultCompanies'>
                     {isLoading ? <h2>Loading...</h2> : data.map((c) =>
-                        <article>
-                        <div className='companyName'>{c.name}</div>
+                    <Route render={({ history}) => (
+                        <article onClick={() => { history.push(`/company/${c.name}`) }}>
+                             
+                        <div className='companyName'>{c.name}</div> 
                         <div className='companyImage'>
                             <img src={redcross} alt="red cross" />
                         </div>
                         <div className='companyInfo'>{c.city}</div>
-                    </article>
+                        
+                    </article>)}/>
                     )}
                 </div>
             </div>

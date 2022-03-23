@@ -52,6 +52,9 @@ link{
     position: absolute;
     left: 120px;
 }
+.searchResultCompanies article .companyName:hover{
+    color: #0271bbaf;
+}
 .searchResultCompanies article .companyImage img{
     height: 80px;
     width: 80px;
