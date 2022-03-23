@@ -1,6 +1,6 @@
 import React, { useState, useEffect} from 'react'
     import Image from "./companyImage.png";
-    import "./companyDetails.css"
+    import "./CompanyDetails.css"
     import {
         BrowserRouter as Router,
         Switch,
@@ -29,56 +29,71 @@ import Typography from '@mui/material/Typography';
 import { positions } from '@mui/system';
 import CompanyList from './CompanyList';
 
+import useFetch from "react-fetch-hook";
 
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-  >
-    •
-  </Box>
-);
-    
-    const Item = styled(Paper)(({ theme }) => ({
-      backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-      ...theme.typography.body2,
-      padding: theme.spacing(1),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    }));
-    
-      function createData(day,opening, closing) {
-        return { day,opening, closing };
-      }
+
       
-      const rows = [
-        createData('Monday', "10:00", "14.00"),
-        createData('Tuesday',"10:00", "14.00"),
-        createData('Wensday',"10:00", "14.00"),
-        createData('Thursday',"10:00", "14.00"),
-        createData('Friday',"10:00", "14.00"),
-        createData('Saturday', "10:00", "15.00"),
-        createData('Sunday',"10:00", "15.00"),
-      ];
+        
+const bull = (
+    <Box
+      component="span"
+      sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
+    >
+      •
+    </Box>
+  );
+      
+      const Item = styled(Paper)(({ theme }) => ({
+        backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+        ...theme.typography.body2,
+        padding: theme.spacing(1),
+        textAlign: 'center',
+        color: theme.palette.text.secondary,
+      }));
+      
+        function createData(day,opening, closing) {
+          return { day,opening, closing };
+        }
+        
+        const rows = [
+          createData('Monday', "10:00", "14.00"),
+          createData('Tuesday',"10:00", "14.00"),
+          createData('Wensday',"10:00", "14.00"),
+          createData('Thursday',"10:00", "14.00"),
+          createData('Friday',"10:00", "14.00"),
+          createData('Saturday', "10:00", "15.00"),
+          createData('Sunday',"10:00", "15.00"),
+        ];
+  
+        // const companyInfo = [{description: "We are an established helping organization with focus on helping people in poor countries with medical problems"},{name:"Röda Korset"},{map:"Google Map"},{feed:"FEEEEEEED"},{info:"General information"}]
+        const description = "We are an established helping organization with focus on helping people in poor countries with medical problems"
+        const name = "Röda Korset"
+        const map = "GOOGLE MAP"
+        const feed = "FEEEEEEEEEEED"
+        const info = "General information"
+        // const current = [{caption:"water for uganda"}, {bread:"Right now we need your help getting more fresh water for the people of Uganda."}]
+        const currentBread = "Right now we need your help getting more fresh water for the people of Uganda."
+        const currentCaption = "water for uganda"
+  
 
-      // const companyInfo = [{description: "We are an established helping organization with focus on helping people in poor countries with medical problems"},{name:"Röda Korset"},{map:"Google Map"},{feed:"FEEEEEEED"},{info:"General information"}]
-      const description = "We are an established helping organization with focus on helping people in poor countries with medical problems"
-      const name = "Röda Korset"
-      const map = "GOOGLE MAP"
-      const feed = "FEEEEEEEEEEED"
-      const info = "General information"
-      // const current = [{caption:"water for uganda"}, {bread:"Right now we need your help getting more fresh water for the people of Uganda."}]
-      const currentBread = "Right now we need your help getting more fresh water for the people of Uganda."
-      const currentCaption = "water for uganda"
 
 
-    function companyDetails() {
+    function CompanyDetails() {
+        
+      const { isLoading, data, error } = useFetch("http://localhost:8080/companies");
+      if(error){
+          return <h2>Error</h2>
+      }
       return (
    
           <React.Fragment>
             <CompanyList/>
             
              <h1 className='companyName' >{name}</h1>
+             
+      {isLoading ? <h2>Loading...</h2> : data.map((c) =>
+      <h2>{c.name}</h2>
+  )}
       <CssBaseline />
         <Box sx={{ flexGrow: 1 }}>
           <Grid container spacing={2}>
@@ -161,6 +176,6 @@ const bull = (
     }
    
     
-    export default companyDetails
+    export default CompanyDetails
 
 
