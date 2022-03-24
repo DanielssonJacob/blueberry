@@ -82,7 +82,7 @@ function CompanyDetails() {
                             <Container maxWidth="sm">
                                 <Card sx={{ minWidth: 275 }}>
                                     <CardContent>
-                                        Adress: {c.adress} <br></br>Kontaktperson: {c.person}
+                                        Adress: {c.address} <br></br>Kontaktperson: {c.person}
                                     </CardContent>
                                 </Card>
                             </Container>
