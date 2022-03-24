@@ -48,6 +48,7 @@ function FullSearchResult() {
                             <img src={redcross} alt="red cross" />
                         </div>
                         <div className='companyInfo'>{c.description}</div>
+                        <div className='companyCity'>{c.city}</div>
                         
                     </article>)}/>
                     )}
