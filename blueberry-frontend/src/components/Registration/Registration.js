@@ -7,6 +7,7 @@ import {
   Link
 } from "react-router-dom";
 import DefaultButton from '../default/DefaultButton';
+import Logo from '../default/Logo';
 import './Registration.css'
 import { useState } from "react";
 import Alert from '@mui/material/Alert';
@@ -63,6 +64,7 @@ function Registration() {
       }
       
       setErrorMessage("")
+      handleSubmit()
       
   }
 
@@ -104,8 +106,12 @@ function Registration() {
   }  */
   return (
    // <form onSubmit={handleSubmit}>
-      <div>
+      <body className="body">
         <Link to="/">Home</Link>
+        <div className="logo1">
+            <Logo></Logo>
+        </div>
+        
         <Alert hidden={!isAlert} severity="error">{errorMessage}</Alert>
         <div className="header1">
           <div className="title">
@@ -114,9 +120,7 @@ function Registration() {
 
           </div>
         </div>
-        <div className="logo1">
-
-        </div>
+        
         <div className="companyInformationInput">
           <div className="inputField">
             <label for="cName">Company name: </label>
@@ -149,13 +153,13 @@ function Registration() {
             <input type="text" id="companyOpeningHours" name="openinghours" value={companyOpeningHours} onChange={e => setCompanyOpeningHours(e.target.value)} />
           </div>
         </div>
-        <div onClick={() => {handleSubmit(); sendForm();}} className="registerButton" >
+        <div onClick={() => {sendForm(); }} className="registerButton" >
           <DefaultButton  onClick={sendForm} title="Register" />
         </div>
         
         
         
-      </div>
+      </body>
     //</form>
   )
 }
