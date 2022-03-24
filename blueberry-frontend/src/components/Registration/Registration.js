@@ -110,7 +110,7 @@ function Registration() {
         <div className="header1">
           <div className="title">
             <h1>Company Registration</h1>
-            <h2>{companyName}</h2>
+            
 
           </div>
         </div>
