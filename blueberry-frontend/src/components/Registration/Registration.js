@@ -101,13 +101,8 @@ function Registration() {
 
 
 
-  /*const { register, handleSubmit } = useForm();
-  const handleRegistration = (data) => console.log(data); */
-  /*function inputSetName(event) {
-    setName(event.target.value)
-  }  */
+
   return (
-   // <form onSubmit={handleSubmit}>
       <body className="body">
         <Link to="/">Home</Link>
         <div className="logo1">
