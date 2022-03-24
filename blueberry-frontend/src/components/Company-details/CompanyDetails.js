@@ -9,7 +9,6 @@ import {
     Route,
     Link
 } from "react-router-dom";
-
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
@@ -25,8 +24,6 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-
-
 import useFetch from "react-fetch-hook";
 
 
@@ -44,16 +41,9 @@ const rows = [
     createData('Sunday', "10:00", "15.00"),
 ];
 
-// const companyInfo = [{description: "We are an established helping organization with focus on helping people in poor countries with medical problems"},{name:"Röda Korset"},{map:"Google Map"},{feed:"FEEEEEEED"},{info:"General information"}]
-const description = "We are an established helping organization with focus on helping people in poor countries with medical problems"
-const name = "Röda Korset"
-const googlemap = "GOOGLE MAP"
-const feed = "FEEEEEEEEEEED"
-const info = "Adress: Kungstorget 12"
-const info2 = " Telefonnummer: 08 - 22 33 11"
-// const current = [{caption:"water for uganda"}, {bread:"Right now we need your help getting more fresh water for the people of Uganda."}]
 const currentBread = "Right now we need your help getting more fresh water for the people of Uganda."
 const currentCaption = "water for uganda"
+const googlemap = "GOOGLE MAP"
 
 
 
@@ -92,7 +82,7 @@ function CompanyDetails() {
                             <Container maxWidth="sm">
                                 <Card sx={{ minWidth: 275 }}>
                                     <CardContent>
-                                        Adress: {c.adress} <br></br>Kontaktperson: {c.person}
+                                        Adress: {c.address} <br></br>Kontaktperson: {c.person}
                                     </CardContent>
                                 </Card>
                             </Container>
@@ -173,5 +163,3 @@ function CompanyDetails() {
 }
 
 export default CompanyDetails
-
-
