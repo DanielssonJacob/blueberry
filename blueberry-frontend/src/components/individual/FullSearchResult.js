@@ -5,7 +5,8 @@ import {
     Switch,
     useLocation,
     Route,
-    Link
+    Link,
+    useParams
 } from "react-router-dom";
 
 import './FullSearchResult.css';
@@ -15,6 +16,8 @@ import useFetch from "react-fetch-hook";
 import DefaultHeader from '../default/DefaultHeader';
 
 function FullSearchResult() {
+    let { city } = useParams();
+
     const { isLoading, data, error } = useFetch("http://localhost:8080/companies");
 
     if(error){
@@ -40,7 +43,7 @@ function FullSearchResult() {
                 </div>
 
                 <div className='searchResultCompanies'>
-                    {isLoading ? <h2>Loading...</h2> : data.map((c) =>             
+                    {isLoading ? <h2>Loading...</h2> : data.filter((c)=>c.city===city).map((c) =>             
                     <Route render={({ history}) => (
                         <article className='companyArticle' onClick={() => { history.push(`/company/${c.name}`) }}>                            
                         <div className='companiesName'>{c.name}</div> 

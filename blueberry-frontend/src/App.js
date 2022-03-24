@@ -29,7 +29,7 @@ function App() {
             <Link to="/organization">Organization</Link>
           </li>
           <li>
-            <Link to="/fullsearchresult">FullSearchResult</Link>
+            <Link to="/searchresult/Stockholm">FullSearchResult</Link>
           </li>
           <li>
             <Link to="/company">companyDetails</Link>
@@ -50,12 +50,12 @@ function App() {
         */}
         <Switch>
           <Route exact path="/">
-            <Home></Home>
+          <IndividualPage/>
           </Route>
           <Route path="/company/:companyname" component={CompanyDetails}/>
-          <Route path="/fullsearchresult" component={FullSearchResult}/>
+          <Route path="/searchresult/:city" component={FullSearchResult}/>
           <Route path="/individual">
-            <IndividualPage></IndividualPage>
+          <IndividualPage/>
           </Route>
           <Route path="/organization">
             <Organization />
