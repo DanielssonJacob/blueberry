@@ -15,6 +15,7 @@
     display: flex;
     justify-content: space-evenly;
     margin: 100px;
+    flex-wrap: wrap-reverse;
 }
 
 .company-search-individual {
@@ -33,4 +34,13 @@
 
 .dropdown-group-individual {
     display: flex;
+}
+
+@media screen and (max-width: 790px) {
+    .dropdown-group-individual {
+        flex-direction: column-reverse;
+    }
+    .company-search-individual {
+        width: 100%;
+    }
 }
