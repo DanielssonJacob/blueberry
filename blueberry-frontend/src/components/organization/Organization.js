@@ -1,13 +1,9 @@
 import React from 'react'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
 import './Organization.css'
 import { useState } from 'react'
-import DefaultButton from '../default/DefaultButton';
+import Logo from '../default/Logo'
+import '../individual/IndividualPage.css'
+
 
 
 function Organization() {
@@ -27,20 +23,13 @@ function Organization() {
     setPassword(event.target.value)
   }
 
-  /*
-  const signIn = () => {
-    if(username != "" && password != "") {
-      window.location.href = '/fullsearchresult'
-    }
-  }
-  */
 
   const signInData = {
     cName: username,
     cPassword: password,
   }
 
- 
+
 
   function signIn(props) {
     console.log(JSON.stringify(signInData))
@@ -58,54 +47,63 @@ function Organization() {
         //do something awesome that makes the world a better place
         console.log(response)
       });
-      window.location.href = `/company/${username}`
-      
+    window.location.href = `/company/${username}`
+
   }
 
 
-    return (
-    
-      <div className="org-main">
-        <div className="sub-main">
+  return (
 
+    <div>
+    <div className="individual-page-header">
+    <Logo></Logo>
+  </div>
+
+    <div className="org-main">
+
+     
+
+      <div className="sub-main">
+
+
+
+        <div>
+          <h1>Login</h1>
+
+
+          <div className="input-fields">
+            <div>
+              <input type="email" placeholder="username" className="username" value={username} onChange={inputUsername} />
+            </div>
+
+            <div>
+              <input type="password" placeholder="password" className="password" value={password} onChange={inputPassword} />
+            </div>
+          </div>
+
+
+          <button onClick={signIn} className="sign-in">Sign in</button>
 
 
           <div>
-          <h1>Login</h1>
-        
-
-            <div className="input-fields">
-              <div>
-                <input type="email" placeholder="username" className="username" value={username} onChange={inputUsername} />
-              </div>
-
-              <div>
-                <input type="password" placeholder="password" className="password" value={password} onChange={inputPassword} />
-              </div>
-            </div>
-
-
-            <button onClick={signIn} className="sign-in">Sign in</button>
-
-
-            <div>
-              <a className="link" href="/registration">Create account</a>
-            </div>
-
-
+            <a className="link" href="/registration">Create account</a>
           </div>
 
 
         </div>
+
+
       </div>
+    </div>
+    </div>
 
 
 
-    )
-  }
-
-  
+  )
+}
 
 
 
-  export default Organization
+
+
+export default Organization
