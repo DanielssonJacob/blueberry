@@ -18,7 +18,10 @@ function Organization() {
 
   const inputUsername = (event) => {
     setUsername(event.target.value)
+    //here we have taken the username as key, which is set in the cookie with its value
+    localStorage.setItem('username', event.target.value)
   }
+
 
   const inputPassword = (event) => {
     setPassword(event.target.value)
@@ -37,7 +40,9 @@ function Organization() {
     cPassword: password,
   }
 
-  function signIn() {
+ 
+
+  function signIn(props) {
     console.log(JSON.stringify(signInData))
     fetch("http://localhost:8080/logincompany", {
       method: "post",
@@ -53,11 +58,13 @@ function Organization() {
         //do something awesome that makes the world a better place
         console.log(response)
       });
+      window.location.href = `/company/${username}`
+      
   }
 
 
     return (
-      
+    
       <div className="org-main">
         <div className="sub-main">
 
