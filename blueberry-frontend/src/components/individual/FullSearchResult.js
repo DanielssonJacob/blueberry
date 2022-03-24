@@ -22,9 +22,11 @@ function FullSearchResult() {
     return (
 
         <div>
-            <DefaultHeader></DefaultHeader>
-            <div className='wrapper'>
+              
+                <DefaultHeader></DefaultHeader>
                 <Link to="/">Back</Link>
+            
+                <div className='wrapper'>
                 <h1>Search Results</h1>
                 <div className='dropDown'>
                     <select name="action" id="action">
@@ -38,9 +40,8 @@ function FullSearchResult() {
                 <div className='searchResultCompanies'>
                     {isLoading ? <h2>Loading...</h2> : data.map((c) =>
                     <Route render={({ history}) => (
-                        <article onClick={() => { history.push(`/company/${c.name}`) }}>
-                             
-                        <div className='companyName'>{c.name}</div> 
+                        <article className='companyArticle' onClick={() => { history.push(`/company/${c.name}`) }}>                            
+                        <div className='companiesName'>{c.name}</div> 
                         <div className='companyImage'>
                             <img src={redcross} alt="red cross" />
                         </div>
