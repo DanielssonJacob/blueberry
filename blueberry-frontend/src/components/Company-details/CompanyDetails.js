@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
+import { useState, useEffect } from 'react'
 import Image from "./companyImage.png";
-import "./companyDetails.css"
+import "./CompanyDetails.css"
 import {
     useParams,
     BrowserRouter as Router,
@@ -46,7 +47,7 @@ const rows = [
 // const companyInfo = [{description: "We are an established helping organization with focus on helping people in poor countries with medical problems"},{name:"Röda Korset"},{map:"Google Map"},{feed:"FEEEEEEED"},{info:"General information"}]
 const description = "We are an established helping organization with focus on helping people in poor countries with medical problems"
 const name = "Röda Korset"
-const map = "GOOGLE MAP"
+const googlemap = "GOOGLE MAP"
 const feed = "FEEEEEEEEEEED"
 const info = "Adress: Kungstorget 12"
 const info2 = " Telefonnummer: 08 - 22 33 11"
@@ -58,16 +59,20 @@ const currentCaption = "water for uganda"
 
 
 function CompanyDetails() {
-    const { isLoading, data, error } = useFetch("http://localhost:8080/companies");
+    
     let { companyname } = useParams();
+    const { isLoading, data, error } = useFetch("http://localhost:8080/company/" + companyname); 
     if (error) {
         return <h2>Error</h2>
     }
+    
     return (
 
         <div>
+            {isLoading ? <h2>Loading...</h2> : data.map((c) =>
             <div>
-            <h1 className='companyName' >{companyname}</h1>
+            <div>
+            <h1 className='companyName' >{c.name}</h1>
                 <Box sx={{ flexGrow: 1 }}>
                     <Grid container spacing={2}>
                         <Grid item xs={4}>
@@ -76,18 +81,18 @@ function CompanyDetails() {
                             </Container>
                         </Grid>
                         <Grid item xs={4}>
-                            {description}
+                           {c.description}
                         </Grid>
                         <Grid item xs={4}>
                             <Container maxWidth="sm">
-                                {map}
+                                {googlemap}
                             </Container>
                         </Grid>
                         <Grid item xs={4}>
                             <Container maxWidth="sm">
                                 <Card sx={{ minWidth: 275 }}>
                                     <CardContent>
-                                        {info}<br></br>{info2}
+                                        Adress: {c.adress} <br></br>Kontaktperson: {c.person}
                                     </CardContent>
                                 </Card>
                             </Container>
@@ -143,6 +148,8 @@ function CompanyDetails() {
                     </Grid>
                 </Box>
             </div>
+           </div>
+           )}
 
             <div className='blogheader'>
             <Grid item xs={12}>

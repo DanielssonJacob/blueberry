@@ -33,7 +33,7 @@ public class CompanyController {
 
 
     @GetMapping("/company/{name}")
-    Company getCompany(@PathVariable String name){
+    List<Company> getCompany(@PathVariable String name){
         if(companyRepository.findAll().size()<6){
             companyRepository.saveAll(Arrays.asList(
                     new Company(null, "UNICEF","Sankt Eriksgatan 46, 112 34 Stockholm","Pernilla Baralt","UNICEF arbetar för alla barns rättigheter. Över hela världen kämpar vi för att alla barn ska få den barndom som de har rätt till. Men vi behöver din hjälp.","12 till 12"),
