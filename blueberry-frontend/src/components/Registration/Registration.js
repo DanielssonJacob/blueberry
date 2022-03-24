@@ -63,6 +63,7 @@ function Registration() {
       }
       
       setErrorMessage("")
+      handleSubmit()
       
   }
 
@@ -149,7 +150,7 @@ function Registration() {
             <input type="text" id="companyOpeningHours" name="openinghours" value={companyOpeningHours} onChange={e => setCompanyOpeningHours(e.target.value)} />
           </div>
         </div>
-        <div onClick={() => {handleSubmit(); sendForm();}} className="registerButton" >
+        <div onClick={() => {sendForm(); }} className="registerButton" >
           <DefaultButton  onClick={sendForm} title="Register" />
         </div>
         
