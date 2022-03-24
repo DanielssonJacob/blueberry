@@ -9,36 +9,49 @@ import {
 import DefaultButton from '../default/DefaultButton';
 import './Registration.css'
 import { useState } from "react";
+import Alert from '@mui/material/Alert';
+import TextField from '@mui/material/TextField';
 
 
 
 function Registration() {
   const [companyName, setCompanyName] = useState("");
+  const [companyCity, setCompanyCity] = useState("");
   const [companyPassword, setCompanyPassword] = useState("");
   const [companyAddress, setCompanyAddress] = useState("");
   const [companyPerson, setCompanyPerson] = useState("");
   const [companyDescription, setCompanyDescription] = useState("");
   const [companyOpeningHours, setCompanyOpeningHours] = useState("");
-  const [showMessage, setShowMessage] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const [isAlert, setIsAlert] = useState(false);
 
   const sendForm = () => {
-      setShowMessage(true)
+      
 
       if (companyName === "") {
-        setErrorMessage("Please insert company name.")
+        setIsAlert(true);
+        setErrorMessage("Please enter a company name.")
+        return;
       }
       if (companyAddress === "") {
-        setErrorMessage("Please insert company address.")
+        setIsAlert(true);
+        setErrorMessage("Please enter a company address.")
+        return;
       }
       if (companyPerson === "") {
-        setErrorMessage("Please insert a contact person.")
+        setIsAlert(true);
+        setErrorMessage("Please enter a contact person.")
+        return;
       }
       if (companyDescription === "") {
-        setErrorMessage("Please insert a company description.")
+        setIsAlert(true);
+        setErrorMessage("Please enter a company description.")
+        return;
       }
       if (companyOpeningHours === "") {
+        setIsAlert(true);
         setErrorMessage("Invalid opening hours.")
+        return;
       }
       
       setErrorMessage("")
@@ -48,9 +61,12 @@ function Registration() {
   const formData = {
     cName: companyName,
     cAddress: companyAddress,
+    cCity: companyCity,
+    cPassword: companyPassword,
     cPerson: companyPerson,
     cDescription: companyDescription,
     cHours: companyOpeningHours,
+
   }
 
   function handleSubmit() {
@@ -79,8 +95,10 @@ function Registration() {
     setName(event.target.value)
   }  */
   return (
-    <form onSubmit={handleSubmit}>
+   // <form onSubmit={handleSubmit}>
       <div>
+        <Link to="/">Home</Link>
+        <Alert hidden={!isAlert} severity="error">{errorMessage}</Alert>
         <div className="header1">
           <div className="title">
             <h1>Company Registration</h1>
@@ -93,25 +111,29 @@ function Registration() {
         </div>
         <div className="companyInformationInput">
           <div className="inputField">
-            <label for="cname">Company name: </label>
+            <label for="cName">Company name: </label>
             <input type="text" id="companyName" maxLength={25} value={companyName} onChange={e => setCompanyName(e.target.value)} />
 
           </div>
           <div className="inputField">
-            <label for="cname">Password: </label>
-            <input type="password" id="companyPassword" maxLength={25} value={companyPassword} onChange={e => setCompanyPassword(e.target.value)} />
+            <label for="cPassword">Password: </label>
+            <input type="password" id="companyPassword" minLength={6} maxLength={25} value={companyPassword} onChange={e => setCompanyPassword(e.target.value)} />
 
           </div>
           <div className="inputField">
-            <label for="address">Address: </label>
+            <label for="cCity">City: </label>
+            <input type="text" id="companyCity" maxLength={25} value={companyCity} onChange={e => setCompanyCity(e.target.value)} />
+          </div>
+          <div className="inputField">
+            <label for="cAddress">Address: </label>
             <input type="text" id="companyAddress" value={companyAddress} onChange={e => setCompanyAddress(e.target.value) /*? (e.target.null == null) : alert(console.error)*/} />
           </div>
           <div className="inputField">
-            <label for="cperson">Contact person: </label>
+            <label for="cPerson">Contact person: </label>
             <input type="text" id="companyPerson" value={companyPerson} onChange={e => setCompanyPerson(e.target.value)} />
           </div>
           <div className="inputField">
-            <label for="cdescription">Company description: </label>
+            <label for="cDescription">Company description: </label>
             <textarea type="textarea" id="companyDescription" name="cdescription" rows="4" cols="30" value={companyDescription} onChange={e => setCompanyDescription(e.target.value)} />
           </div>
           <div className="inputField">
@@ -119,14 +141,14 @@ function Registration() {
             <input type="text" id="companyOpeningHours" name="openinghours" value={companyOpeningHours} onChange={e => setCompanyOpeningHours(e.target.value)} />
           </div>
         </div>
-        <div onClick={() => handleSubmit()} className="registerButton">
-          <DefaultButton type="submit" title="Register" />
+        <div onClick={() => {handleSubmit(); sendForm();}} className="registerButton" >
+          <DefaultButton  onClick={sendForm} title="Register" />
         </div>
-
         
-        <Link to="/">Home</Link>
+        
+        
       </div>
-    </form>
+    //</form>
   )
 }
 
