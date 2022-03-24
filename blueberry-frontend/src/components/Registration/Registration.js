@@ -33,6 +33,14 @@ function Registration() {
         setErrorMessage("Please enter a company name.")
         return;
       }
+      if (companyPassword === "") {
+        setIsAlert(true);
+        setErrorMessage("Please enter a valid password.")
+      }
+      if (companyCity === "") {
+        setIsAlert(true);
+        setErrorMessage("Please enter a city name.")
+      }
       if (companyAddress === "") {
         setIsAlert(true);
         setErrorMessage("Please enter a company address.")
@@ -102,7 +110,7 @@ function Registration() {
         <div className="header1">
           <div className="title">
             <h1>Company Registration</h1>
-            <h2>{companyName}</h2>
+            
 
           </div>
         </div>
