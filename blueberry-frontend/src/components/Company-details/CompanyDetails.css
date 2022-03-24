@@ -1,45 +1,42 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-
-.header{
+.header {
     background-color: #0271BB;
-    height: 300px;
+    height: 200px;
     padding-left: 30px;
     padding-top: 25px;
 }
- 
 
-.logo{
-    color:white;
+.logo {
+    color: white;
     font-family: 'Open Sans', sans-serif;
 }
 
 .logo h2 {
-    margin-bottom:0px;
+    margin-bottom: 0px;
 }
 
 .logo p {
-    margin-top:0px;
+    margin-top: 0px;
     font-size: small;
 }
 
-.menu-choice{
+.menu-choice {
     display: flex;
     justify-content: space-around;
     padding: 100px;
-    margin-left: 150px;
 }
-
 
 .companyName {
-    position:relative;
+    position: relative;
     left: 45%;
     padding: 60px;
-
 }
+
 .blogheader {
     padding-top: 60px;
 }
-.blogpost{
+
+.blogpost {
     max-width: 1600px;
     padding-bottom: 30px;
 }

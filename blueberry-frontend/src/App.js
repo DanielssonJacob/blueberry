@@ -18,7 +18,7 @@ function App() {
   return (
     <Router>
       <div>
-        <ul>
+        <ul hidden>
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -39,7 +39,7 @@ function App() {
           </li>
         </ul>
 
-        <hr />
+      
 
         {/*
           A <Switch> looks through all its children <Route>

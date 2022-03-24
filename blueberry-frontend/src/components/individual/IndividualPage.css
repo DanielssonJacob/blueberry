@@ -1,34 +1,46 @@
-.individual-page-header{
+.individual-page-header {
     padding-left: 30px;
     padding-top: 25px;
     display: flex;
     justify-content: space-between;
 }
 
-.individual-page-body{
-
+.individual-page-body {
     background-color: whitesmoke;
     height: 100vh;
 }
 
-.individual-page-searchfield{
-    padding:40px;
+.individual-page-searchfield {
+    padding: 40px;
     display: flex;
     justify-content: space-evenly;
     margin: 100px;
-
-}
-.company-search-individual{
-    width:70%;
-    
+    flex-wrap: wrap-reverse;
 }
 
-.donation-selection{
+.company-search-individual {
+    width: 60%;
 }
 
-.company-dropdown-individual{
+.donation-selection {}
+
+.company-dropdown-individual {
     display: flex;
     justify-content: flex-end;
     flex-direction: column;
     height: 70px;
+    padding-left: 10px;
+}
+
+.dropdown-group-individual {
+    display: flex;
+}
+
+@media screen and (max-width: 790px) {
+    .dropdown-group-individual {
+        flex-direction: column-reverse;
+    }
+    .company-search-individual {
+        width: 100%;
+    }
 }
