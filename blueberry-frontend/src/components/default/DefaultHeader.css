@@ -1,4 +1,5 @@
 .defaultheader{
+    position: fixed 0 auto;
     background-color: #0271BB;
 }
 .defaultheader Logo{

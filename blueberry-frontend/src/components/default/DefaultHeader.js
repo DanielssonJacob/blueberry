@@ -16,7 +16,7 @@ function DefaultHeader() {
     <Route render={({ history}) => (
       <div className="defaultheader">
         <Logo onClick={() => { history.push(`/home`) }}></Logo>
-        <SignInField link="/"></SignInField>
+        
       </div>)}/>
       </div>
   )
