@@ -104,20 +104,13 @@ function IndividualPage() {
                 </div>
                 <div className="dropdown-group-individual">
                     <div className="company-dropdown-individual">
-                        <label htmlFor="company-search-select">Action</label>
-                        <select id="company-search-select" className="form-select donation-selection">
-                            <option selected>Donate</option>
-                            <option>Volunteer</option>
-                            <option>Donation Pickup</option>
-                        </select>
-                    </div>
-                    <div className="company-dropdown-individual">
                         <label htmlFor="company-search-by">Search by</label>
                         <select id="company-search-by" className="form-select donation-selection" onChange={(e) => setSearchBy(e.target.value)}>
                             <option selected>Organization</option>
                             <option>City</option>
                         </select>
                     </div>
+                    
                 </div>
             </div>
         </div>
