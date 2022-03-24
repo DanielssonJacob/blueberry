@@ -90,7 +90,7 @@ function IndividualPage() {
                                     // your handler code
                                     if (data.find(c => c.city === city) != null) {
                                         setIsAlert(false)
-                                        history.push(`/company/${city}`)
+                                        history.push(`/searchresult/${city}`)
                                     } else {
                                         setSnapshot(city)
                                         setIsAlert(true)
