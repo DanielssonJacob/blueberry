@@ -3,6 +3,7 @@ import { useState, useEffect, } from "react";
 import {
     BrowserRouter as Router,
     Switch,
+    useLocation,
     Route,
     Link
 } from "react-router-dom";
@@ -15,6 +16,7 @@ import DefaultHeader from '../default/DefaultHeader';
 
 function FullSearchResult() {
     const { isLoading, data, error } = useFetch("http://localhost:8080/companies");
+
     if(error){
         return <h2>Error</h2>
     }
@@ -38,7 +40,7 @@ function FullSearchResult() {
                 </div>
 
                 <div className='searchResultCompanies'>
-                    {isLoading ? <h2>Loading...</h2> : data.map((c) =>
+                    {isLoading ? <h2>Loading...</h2> : data.map((c) =>             
                     <Route render={({ history}) => (
                         <article className='companyArticle' onClick={() => { history.push(`/company/${c.name}`) }}>                            
                         <div className='companiesName'>{c.name}</div> 
