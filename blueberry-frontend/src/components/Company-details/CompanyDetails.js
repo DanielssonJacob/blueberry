@@ -67,7 +67,7 @@ function CompanyDetails() {
                     <Grid container spacing={2}>
                         <Grid item xs={4}>
                             <Container maxWidth="sm">
-                                <img src={Image}></img>
+                                <img src={Image} alt="company-image"></img>
                             </Container>
                         </Grid>
                         <Grid item xs={4}>
