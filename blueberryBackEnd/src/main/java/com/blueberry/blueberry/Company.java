@@ -18,7 +18,9 @@ public class Company {
     private Long id;
     private String name;
     private String address;
+    private String city;
     private String person;
+    @Lob
     private String description;
     private String openingHours;
     public Company(Long id, String name){

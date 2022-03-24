@@ -1,8 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 
+.home-full-page{
+    display: flex;
+    flex-direction: column;
+
+}
+
+
 .header{
     background-color: #0271BB;
-    height: 230px;
+    /*height: 230px;*/
     padding-left: 30px;
     padding-top: 25px;
 }
@@ -24,7 +31,7 @@
 .menu-choice{
     display: flex;
     justify-content: space-evenly;
-    padding: 100px;
+    /*padding: 100px;*/
     align-items: center;
 }
 
@@ -38,27 +45,24 @@
     
 }
 
-.divider{
-    margin: 30px;
-}
 
 @media screen and (min-width: 992px){
     .menu-item img {
         
     }
     .menu-choice{
-        height: 200px;
+        /*height: 200px;*/
     }
     
 }
 @media screen and (max-width: 992px) {
   .menu-choice{
    flex-wrap: wrap;
-   padding-bottom: 20px;
+   
+  
    
 }
 .menu-choice .menu-item{
-    padding-bottom: 20px;
     
  }
 
