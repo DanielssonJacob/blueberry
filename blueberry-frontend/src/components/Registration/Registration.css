@@ -18,7 +18,7 @@
 
 }
 .body{
-    background-color: whitesmoke;
+    
 }
     
 
@@ -38,7 +38,7 @@
     justify-content: space-evenly;
     align-items: center;
     border: solid 2px #0271BB;
-    
+    background-color: whitesmoke;
     width:400px;
     padding:20px;
     padding-bottom: 40px;
