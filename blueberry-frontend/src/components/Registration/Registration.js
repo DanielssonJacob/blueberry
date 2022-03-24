@@ -37,10 +37,12 @@ function Registration() {
       if (companyPassword === "") {
         setIsAlert(true);
         setErrorMessage("Please enter a valid password.")
+        return;
       }
       if (companyCity === "") {
         setIsAlert(true);
         setErrorMessage("Please enter a city name.")
+        return;
       }
       if (companyAddress === "") {
         setIsAlert(true);
