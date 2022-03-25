@@ -8,9 +8,11 @@ import './App.css';
 import Home from "./components/home/Home"
 import Organization from "./components/organization/Organization"
 import CompanyDetails from "./components/Company-details/CompanyDetails";
+import LoginForm from "./components/loginForm/LoginForm.js"
 import Registration from "./components/Registration/Registration";
 import FullSearchResult from "./components/individual/FullSearchResult";
 import IndividualPage from "./components/individual/IndividualPage";
+
 
 
 function App() {
@@ -18,7 +20,7 @@ function App() {
   return (
     <Router>
       <div>
-        <ul hidden>
+        <ul>
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -37,6 +39,9 @@ function App() {
           <li>
             <Link to="/registration">Company Registration</Link>
           </li>
+          <li>
+            <Link to="/signin">signin</Link>
+          </li>
         </ul>
 
       
@@ -48,6 +53,7 @@ function App() {
           you have multiple routes, but you want only one
           of them to render at a time
         */}
+       
         <Switch>
           <Route exact path="/">
           <IndividualPage/>
@@ -57,6 +63,11 @@ function App() {
           <Route path="/individual">
           <IndividualPage/>
           </Route>
+          <Route path="/signin">
+          <LoginForm/>
+          </Route>
+          
+          
           <Route path="/organization">
             <Organization />
           </Route>
@@ -66,6 +77,9 @@ function App() {
         </Switch>
       </div>
     </Router>);
+    
 }
 
 export default App;
+
+
