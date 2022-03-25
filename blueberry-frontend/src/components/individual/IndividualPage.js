@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import useFetch from "react-fetch-hook";
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { useHistory } from "react-router-dom";
 import Alert from '@mui/material/Alert';
 
@@ -37,11 +37,12 @@ function IndividualPage() {
 
             <div className="individual-page-header">
                 <Logo></Logo>
-                <SignInField link="/"></SignInField>
+                {localStorage.getItem("user")!=null ?
+                <h2>{JSON.parse(localStorage.getItem("user")).username}</h2>
+                : <SignInField link="/signin"></SignInField>}
             </div>
             <div className="individual-page-searchfield">
                 <div className="company-search-individual">
-
                     <label htmlFor='company-search-input'></label>
 
                     {searchBy === "Organization" ?
@@ -90,6 +91,7 @@ function IndividualPage() {
                                     // your handler code
                                     if (data.find(c => c.city === city) != null) {
                                         setIsAlert(false)
+                                        
                                         history.push(`/searchresult/${city}`)
                                     } else {
                                         setSnapshot(city)
