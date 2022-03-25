@@ -11,6 +11,8 @@ import CompanyDetails from "./components/Company-details/CompanyDetails";
 import Registration from "./components/Registration/Registration";
 import FullSearchResult from "./components/individual/FullSearchResult";
 import IndividualPage from "./components/individual/IndividualPage";
+import LoginForm from "./components/loginForm/LoginForm";
+import PostRegistration from "./components/postRegistration/PostRegistration";
 
 
 function App() {
