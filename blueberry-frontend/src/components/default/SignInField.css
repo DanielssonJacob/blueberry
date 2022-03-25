@@ -6,11 +6,13 @@
     font-family: 'Open Sans', sans-serif;
     font-weight: 100;
     margin: 7px;
+    
 }
 
 .sign-in-button{
     border-radius: 5px;
     border-color: grey;
+    background-color: white;
     border:solid 0.5px;
     width: 65px;
     height:35px;
@@ -30,4 +32,5 @@
 
 .profile-pic{
     height:30px
+    
 }
