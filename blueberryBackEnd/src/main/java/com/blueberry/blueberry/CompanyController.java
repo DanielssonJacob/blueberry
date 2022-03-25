@@ -32,7 +32,7 @@ public class CompanyController {
                     new Company(null, "Kris", "Gröndalsvägen 194, 117 69 Stockholm", "Stockholm","Charles Ponzi", "Kriminellas Revansch I Samhället, KRIS, är en ideell förening där före detta kriminella och missbrukare hjälper varandra tillbaka in i samhället. Vi har funnits sedan oktober 1997, då var vi 11 medlemmar.", "12 till 15", new OpeningTimes(LocalTime.of(9,00),LocalTime.of(10, 10),LocalTime.of(10,00),LocalTime.of(10,00),LocalTime.of(10,00),LocalTime.of(10,00)))));
 
         }
-
+        System.out.println(companyRepository.findAll());
         return companyRepository.findAll();
     }
 
