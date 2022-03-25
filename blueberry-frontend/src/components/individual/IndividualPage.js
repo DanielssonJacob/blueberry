@@ -19,7 +19,33 @@ function IndividualPage() {
 
     const [isAlert, setIsAlert] = useState(false);
     const [snapshot, setSnapshot] = useState("");
-    
+
+    function search() {
+        setIsAlert(false)
+        
+   if (searchBy === "Organization"){
+    if (data.find(c => c.name === organization) != null) {
+        setIsAlert(false)
+        history.push(`/company/${organization}`)
+    } else {
+        setSnapshot(organization)
+        setIsAlert(true)
+    }
+   }
+
+   if (searchBy === "City"){
+    if (data.find(c => c.city === city) != null) {
+        setIsAlert(false)
+        history.push(`/searchresult/${city}`)
+    } else {
+        setSnapshot(city)
+        setIsAlert(true)
+    }
+   }
+   
+        
+}
+
 
     let history = useHistory();
 
@@ -30,9 +56,9 @@ function IndividualPage() {
         return <h2>Loading...</h2>
     }
     return (
-        
+
         <div className="individual-page-body">
-        {console.log(data)}
+            {console.log(data)}
             {organization === "" ? <Alert hidden={!isAlert} severity="error">Error: You need to specify which organization you are looking for.</Alert> : <Alert hidden={!isAlert} severity="error">Error: Can't find {snapshot}.</Alert>}
 
             <div className="individual-page-header">
@@ -101,7 +127,7 @@ function IndividualPage() {
                                 }
                             }} />
                     }
-
+                    <button onClick={search} className="search">Search</button>
 
                 </div>
                 <div className="dropdown-group-individual">
@@ -112,8 +138,9 @@ function IndividualPage() {
                             <option>City</option>
                         </select>
                     </div>
-                    
+
                 </div>
+
             </div>
         </div>
     )
