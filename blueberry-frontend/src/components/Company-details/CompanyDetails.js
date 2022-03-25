@@ -95,17 +95,22 @@ function CompanyDetails() {
                                                     </TableRow>
                                                 </TableHead>
                                                 <TableBody>
-                                                    {rows.map((row) => (
-                                                        <TableRow
-                                                            key={row.day}
-                                                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                                                            <TableCell component="th" scope="row">
-                                                                {row.day}
-                                                            </TableCell>
-                                                            <TableCell align="right">{row.opening}</TableCell>
-                                                            <TableCell align="right">{row.closing}</TableCell>
-                                                        </TableRow>
-                                                    ))}
+                                                    <TableRow>
+                                                        <TableCell component="th"> Vardagar </TableCell>
+                                                        <TableCell align="right">{c.openingTimes.weekdayOpen}</TableCell>
+                                                        <TableCell align="right">{c.openingTimes.weekdayClose}</TableCell>
+                                                    </TableRow>
+                                                    <TableRow>
+                                                        <TableCell component="th"> Lördag </TableCell>
+                                                        <TableCell align="right">{c.openingTimes.saturdayOpen}</TableCell>
+                                                        <TableCell align="right">{c.openingTimes.saturdayClose}</TableCell>
+                                                    </TableRow>
+                                                    <TableRow>
+                                                        <TableCell component="th"> Söndag </TableCell>
+                                                        <TableCell align="right">{c.openingTimes.sundayOpen}</TableCell>
+                                                        <TableCell align="right">{c.openingTimes.sundayClose}</TableCell>
+                                                    </TableRow>
+
                                                 </TableBody>
                                             </Table>
                                         </TableContainer>
