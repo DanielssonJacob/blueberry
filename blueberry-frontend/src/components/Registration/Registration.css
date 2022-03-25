@@ -17,14 +17,7 @@
     margin: auto;
 
 }
-.body{
-    
-}
-    
 
-.companyInformationInput{
-    
-}
 
 .textarea{
     margin-bottom: 20px;
@@ -33,7 +26,6 @@
 .inputField {
     display:flex;
     flex-wrap: wrap;
-    
     font-family: 'Open Sans', sans-serif,;
     justify-content: space-evenly;
     align-items: center;

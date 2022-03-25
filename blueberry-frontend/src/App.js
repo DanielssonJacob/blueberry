@@ -11,6 +11,7 @@ import CompanyDetails from "./components/Company-details/CompanyDetails";
 import Registration from "./components/Registration/Registration";
 import FullSearchResult from "./components/individual/FullSearchResult";
 import IndividualPage from "./components/individual/IndividualPage";
+import PostRegistration from "./components/PostRegistration/PostRegistration"
 
 
 function App() {
@@ -37,6 +38,9 @@ function App() {
           <li>
             <Link to="/registration">Company Registration</Link>
           </li>
+          <li>
+            <Link to ="/postregistration">Company Post Registration</Link>
+          </li>
         </ul>
 
       
@@ -62,6 +66,9 @@ function App() {
           </Route>
           <Route path="/registration">
             <Registration />
+          </Route>
+          <Route path="/postregistration">
+            <PostRegistration />
           </Route>
         </Switch>
       </div>
