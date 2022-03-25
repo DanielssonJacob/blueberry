@@ -12,6 +12,7 @@ import './Registration.css'
 import { useState } from "react";
 import Alert from '@mui/material/Alert';
 import TextField from '@mui/material/TextField';
+import DefaultHeader from '../default/DefaultHeader'
 
 
 
@@ -104,9 +105,9 @@ function Registration() {
 
   return (
       <body className="body">
-        <Link to="/">Home</Link>
+        
         <div className="logo1">
-            <Logo></Logo>
+            <DefaultHeader></DefaultHeader>
         </div>
         
         <Alert hidden={!isAlert} severity="error">{errorMessage}</Alert>
@@ -153,7 +154,7 @@ function Registration() {
         <div onClick={() => {sendForm(); }} className="registerButton" >
           <DefaultButton  onClick={sendForm} title="Register" />
         </div>
-        
+        <Link to="/">Home</Link>
         
         
       </body>
