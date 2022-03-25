@@ -27,9 +27,6 @@ public class OpeningTimes {
     private LocalTime sundayOpen;
     private LocalTime sundayClose;
 
-    @OneToOne(mappedBy = "openingTimes")
-    private Company company;
-
     public OpeningTimes(LocalTime weekdayOpen, LocalTime weekdayClose, LocalTime saturdayOpen, LocalTime saturdayClose, LocalTime sundayOpen, LocalTime sundayClose) {
         this.weekdayOpen = weekdayOpen;
         this.weekdayClose = weekdayClose;

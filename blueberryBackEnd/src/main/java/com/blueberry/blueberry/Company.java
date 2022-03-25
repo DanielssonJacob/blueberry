@@ -29,5 +29,6 @@ public class Company {
     }
 
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "opening_times_id")
     private OpeningTimes openingTimes;
 }
