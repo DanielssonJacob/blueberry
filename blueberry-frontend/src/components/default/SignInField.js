@@ -14,7 +14,7 @@ function SignInField(props) {
         <div onClick={routeChange} className="sign-in-button pointer">
             <h2 id="sign-in-title">Sign in</h2>
         </div>
-        <div >
+        <div>
             <img className="profile-pic" src={profilePic} alt="profilePicture" />
         </div>
     </div>

@@ -85,11 +85,24 @@ link{
     position: absolute;
     right: 30px;
 }
+@media only screen and (max-width: 900px) {
+    .searchResultCompanies{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .searchResultCompanies .companyArticle .companyInfo{
+        -webkit-line-clamp: 2;      
+    }
+  }
 
 @media only screen and (max-width: 600px) {
     .searchResultCompanies{
         display: grid;
         grid-template-columns: 1fr;
         gap: 15px;
+    }
+    .searchResultCompanies .companyArticle .companyInfo{
+        -webkit-line-clamp: 2;      
     }
   }

@@ -11,6 +11,9 @@ import CompanyDetails from "./components/Company-details/CompanyDetails";
 import Registration from "./components/Registration/Registration";
 import FullSearchResult from "./components/individual/FullSearchResult";
 import IndividualPage from "./components/individual/IndividualPage";
+import LoginForm from "./components/loginForm/LoginForm";
+import PostRegistration from "./components/postRegistration/PostRegistration";
+import SignUpForm from "./components/signUpForm/SignUpForm";
 
 
 function App() {
@@ -37,6 +40,12 @@ function App() {
           <li>
             <Link to="/registration">Company Registration</Link>
           </li>
+          <li>
+            <Link to="/signin">signin</Link>
+          </li>
+          <li>
+            <Link to ="/postregistration">Company Post Registration</Link>
+          </li>
         </ul>
 
       
@@ -48,6 +57,7 @@ function App() {
           you have multiple routes, but you want only one
           of them to render at a time
         */}
+
         <Switch>
           <Route exact path="/">
           <IndividualPage/>
@@ -57,15 +67,28 @@ function App() {
           <Route path="/individual">
           <IndividualPage/>
           </Route>
+          <Route path="/signin">
+          <LoginForm/>
+          </Route>
+          <Route path="/signup">
+            <SignUpForm></SignUpForm>
+          </Route>
+
           <Route path="/organization">
             <Organization />
           </Route>
           <Route path="/registration">
             <Registration />
           </Route>
+          <Route path="/postregistration">
+            <PostRegistration />
+          </Route>
         </Switch>
       </div>
     </Router>);
+
 }
 
 export default App;
+
+

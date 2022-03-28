@@ -6,11 +6,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import useFetch from "react-fetch-hook";
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { useHistory } from "react-router-dom";
 import Alert from '@mui/material/Alert';
+import IndividualIcon from './IndividualLoggedInField';
+import { useCookies } from 'react-cookie'
 
 function IndividualPage() {
+    const [cookies, setCookie, removeCookie] = useCookies(['user']);
     const [organization, setOrganization] = useState("")
     const [city, setCity] = useState("")
     const [searchBy, setSearchBy] = useState("Organization")
@@ -19,7 +22,33 @@ function IndividualPage() {
 
     const [isAlert, setIsAlert] = useState(false);
     const [snapshot, setSnapshot] = useState("");
-    
+
+    function search() {
+        setIsAlert(false)
+        
+   if (searchBy === "Organization"){
+    if (data.find(c => c.name === organization) != null) {
+        setIsAlert(false)
+        history.push(`/company/${organization}`)
+    } else {
+        setSnapshot(organization)
+        setIsAlert(true)
+    }
+   }
+
+   if (searchBy === "City"){
+    if (data.find(c => c.city === city) != null) {
+        setIsAlert(false)
+        history.push(`/searchresult/${city}`)
+    } else {
+        setSnapshot(city)
+        setIsAlert(true)
+    }
+   }
+   
+        
+}
+
 
     let history = useHistory();
 
@@ -30,18 +59,22 @@ function IndividualPage() {
         return <h2>Loading...</h2>
     }
     return (
-        
+
         <div className="individual-page-body">
-        {console.log(data)}
+            {console.log(data)}
             {organization === "" ? <Alert hidden={!isAlert} severity="error">Error: You need to specify which organization you are looking for.</Alert> : <Alert hidden={!isAlert} severity="error">Error: Can't find {snapshot}.</Alert>}
 
             <div className="individual-page-header">
                 <Logo></Logo>
-                <SignInField link="/"></SignInField>
+                
+                {cookies.user!=null ?
+               
+                <div className="signin-field-div"><IndividualIcon/></div>
+                : <SignInField link="/signin"></SignInField>}
+                
             </div>
             <div className="individual-page-searchfield">
                 <div className="company-search-individual">
-
                     <label htmlFor='company-search-input'></label>
 
                     {searchBy === "Organization" ?
@@ -90,6 +123,7 @@ function IndividualPage() {
                                     // your handler code
                                     if (data.find(c => c.city === city) != null) {
                                         setIsAlert(false)
+                                        
                                         history.push(`/searchresult/${city}`)
                                     } else {
                                         setSnapshot(city)
@@ -99,19 +133,20 @@ function IndividualPage() {
                                 }
                             }} />
                     }
-
+                    <button onClick={search} className="search">Search</button>
 
                 </div>
                 <div className="dropdown-group-individual">
                     <div className="company-dropdown-individual">
                         <label htmlFor="company-search-by">Search by</label>
                         <select id="company-search-by" className="form-select donation-selection" onChange={(e) => setSearchBy(e.target.value)}>
-                            <option selected>Organization</option>
+                            <option defaultValue>Organization</option>
                             <option>City</option>
                         </select>
                     </div>
-                    
+
                 </div>
+
             </div>
         </div>
     )

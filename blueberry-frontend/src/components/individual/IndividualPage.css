@@ -2,7 +2,11 @@
     padding-left: 30px;
     padding-top: 25px;
     display: flex;
-    justify-content: space-between;
+    justify-content:space-between;
+}
+
+.individual-page-header .signin-field-div {
+    margin-right: 60px;
 }
 
 .individual-page-body {
@@ -35,6 +39,19 @@
 .dropdown-group-individual {
     display: flex;
 }
+
+.search{
+    font-family: 'Open Sans', sans-serif;
+    width: 60px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #0271BB;
+    color: white;
+    font-size: 15px;
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
 
 @media screen and (max-width: 790px) {
     .dropdown-group-individual {

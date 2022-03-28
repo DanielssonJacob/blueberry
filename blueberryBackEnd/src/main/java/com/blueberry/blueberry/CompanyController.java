@@ -65,4 +65,6 @@ public class CompanyController {
         return companyRepository.findByName((String) loginForm.get("cName")) != null;
     }
 
+
+
 }
