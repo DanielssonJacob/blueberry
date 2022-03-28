@@ -37,7 +37,7 @@ function Dashboard() {
 
             </div>
 
-            <div className="followed-by-list">
+            <div className="followed-by-list container">
                 {isLoading ? <h2>Loading...</h2> : data.map((c) =>
 
                     <Route render={({ history }) => (

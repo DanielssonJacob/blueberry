@@ -1,11 +1,14 @@
 .followedCompany{
-    border-radius: 20px;
+    border-radius: 30px;
     border-style: solid;
+    padding:10px;
+    margin-bottom: 30px;
 }
 
 .followed-by-list{
     display: flex;
     flex-direction: column;
+    
 }
 
 .company-followed-by-img img{
