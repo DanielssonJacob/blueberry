@@ -22,8 +22,7 @@ public class BlogPosts {
     @Lob
     private String post;
 
-    @ManyToOne
-    @JoinColumn(name = "company_id")
-    private Company company;
-
+    public BlogPosts(String post){
+        this.post = post;
+    }
 }
