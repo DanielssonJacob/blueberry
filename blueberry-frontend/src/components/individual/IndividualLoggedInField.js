@@ -54,7 +54,7 @@ function IndividualIcon(props) {
         onClose={toggleDrawer("right", false)}
       >
         <List>
-            <ListItem button key={"Dashboard"} onClick={()=>history.push(`/profile/${cookies.user.username}`)}>
+            <ListItem button key={"Dashboard"} onClick={()=>history.push(`/profile`)}>
               <DashboardIcon/>
               <ListItemText primary={"Dashboard"} />
             </ListItem>

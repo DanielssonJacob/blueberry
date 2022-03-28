@@ -14,6 +14,7 @@ import IndividualPage from "./components/individual/IndividualPage";
 import LoginForm from "./components/loginForm/LoginForm";
 import PostRegistration from "./components/postRegistration/PostRegistration";
 import SignUpForm from "./components/signUpForm/SignUpForm";
+import Dashboard from "./components/dashboard/Dashboard";
 
 
 function App() {
@@ -82,6 +83,10 @@ function App() {
           </Route>
           <Route path="/postregistration">
             <PostRegistration />
+          </Route>
+
+          <Route path="/profile">
+            <Dashboard/>
           </Route>
         </Switch>
       </div>

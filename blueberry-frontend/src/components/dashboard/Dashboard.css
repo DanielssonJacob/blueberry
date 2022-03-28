@@ -1,0 +1,22 @@
+.followedCompany{
+    border-radius: 20px;
+    border-style: solid;
+}
+
+.followed-by-list{
+    display: flex;
+    flex-direction: column;
+}
+
+.company-followed-by-img img{
+    height: 80px;
+    width: 80px;
+    border: 1px solid rgba(192,192,192,0.3);
+    border-radius: 50px;
+}
+
+
+.information-company-followed-by{
+    display: flex;
+
+}

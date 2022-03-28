@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,7 +23,16 @@ public class Account {
     private String username;
     private String password;
     private Role role;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Company> followedCompanies;
 
+    public Account(Long id, String username, String password, Role role){
+        this.id=id;
+        this.username=username;
+        this.password = password;
+        this.role=role;
+        this.followedCompanies=new ArrayList<>();
+    }
 
 
     @Override
