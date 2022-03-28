@@ -10,13 +10,33 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.HashMap;
 import java.util.Map;
 
+@CrossOrigin(origins ="http://localhost:3000")
 @RestController
 public class AccountController {
     @Autowired
     AccountRepository accountRepository;
 
 
-    @CrossOrigin(origins ="http://localhost:3000")
+    @PostMapping("/createaccount")
+    Map<String, Object> createUser(@RequestBody Map<String, Object> createForm) throws Exception {
+        Account account;
+        HashMap<String, Object> jsonResult = new HashMap<>();
+        if(accountRepository.findByUsername((String) createForm.get("user"))==null) {
+            account= ((String) createForm.get("role")).equals("COMPANY") ?
+                    accountRepository.save(new Account(null, (String) createForm.get("user"), (String) createForm.get("pwd"), Role.COMPANY))
+                    :
+                    accountRepository.save(new Account(null, (String) createForm.get("user"), (String) createForm.get("pwd"), Role.INDIVIDUAL));
+            jsonResult.put("username", account.getUsername());
+            //just for development
+            jsonResult.put("password",account.getPassword());
+            jsonResult.put("accessToken", "accessGranted");
+            jsonResult.put("role", account.getRole());
+            return jsonResult;
+        } else{
+            throw new Exception();
+        }
+    }
+
     @PostMapping("/auth")
     Map<String, Object> authUser(@RequestBody Map<String, Object> loginForm) throws Exception {
         if(accountRepository.findAll().size()<1){

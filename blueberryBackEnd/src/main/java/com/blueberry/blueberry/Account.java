@@ -12,7 +12,6 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "individual")
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,6 +23,10 @@ public class Account {
     private Role role;
 
 
+    @Override
+    public String toString() {
+        return username;
+    }
 
     public Long getId() {
         return id;
