@@ -1,0 +1,9 @@
+.logged-in-field-profile{
+    display: flex;
+    justify-content: space-evenly;
+    width: 200px;
+}
+
+.logged-in-field-profile-pic{
+    cursor: pointer;
+}

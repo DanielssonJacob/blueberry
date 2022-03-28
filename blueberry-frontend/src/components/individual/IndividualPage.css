@@ -2,7 +2,11 @@
     padding-left: 30px;
     padding-top: 25px;
     display: flex;
-    justify-content: space-between;
+    justify-content:space-between;
+}
+
+.individual-page-header .signin-field-div {
+    margin-right: 60px;
 }
 
 .individual-page-body {

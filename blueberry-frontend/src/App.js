@@ -13,6 +13,7 @@ import FullSearchResult from "./components/individual/FullSearchResult";
 import IndividualPage from "./components/individual/IndividualPage";
 import LoginForm from "./components/loginForm/LoginForm";
 import PostRegistration from "./components/postRegistration/PostRegistration";
+import SignUpForm from "./components/signUpForm/SignUpForm";
 
 
 function App() {
@@ -69,7 +70,9 @@ function App() {
           <Route path="/signin">
           <LoginForm/>
           </Route>
-
+          <Route path="/signup">
+            <SignUpForm></SignUpForm>
+          </Route>
 
           <Route path="/organization">
             <Organization />

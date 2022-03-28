@@ -1,0 +1,14 @@
+.radio-company-individual{
+    display: flex;
+    flex-direction: column;
+}
+
+.radio-company-individual-input{
+    display: flex;
+    flex-direction: column;
+}
+
+.radio-company-individual-input .child {
+   
+    width: 25%;
+}

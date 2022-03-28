@@ -9,8 +9,11 @@ import useFetch from "react-fetch-hook";
 import { useState, useContext } from 'react'
 import { useHistory } from "react-router-dom";
 import Alert from '@mui/material/Alert';
+import IndividualIcon from './IndividualLoggedInField';
+import { useCookies } from 'react-cookie'
 
 function IndividualPage() {
+    const [cookies, setCookie, removeCookie] = useCookies(['user']);
     const [organization, setOrganization] = useState("")
     const [city, setCity] = useState("")
     const [searchBy, setSearchBy] = useState("Organization")
@@ -63,9 +66,12 @@ function IndividualPage() {
 
             <div className="individual-page-header">
                 <Logo></Logo>
-                {localStorage.getItem("user")!=null ?
-                <h2>{JSON.parse(localStorage.getItem("user")).username}</h2>
+                
+                {cookies.user!=null ?
+               
+                <div className="signin-field-div"><IndividualIcon/></div>
                 : <SignInField link="/signin"></SignInField>}
+                
             </div>
             <div className="individual-page-searchfield">
                 <div className="company-search-individual">
@@ -134,7 +140,7 @@ function IndividualPage() {
                     <div className="company-dropdown-individual">
                         <label htmlFor="company-search-by">Search by</label>
                         <select id="company-search-by" className="form-select donation-selection" onChange={(e) => setSearchBy(e.target.value)}>
-                            <option selected>Organization</option>
+                            <option defaultValue>Organization</option>
                             <option>City</option>
                         </select>
                     </div>
