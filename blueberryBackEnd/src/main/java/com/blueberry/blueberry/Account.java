@@ -34,7 +34,6 @@ public class Account {
         this.followedCompanies=new ArrayList<>();
     }
 
-
     @Override
     public String toString() {
         return username;
