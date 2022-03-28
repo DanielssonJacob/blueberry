@@ -2,12 +2,10 @@ package com.blueberry.blueberry;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @CrossOrigin(origins ="http://localhost:3000")
@@ -15,6 +13,9 @@ import java.util.Map;
 public class AccountController {
     @Autowired
     AccountRepository accountRepository;
+
+    @Autowired
+    CompanyRepository companyRepository;
 
 
     @PostMapping("/createaccount")
@@ -60,4 +61,34 @@ public class AccountController {
         }
 
     }
+
+
+    @PostMapping("/follow")
+    Company followCompany(@RequestBody Map<String, Object> follow) throws Exception {
+        try{
+            if (!accountRepository.findByUsername((String) follow.get("user"))
+                    .getFollowedCompanies()
+                    .contains(companyRepository.findById(Long.valueOf((Integer) follow.get("companyId"))).get())) {
+                Account account = accountRepository.findByUsername((String) follow.get("user"));
+                List<Company> followedAccount = account.getFollowedCompanies();
+                followedAccount.add(companyRepository.findById(Long.valueOf((Integer) follow.get("companyId"))).get());
+                account.setFollowedCompanies(followedAccount);
+                accountRepository.save(account);
+            }
+            return companyRepository.findById(Long.valueOf((Integer) follow.get("companyId"))).get();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return new Company();
+    }
+
+    @GetMapping("/followedby/{username}")
+    List<Company> followedBy(@PathVariable("username") String username) throws Exception {
+        if(accountRepository.findByUsername(username)!=null){
+            return accountRepository.findByUsername(username).getFollowedCompanies();
+        } else{
+            throw new Exception();
+        }
+    }
+
 }
