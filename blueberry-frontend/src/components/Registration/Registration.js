@@ -13,6 +13,8 @@ import { useState } from "react";
 import Alert from '@mui/material/Alert';
 import TextField from '@mui/material/TextField';
 import DefaultHeader from '../default/DefaultHeader'
+import  { useEffect } from 'react';
+import useDrivePicker from 'react-google-drive-picker'
 
 
 
@@ -26,6 +28,30 @@ function Registration() {
   const [companyOpeningHours, setCompanyOpeningHours] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [isAlert, setIsAlert] = useState(false);
+
+  const [openPicker, data, authResponse] = useDrivePicker();  
+
+  const handleOpenPicker = () => {
+    openPicker({
+      clientId: "821778059846-bgioocsj6ivr5ddnveppmm3vntttdver.apps.googleusercontent.com",
+      developerKey: "AIzaSyD9q-k9kmpOZYjIIwb-T6zxRrUPGWZQ9ok",
+      viewId: "DOCS_IMAGES",
+      // token: token, // pass oauth token in case you already have one
+      showUploadView: true,
+      showUploadFolders: true,
+      supportDrives: true,
+      multiselect: true,
+      // customViews: customViewsArray, // custom view
+    })
+  }
+
+  useEffect(() => {
+    // do anything with the selected/uploaded files
+    // funktion som sparar användarens bild
+    if(data){
+      data.docs.map(i => console.log(i.name))
+    }
+  }, [data])
 
   const sendForm = () => {
       
@@ -68,6 +94,7 @@ function Registration() {
       
       setErrorMessage("")
       handleSubmit()
+
       
   }
 
@@ -100,6 +127,9 @@ function Registration() {
       });
   }
 
+  function addProfilePicture () {
+
+  }
 
 
 
@@ -111,6 +141,9 @@ function Registration() {
         </div>
         
         <Alert hidden={!isAlert} severity="error">{errorMessage}</Alert>
+        <div classname="inputField">
+            {errorMessage===""?<label hidden for="registrationBanner">You're in!</label> : <Alert hidden={!isAlert} severity="error">Registration failed.</Alert> }
+          </div>
         <div className="header1">
           <div className="title">
             <h1>Company Registration</h1>
@@ -150,10 +183,16 @@ function Registration() {
             <label for="openinghours">Opening hours: </label>
             <input type="text" id="companyOpeningHours" name="openinghours" value={companyOpeningHours} onChange={e => setCompanyOpeningHours(e.target.value)} />
           </div>
+         
+        <div onClick={() => {handleOpenPicker(); }} className="pictureButton" >
+          <DefaultButton  onClick={() => handleOpenPicker} title="Add profile picture" />
         </div>
+        </div>
+        
         <div onClick={() => {sendForm(); }} className="registerButton" >
-          <DefaultButton  onClick={sendForm} title="Register" />
+          <DefaultButton  onClick={{sendForm}} title="Register" />
         </div>
+        
         <Link to="/">Home</Link>
         
         
