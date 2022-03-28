@@ -25,6 +25,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import useFetch from "react-fetch-hook";
+import { useCookies } from "react-cookie";
 
 function createData(day, opening, closing) {
     return { day, opening, closing };
@@ -44,7 +45,11 @@ const currentBread = "Right now we need your help getting more fresh water for t
 const currentCaption = "water for uganda"
 const googlemap = "GOOGLE MAP"
 
+
+
 function CompanyDetails() {
+    const [cookies, setCookie, removeCookie] = useCookies(["user"]);
+    const [newDescription, setNewDescription] = useState("");
 
     let { companyname } = useParams();
     const { isLoading, data, error } = useFetch("http://localhost:8080/company/" + companyname);
@@ -52,12 +57,49 @@ function CompanyDetails() {
         return <h2>Error</h2>
     }
 
+
+    async function editprofile(cId) {
+        await fetch("http://localhost:8080/edit/", {
+            method: "put",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+
+            //make sure to serialize your JSON body
+            body: JSON.stringify({
+                cId,
+                cDescription: newDescription
+            }),
+        }).then(data => data.json())
+            .then(data => console.log(data))
+
+        
+    }
+
     return (
 
         <div>
             {isLoading ? <h2>Loading...</h2> : data.map((c) =>
                 <div>
+
+
                     <div>
+                        {
+                            cookies.user != null ? (cookies.user.role === "COMPANY" && cookies.user.username === c.person.username ?
+                                (<button onClick={() => setNewDescription(c.description)} className='edit-button' >Edit description</button>) : null) :
+                                <div>
+                                </div>
+
+                        }
+
+                    </div>
+
+
+                    <div>
+
+                    
+
                         <h1 className='companyName' >{c.name}</h1>
                         <Box sx={{ flexGrow: 1 }}>
                             <Grid container spacing={2}>
@@ -68,6 +110,12 @@ function CompanyDetails() {
                                 </Grid>
                                 <Grid item xs={4}>
                                     {c.description}
+                                    <form onSubmit={()=> editprofile(c.id)}>
+                                    <input type="text" value={newDescription} onChange={(e)=> setNewDescription(e.target.value)}></input>
+                                    <button type="submit" hidden ></button>
+                                    </form>
+                                    
+                                    
                                 </Grid>
                                 <Grid item xs={4}>
                                     <Container maxWidth="sm">
