@@ -19,10 +19,12 @@ public class Company {
     private String name;
     private String address;
     private String city;
-    private String person;
+    @OneToOne(cascade=CascadeType.ALL)
+    private Account person;
     @Lob
     private String description;
     private String openingHours;
+
     public Company(Long id, String name){
         this.id=id;
         this.name=name;
