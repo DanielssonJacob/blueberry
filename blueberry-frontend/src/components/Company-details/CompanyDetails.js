@@ -42,7 +42,7 @@ const rows = [
 
 const currentBread = "Right now we need your help getting more fresh water for the people of Uganda."
 const currentCaption = "water for uganda"
-const googlemap = "GOOGLE MAP"
+const googlemap = "MAP"
 
 function CompanyDetails() {
 
@@ -53,7 +53,6 @@ function CompanyDetails() {
     }
 
     return (
-
         <div>
             {isLoading ? <h2>Loading...</h2> : data.map((c) =>
                 <div>
@@ -139,24 +138,21 @@ function CompanyDetails() {
                             </Grid>
                         </Box>
                     </div>
+                    {c.blogPosts.map((d) =>
+                        <div className='blogheader'>
+                            <Grid item xs={12}>
+                                <Container className='blogpost'>
+                                    <Card>
+                                        <div className="time">{d.time}</div>
+                                        <h5>{d.header}</h5>
+                                        <div classname="post">{d.post}</div>
+                                    </Card>
+                                </Container>
+                            </Grid>
+                        </div>
+                    )}
                 </div>
             )}
-            <div className='blogheader'>
-                <Grid item xs={12}>
-                    <Container className='blogpost'>
-                        <Card>
-                            bla bla bla
-                        </Card>
-                    </Container>
-                </Grid>
-                <Grid item xs={12}>
-                    <Container className='blogpost'>
-                        <Card>
-                            bla bla bla
-                        </Card>
-                    </Container>
-                </Grid>
-            </div>
         </div>
     )
 }

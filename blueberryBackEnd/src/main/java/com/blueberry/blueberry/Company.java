@@ -1,5 +1,6 @@
 package com.blueberry.blueberry;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,7 +37,8 @@ public class Company {
     private OpeningTimes openingTimes;
 
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "blog_posts_id")
-    private List<BlogPosts> blogPosts = new ArrayList<>();
+    @JsonManagedReference
+    @JoinColumn(name = "company_id")
+    private List<BlogPost> blogPosts = new ArrayList<>();
 
 }
