@@ -91,4 +91,9 @@ public class AccountController {
         }
     }
 
+    @GetMapping("/exist/{username}")
+    Boolean existUser(@PathVariable("username") String username) throws Exception {
+        return accountRepository.findByUsername("username") != null;
+    }
+
 }
