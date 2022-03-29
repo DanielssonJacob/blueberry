@@ -20,6 +20,9 @@ public class CompanyController {
     @Autowired
     AccountRepository accountRepository;
 
+    @Autowired
+    BlogPostRepository blogpostRepository;
+
     @GetMapping("/companies")
     List<Company> getCompanies(){
         if(companyRepository.findAll().size()<6) {
@@ -76,6 +79,14 @@ public class CompanyController {
        company.setDescription((String)description.get("cDescription"));
        companyRepository.save(company);
        return company.getDescription();
+    }
+
+    @PutMapping("/editblogpost")
+    String editBlogPost(@RequestBody Map<String, Object> description){
+        BlogPost blogpost = blogpostRepository.findById((Long.valueOf((Integer)description.get("bId")))).get();
+        blogpost.setPost((String)description.get("bBlogPost"));
+        blogpostRepository.save(blogpost);
+        return blogpost.getPost();
     }
 
 

@@ -53,6 +53,7 @@ const googlemap = "MAP"
 function CompanyDetails() {
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
     const [newDescription, setNewDescription] = useState("");
+    const [newBlogPost, setNewBlogPost] = useState("");
     const [toggleButton, setToggleButton] = useState(true);
 
     let { companyname } = useParams();
@@ -61,7 +62,7 @@ function CompanyDetails() {
         return <h2>Error</h2>
     }
 
-
+    
     async function editprofile(cId) {
         await fetch("http://localhost:8080/edit/", {
             method: "put",
@@ -81,6 +82,23 @@ function CompanyDetails() {
 
     }
 
+    async function editblogpost(bId) {
+        await fetch("http://localhost:8080/editblogpost/", {
+            method: "put",
+            headers: {
+                'Accept': "application/json",
+                "Content-Type": "application/json",
+            },
+
+            //make sure to serialize your JSON body
+            body: JSON.stringify({
+                bId,
+                bBlogPost: newBlogPost
+            }),
+        }).then(data => data.json())
+            .then(data => console.log(data))
+    }
+
     return (
 
         <div>
@@ -93,6 +111,7 @@ function CompanyDetails() {
                             cookies.user != null ? (cookies.user.role === "COMPANY" && cookies.user.username === c.person.username ?
                                 (<button onClick={() => {
                                     setNewDescription(c.description)
+                                    //setNewBlogPost()
                                     setToggleButton(!toggleButton)
                                 }} className='edit-button' >Edit</button>) : null) :
                                 <div>
@@ -187,17 +206,23 @@ function CompanyDetails() {
                         <div className='blogheader'>
                             <Grid item xs={12}>
                                 <Container className='blogpost'>
-                                    <Card>
+                                    <Card hidden={!toggleButton}>
                                         <div className="time">{d.time}</div>
                                         <h5>{d.header}</h5>
                                         <div classname="post">{d.post}</div>
                                     </Card>
                                 </Container>
+                                <form hidden={toggleButton} onSubmit={() => editblogpost(d.id)}>
+                                    <textarea className='editblog' type="text" value={newBlogPost} onChange={(e) => setNewBlogPost(e.target.value)}></textarea>
+                                    <button className='edit-button' type="submit">Update</button>
+                                </form>
                             </Grid>
                         </div>
+
                     )}
                 </div>
             )}
+
         </div>
     )
 }
