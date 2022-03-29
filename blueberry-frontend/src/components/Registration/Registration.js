@@ -22,7 +22,7 @@ function Registration() {
 	const [companyPerson, setCompanyPerson] = useState("");
 	const [companyDescription, setCompanyDescription] = useState("");
 	const [companyOpeningHours, setCompanyOpeningHours] = useState("");
-	const [errorMessage, setErrorMessage] = useState("");
+	const [errorMessage, setErrorMessage] = useState("1");
 	const [isAlert, setIsAlert] = useState(false);
 	const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
@@ -77,8 +77,10 @@ function Registration() {
 			return;
 		}
 
-		setErrorMessage("");
+		setErrorMessage("1");
 		handleSubmit();
+    setIsAlert(true);
+
 	};
 
 	const formData = {
@@ -120,9 +122,9 @@ function Registration() {
 					<DefaultHeader></DefaultHeader>
 				</div>
 
-				<Alert hidden={!isAlert} severity="error">{errorMessage}</Alert>
+				{isAlert === true && errorMessage !== "1" ? <Alert hidden={!isAlert} severity="error">{errorMessage}</Alert> :  null}
 				<div classname="inputField">
-					{errorMessage === "" ? <label hidden for="registrationBanner">You're in!</label> : <Alert hidden={!isAlert} severity="error">Registration failed.</Alert>}
+					{errorMessage === "1" ? <Alert hidden={!isAlert} variant="success">Registration sucessful.</Alert> : <Alert hidden={!isAlert} severity="error">Registration failed.</Alert>}
 				</div>
 				<div className="header1">
 					<div className="title">
