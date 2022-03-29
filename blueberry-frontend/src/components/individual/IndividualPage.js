@@ -62,7 +62,7 @@ function IndividualPage() {
 
         <div className="individual-page-body">
             {console.log(data)}
-            {organization === "" ? <Alert hidden={!isAlert} severity="error">Error: You need to specify which organization you are looking for.</Alert> : <Alert hidden={!isAlert} severity="error">Error: Can't find {snapshot}.</Alert>}
+            {organization === "" ? <Alert hidden={!isAlert} severity="error">Error: You need to specify which {searchBy} you are looking for.</Alert> : <Alert hidden={!isAlert} severity="error">Error: Can't find {snapshot}.</Alert>}
 
             <div className="individual-page-header">
                 <Logo></Logo>
