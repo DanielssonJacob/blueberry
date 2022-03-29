@@ -1,6 +1,6 @@
 import React from "react";
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link, useHistory } from "react-router-dom";
 import DefaultButton from "../default/DefaultButton";
 import Logo from "../default/Logo";
 import "./Registration.css";
@@ -10,6 +10,7 @@ import TextField from '@mui/material/TextField';
 import DefaultHeader from '../default/DefaultHeader'
 import { useEffect } from 'react';
 import useDrivePicker from 'react-google-drive-picker'
+
 
 
 
@@ -42,6 +43,7 @@ function Registration() {
 		})
 	}
 
+
 	useEffect(() => {
 		// do anything with the selected/uploaded files
 		// funktion som sparar användarens bild
@@ -50,6 +52,9 @@ function Registration() {
 		}
 	}, [data])
 
+  let history = useHistory();
+
+  
 	const sendForm = () => {
 		if (companyName === "") {
 			setIsAlert(true);
@@ -80,8 +85,9 @@ function Registration() {
 		setErrorMessage("1");
 		handleSubmit();
     setIsAlert(true);
+    history.push("/");
 
-	};
+	}
 
 	const formData = {
 		cName: companyName,
