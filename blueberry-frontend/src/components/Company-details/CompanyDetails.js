@@ -114,7 +114,7 @@ function CompanyDetails() {
                                     {c.description}
                                     <form onSubmit={()=> editprofile(c.id)}>
                                     <textarea type="text" value={newDescription} onChange={(e)=> setNewDescription(e.target.value)}></textarea>
-                                    <button type="submit" hidden ></button>
+                                    <button type="submit" npm ></button>
                                     </form>
 
 
