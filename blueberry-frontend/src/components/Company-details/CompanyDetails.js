@@ -52,6 +52,7 @@ const googlemap = "MAP"
 function CompanyDetails() {
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
     const [newDescription, setNewDescription] = useState("");
+    const [toggleButton, setToggleButton] = useState(true);
 
     let { companyname } = useParams();
     const { isLoading, data, error } = useFetch("http://localhost:8080/company/" + companyname);
@@ -89,7 +90,10 @@ function CompanyDetails() {
                     <div>
                         {
                             cookies.user != null ? (cookies.user.role === "COMPANY" && cookies.user.username === c.person.username ?
-                                (<button onClick={() => setNewDescription(c.description)} className='edit-button' >Edit</button>) : null) :
+                                (<button onClick={() => {
+                                    setNewDescription(c.description)
+                                    setToggleButton(!toggleButton)
+                                }} className='edit-button' >Edit</button>) : null) :
                                 <div>
                                 </div>
 
@@ -111,10 +115,12 @@ function CompanyDetails() {
                                     </Container>
                                 </Grid>
                                 <Grid item xs={4}>
-                                    {c.description}
-                                    <form onSubmit={()=> editprofile(c.id)}>
-                                    <textarea type="text" value={newDescription} onChange={(e)=> setNewDescription(e.target.value)}></textarea>
-                                    <button type="submit" npm ></button>
+                                    <div hidden={!toggleButton}>
+                                        {c.description}
+                                    </div>
+                                    <form hidden={toggleButton} onSubmit={() => editprofile(c.id)}>
+                                        <textarea classname type="text" value={newDescription} onChange={(e) => setNewDescription(e.target.value)}></textarea>
+                                        <button className='edit-button' type="submit">Update</button>
                                     </form>
 
 
@@ -167,11 +173,11 @@ function CompanyDetails() {
                                     </Container>
                                 </Grid>
                                 <Grid item xs={4}>
-                                <Container maxWidth="sm">
-                                   <DefaultButton title="Följ oss"></DefaultButton>
-                                   <div id="detailsButton"></div>
-                                   <DefaultButton title="Hjälp oss"></DefaultButton>
-                                   </Container>
+                                    <Container maxWidth="sm">
+                                        <DefaultButton title="Följ oss"></DefaultButton>
+                                        <div id="detailsButton"></div>
+                                        <DefaultButton title="Hjälp oss"></DefaultButton>
+                                    </Container>
                                 </Grid>
                             </Grid>
                         </Box>
