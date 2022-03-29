@@ -89,7 +89,7 @@ function CompanyDetails() {
                     <div>
                         {
                             cookies.user != null ? (cookies.user.role === "COMPANY" && cookies.user.username === c.person.username ?
-                                (<button onClick={() => setNewDescription(c.description)} className='edit-button' >Edit description</button>) : null) :
+                                (<button onClick={() => setNewDescription(c.description)} className='edit-button' >Edit</button>) : null) :
                                 <div>
                                 </div>
 
@@ -113,7 +113,7 @@ function CompanyDetails() {
                                 <Grid item xs={4}>
                                     {c.description}
                                     <form onSubmit={()=> editprofile(c.id)}>
-                                    <input type="text" value={newDescription} onChange={(e)=> setNewDescription(e.target.value)}></input>
+                                    <textarea type="text" value={newDescription} onChange={(e)=> setNewDescription(e.target.value)}></textarea>
                                     <button type="submit" hidden ></button>
                                     </form>
 
