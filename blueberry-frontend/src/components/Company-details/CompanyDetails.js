@@ -81,6 +81,29 @@ function CompanyDetails() {
 
     }
 
+    async function followCompany(companyId) {
+        if(cookies.user!=null){
+
+        
+        await fetch("http://localhost:8080/follow", {
+            method: "post",
+            headers: {
+                'Accept': "application/json",
+                "Content-Type": "application/json",
+            },
+
+            //make sure to serialize your JSON body
+            body: JSON.stringify({
+                companyId,
+                user: cookies.user.username
+                
+            }),
+        }).then(data => data.json())
+            .then(data => console.log(data))
+        }
+        
+    }
+
     return (
 
         <div>
@@ -175,7 +198,9 @@ function CompanyDetails() {
                                 </Grid>
                                 <Grid item xs={4}>
                                     <Container maxWidth="sm">
+                                    <div onClick={()=> followCompany(c.id)}>
                                         <DefaultButton title="Följ oss"></DefaultButton>
+                                        </div>
                                         <div id="detailsButton"></div>
                                         <DefaultButton title="Hjälp oss"></DefaultButton>
                                     </Container>

@@ -16,13 +16,15 @@ import Logo from "../default/Logo";
 function Dashboard() {
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
     const history = useHistory();
-    let user = "";
-    if (cookies.user != null) {
-        user = cookies.user.username
+    
+
+    const { isLoading, data, error } = useFetch(`http://localhost:8080/followedby/${cookies.user.username}`);
+
+    const result = useFetch(`http://localhost:8080/exist/${cookies.user.username}`);
+
+    if(!result.isLoading){
+        console.log(result.data)
     }
-
-    const { isLoading, data, error } = useFetch(`http://localhost:8080/followedby/${user}`);
-
 
 
     return (
@@ -38,7 +40,7 @@ function Dashboard() {
             </div>
 
             <div className="followed-by-list container">
-                {isLoading ? <h2>Loading...</h2> : data.map((c) =>
+                {isLoading || !result.data ? <h2>Loading...</h2> : data.map((c) =>
 
                     <Route render={({ history }) => (
                         <article className='followedCompany' onClick={() => { history.push(`/company/${c.name}`) }}>

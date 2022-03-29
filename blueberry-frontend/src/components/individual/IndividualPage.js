@@ -25,29 +25,29 @@ function IndividualPage() {
 
     function search() {
         setIsAlert(false)
-        
-   if (searchBy === "Organization"){
-    if (data.find(c => c.name === organization) != null) {
-        setIsAlert(false)
-        history.push(`/company/${organization}`)
-    } else {
-        setSnapshot(organization)
-        setIsAlert(true)
-    }
-   }
 
-   if (searchBy === "City"){
-    if (data.find(c => c.city === city) != null) {
-        setIsAlert(false)
-        history.push(`/searchresult/${city}`)
-    } else {
-        setSnapshot(city)
-        setIsAlert(true)
+        if (searchBy === "Organization") {
+            if (data.find(c => c.name === organization) != null) {
+                setIsAlert(false)
+                history.push(`/company/${organization}`)
+            } else {
+                setSnapshot(organization)
+                setIsAlert(true)
+            }
+        }
+
+        if (searchBy === "City") {
+            if (data.find(c => c.city === city) != null) {
+                setIsAlert(false)
+                history.push(`/searchresult/${city}`)
+            } else {
+                setSnapshot(city)
+                setIsAlert(true)
+            }
+        }
+
+
     }
-   }
-   
-        
-}
 
 
     let history = useHistory();
@@ -66,13 +66,15 @@ function IndividualPage() {
 
             <div className="individual-page-header">
                 <Logo></Logo>
-                
-                {cookies.user!=null ?
-               
-                <div className="signin-field-div"><IndividualIcon/></div>
-                : <SignInField link="/signin"></SignInField>}
-                
+
+                {cookies.user != null ?
+
+                    <div className="signin-field-div"><IndividualIcon /></div>
+                    : <SignInField link="/signin"></SignInField>}
+
             </div>
+            <div className="helping-text-we-help-you">"We help you help others"</div>
+
             <div className="individual-page-searchfield">
                 <div className="company-search-individual">
                     <label htmlFor='company-search-input'></label>
@@ -123,7 +125,7 @@ function IndividualPage() {
                                     // your handler code
                                     if (data.find(c => c.city === city) != null) {
                                         setIsAlert(false)
-                                        
+
                                         history.push(`/searchresult/${city}`)
                                     } else {
                                         setSnapshot(city)
