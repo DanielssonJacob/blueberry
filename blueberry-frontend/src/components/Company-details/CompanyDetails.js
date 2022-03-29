@@ -1,7 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import Image from "./companyImage.png";
-import "./CompanyDetails.css"
 import {
     useParams,
     BrowserRouter as Router,
@@ -25,6 +24,9 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import useFetch from "react-fetch-hook";
+import DefaultButton from '../default/DefaultButton';
+import { sizeHeight } from '@mui/system';
+import "./CompanyDetails.css"
 
 function createData(day, opening, closing) {
     return { day, opening, closing };
@@ -42,7 +44,7 @@ const rows = [
 
 const currentBread = "Right now we need your help getting more fresh water for the people of Uganda."
 const currentCaption = "water for uganda"
-const googlemap = "GOOGLE MAP"
+const googlemap = "MAP"
 
 function CompanyDetails() {
 
@@ -53,7 +55,6 @@ function CompanyDetails() {
     }
 
     return (
-
         <div>
             {isLoading ? <h2>Loading...</h2> : data.map((c) =>
                 <div>
@@ -89,9 +90,9 @@ function CompanyDetails() {
                                             <Table sx={{ minWidth: 50 }} aria-label="simple table">
                                                 <TableHead>
                                                     <TableRow>
-                                                        <TableCell>Day of the week</TableCell>
-                                                        <TableCell align="right">Opening</TableCell>
-                                                        <TableCell align="right">closing</TableCell>
+                                                        <TableCell>Veckodag</TableCell>
+                                                        <TableCell align="right">Öppnar</TableCell>
+                                                        <TableCell align="right">Stänger</TableCell>
                                                     </TableRow>
                                                 </TableHead>
                                                 <TableBody>
@@ -117,46 +118,30 @@ function CompanyDetails() {
                                     </Container>
                                 </Grid>
                                 <Grid item xs={4}>
-                                    <Container maxWidth="sm">
-                                        <Card sx={{ minWidth: 275 }}>
-                                            <CardContent>
-                                                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                                    Current
-                                                </Typography>
-                                                <Typography sx={{ mb: 2.5 }} variant="h5" component="div">
-                                                    {currentCaption}
-                                                </Typography>
-                                                <Typography variant="body2">
-                                                    {currentBread}
-                                                </Typography>
-                                            </CardContent>
-                                            <CardActions>
-                                                <Button size="small">Learn More</Button>
-                                            </CardActions>
-                                        </Card>
-                                    </Container>
+                                <Container maxWidth="sm">
+                                   <DefaultButton title="Följ oss"></DefaultButton>
+                                   <div id="detailsButton"></div>
+                                   <DefaultButton title="Hjälp oss"></DefaultButton>
+                                   </Container>
                                 </Grid>
                             </Grid>
                         </Box>
                     </div>
+                    {c.blogPosts.map((d) =>
+                        <div className='blogheader'>
+                            <Grid item xs={12}>
+                                <Container className='blogpost'>
+                                    <Card>
+                                        <div className="time">{d.time}</div>
+                                        <h5>{d.header}</h5>
+                                        <div classname="post">{d.post}</div>
+                                    </Card>
+                                </Container>
+                            </Grid>
+                        </div>
+                    )}
                 </div>
             )}
-            <div className='blogheader'>
-                <Grid item xs={12}>
-                    <Container className='blogpost'>
-                        <Card>
-                            bla bla bla
-                        </Card>
-                    </Container>
-                </Grid>
-                <Grid item xs={12}>
-                    <Container className='blogpost'>
-                        <Card>
-                            bla bla bla
-                        </Card>
-                    </Container>
-                </Grid>
-            </div>
         </div>
     )
 }

@@ -37,6 +37,13 @@
 }
 
 .blogpost {
-    max-width: 1600px;
-    padding-bottom: 30px;
+    max-width: 1200px;
+    padding-bottom: 10px;
+}
+.time{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#detailsButton {
+  padding: 20px;
 }
