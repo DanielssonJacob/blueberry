@@ -28,6 +28,7 @@ import { useCookies } from "react-cookie";
 import DefaultButton from '../default/DefaultButton';
 import { sizeHeight } from '@mui/system';
 import "./CompanyDetails.css"
+import DefaultHeader from '../default/DefaultHeader';
 
 function createData(day, opening, closing) {
     return { day, opening, closing };
@@ -86,7 +87,7 @@ function CompanyDetails() {
             {isLoading ? <h2>Loading...</h2> : data.map((c) =>
                 <div>
 
-
+                    <DefaultHeader></DefaultHeader>
                     <div>
                         {
                             cookies.user != null ? (cookies.user.role === "COMPANY" && cookies.user.username === c.person.username ?
