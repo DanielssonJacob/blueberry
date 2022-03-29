@@ -1,14 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 .defaultheader{
     position: relative;
     margin: 0 auto;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     justify-content:center;   
     background-color: #0271BB;  
     height: 90px;
 }
 .defaultheader #logo{
     position: absolute;
-    top: 5px;
+    top: 20px;
     left: 20px;
 }
 .defaultheader #logo:hover{
@@ -17,11 +20,23 @@
 
 }
 .defaultheader .signed-in-area{
+    color:white;
+    padding: 0%;
+
+}   
+.defaultheader .signed-in-area .signin-field-div{
     position: absolute;
     top: 20px;
     right: 20px;
-}
-.defaultheader .signed-in-area{
-
     color: white;
+    font-family: 'Open Sans', sans-serif;
+    padding: 0px;
+    
+}
+.defaultheader .signed-in-area .signin-field-div h2{
+    font-size: 25px;
+    
+}
+.defaultheader .signed-in-area .signin-field-div p{
+    font-size: 10px;
 }
