@@ -4,7 +4,7 @@
     display: flex;
     justify-content:center;   
     background-color: #0271BB;  
-    height: 80px;
+    height: 90px;
 }
 .defaultheader #logo{
     position: absolute;
@@ -16,9 +16,12 @@
   border: 1px solid white;   
 
 }
-.defaultheader .sign-in-field{
+.defaultheader .signed-in-area{
     position: absolute;
     top: 20px;
     right: 20px;
+}
+.defaultheader .signed-in-area{
 
+    color: white;
 }
