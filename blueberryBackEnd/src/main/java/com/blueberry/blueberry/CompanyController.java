@@ -70,6 +70,15 @@ public class CompanyController {
         return companyRepository.findByName((String) loginForm.get("cName")) != null;
     }
 
+    @PutMapping("/edit")
+    String editDescription(@RequestBody Map<String, Object> description){
+       Company company = companyRepository.findById((Long.valueOf((Integer)description.get("cId")))).get();
+       company.setDescription((String)description.get("cDescription"));
+       companyRepository.save(company);
+       return company.getDescription();
+    }
+
+
 
 
 }
