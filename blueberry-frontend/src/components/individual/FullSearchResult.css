@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+.searchHeader{
+    color: #000000;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 30px;
+    font-weight: lighter;
+    padding:15px;
+}
+
+.wrapper{
+    margin: 15px;
+}
+
+link{
+    text-decoration: none;
+}
+
+.dropDown{
+    display: flex;
+    justify-content:right;   
+    margin-bottom: 10px;
+}
+
+.searchResultCompanies{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.searchResultCompanies .companyArticle{
+    position: relative;
+    padding: 15px;
+    height: 150px;
+    border-style: solid;
+    overflow: hidden;
+    grid-template-columns: repeat(auto-fit, 560px);
+    grid-column-gap:10px;
+    grid-row-gap:10px;
+}
+
+.searchResultCompanies .companyArticle{
+    position: relative;
+    padding: 10px;
+    height: 115px;
+    border: 1px solid lightgray;
+    box-shadow: 3px 3px 3px rgba(192,192,192,0.3);
+    border-radius: 15px;   
+}
+
+.searchResultCompanies .companyArticle:hover{
+    border: 2px solid #0271bb7a;  
+}
+
+.searchResultCompanies .companyArticle .companiesName{
+    font-size: 20px;
+    position: absolute;
+    left: 120px;
+}
+
+.searchResultCompanies .companyArticle .companiesName:hover{
+    color: #0271bbaf;
+}
+
+.searchResultCompanies .companyArticle .companyImage img{
+    height: 80px;
+    width: 80px;
+    border: 1px solid rgba(192,192,192,0.3);
+    border-radius: 50px;
+}
+
+.searchResultCompanies .companyArticle .companyInfo{
+    display: -webkit-box;
+    overflow: hidden;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow-wrap: break-word;
+    position: absolute;
+    top: 40px;
+    left: 120px;
+}
+
+.searchResultCompanies .companyArticle .companyCity{
+    font-size: 15px;
+    position: absolute;
+    right: 30px;
+}
+@media only screen and (max-width: 900px) {
+    .searchResultCompanies{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .searchResultCompanies .companyArticle .companyInfo{
+        -webkit-line-clamp: 2;      
+    }
+  }
+
+@media only screen and (max-width: 600px) {
+    .searchResultCompanies{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    .searchResultCompanies .companyArticle .companyInfo{
+        -webkit-line-clamp: 2;      
+    }
+  }

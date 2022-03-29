@@ -1,0 +1,87 @@
+.org-main{
+  text-align: center;
+  justify-content: center; 
+  display: flex;
+  padding: 50px 0 50px 0;
+  align-items: center;
+ 
+}
+
+.sub-main{
+  justify-content: center; 
+  display: flex;
+  height: 400px;
+  width: 30%;
+  border: solid 2px #0271BB;
+  padding: 30px;
+  border-radius: 15px;
+  background-color: white;
+  
+}
+
+.input-fields{
+  justify-content: center; 
+  align-items: center;
+}
+
+.username {
+  width: 300px;
+  height: 50Px;
+  border-radius: 15px;
+  border: solid 2px #0271BB;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  padding-left: 30px;
+  font-size: 15px;
+  
+}
+
+.password {
+  width: 300px;
+  height: 50Px;
+  border-radius: 15px;
+  border: solid 2px #0271BB;
+  margin-top: 10px;
+  margin-bottom: 25px;
+  padding-left: 30px;
+  font-size: 15px;
+  
+}
+
+.sign-in{
+  font-family: 'Open Sans', sans-serif;
+  width: 130px;
+  height: 50px;
+  border-radius: 10px;
+  background-color: #0271BB;
+  color: white;
+  font-size: 20px;
+  border: none;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.sub-main h1{
+  font-family: 'Open Sans', sans-serif;
+  color: #0271BB;
+}
+
+.link{
+  font-family: 'Open Sans', sans-serif;
+  color: #0271BB;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 1000px) {
+  .username {
+    width: 120px;
+    height: 50Px;
+}
+
+@media screen and (max-width: 1000px) {
+  .password {
+    width: 120px;
+    height: 50Px;
+}
+
+}}

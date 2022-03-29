@@ -1,0 +1,32 @@
+.signin-section-inner{
+    border-radius: 20px;
+    border-style: solid;
+    width: 60%;
+    display:flex;
+    flex-direction: column;
+    padding:30px;
+}
+
+
+.signin-section-outer{
+    display: flex;
+    justify-content: center;
+    padding:50px;
+}
+
+.signing-form{
+    display: flex;
+    flex-direction: column;
+    padding:20px;
+}
+
+.signin-page-button{
+    margin-top: 20px;
+}
+
+.logo-signing-page{
+    padding-left: 30px;
+    padding-top: 25px;
+    display: flex;
+    justify-content: space-between;
+}

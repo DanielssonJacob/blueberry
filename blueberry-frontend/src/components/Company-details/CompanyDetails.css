@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+.header {
+    background-color: #0271BB;
+    height: 200px;
+    padding-left: 30px;
+    padding-top: 25px;
+}
+
+.logo {
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.logo h2 {
+    margin-bottom: 0px;
+}
+
+.logo p {
+    margin-top: 0px;
+    font-size: small;
+}
+
+.menu-choice {
+    display: flex;
+    justify-content: space-around;
+    padding: 100px;
+}
+
+.companyName {
+    position: relative;
+    left: 45%;
+    padding: 60px;
+}
+
+.blogheader {
+    padding-top: 60px;
+}
+
+.blogpost {
+    max-width: 1200px;
+    padding-bottom: 10px;
+}
+.time{
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#detailsButton {
+  padding: 20px;
+}
+
+.edit-button {
+    font-family: 'Open Sans', sans-serif;
+    width: 60px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: #0271BB;
+    color: white;
+    font-size: 15px;
+    border: none;
+    margin-top: 20px;
+    margin-left: 20px;
+  }
+
