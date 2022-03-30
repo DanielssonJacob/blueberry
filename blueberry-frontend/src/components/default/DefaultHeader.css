@@ -13,11 +13,11 @@
     position: absolute;
     top: 20px;
     left: 20px;
+    transition: 0.3s;
 }
 .defaultheader #logo:hover{
   background-color: #0271AA;
   border: 1px solid white;   
-
 }
 .defaultheader .signed-in-area{
     position: absolute;
@@ -28,11 +28,11 @@
     padding: 0px;   
 
 }   
-
-.defaultheader .signed-in-area .signin-field-div h2{
-    font-size: 25px;
-    
+.logged-in-field-profile h2{
+    font-size: 25px;  
+    margin-bottom: -0rem;
+    padding-top: 10px;
 }
-.defaultheader .signed-in-area .signin-field-div p{
+.logged-in-field-profile p{
     font-size: 10px;
 }

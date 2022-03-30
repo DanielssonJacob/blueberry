@@ -9,8 +9,9 @@ import useFetch from "react-fetch-hook";
 import { useState, useContext } from 'react'
 import { useHistory } from "react-router-dom";
 import Alert from '@mui/material/Alert';
-import IndividualIcon from './IndividualLoggedInField';
+import DefaultHeader from '../default/DefaultHeader';
 import { useCookies } from 'react-cookie'
+
 
 function IndividualPage() {
     const [cookies, setCookie, removeCookie] = useCookies(['user', 'username']);
@@ -69,16 +70,7 @@ function IndividualPage() {
         <div className="individual-page-body">
             {console.log(data)}
             {organization === "" ? <Alert hidden={!isAlert} severity="error">Error: You need to specify which {searchBy} you are looking for.</Alert> : <Alert hidden={!isAlert} severity="error">Error: Can't find {snapshot}.</Alert>}
-
-            <div className="individual-page-header">
-                <Logo></Logo>
-
-                {cookies.user != null ?
-
-                    <div className="signin-field-div"><IndividualIcon /></div>
-                    : <SignInField link="/signin"></SignInField>}
-
-            </div>
+                <DefaultHeader></DefaultHeader>
             <div className="helping-text-we-help-you">"We help you help others"</div>
 
             <div className="individual-page-searchfield">
