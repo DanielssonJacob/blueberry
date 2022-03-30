@@ -13,15 +13,21 @@ import IndividualIcon from './IndividualLoggedInField';
 import { useCookies } from 'react-cookie'
 
 function IndividualPage() {
-    const [cookies, setCookie, removeCookie] = useCookies(['user']);
+    const [cookies, setCookie, removeCookie] = useCookies(['user', 'username']);
     const [organization, setOrganization] = useState("")
     const [city, setCity] = useState("")
     const [searchBy, setSearchBy] = useState("Organization")
+    
 
     const { isLoading, data, error } = useFetch("http://localhost:8080/companies");
 
     const [isAlert, setIsAlert] = useState(false);
     const [snapshot, setSnapshot] = useState("");
+    if(cookies.username==null){
+        if(cookies.user!=null){
+            setCookie("username", cookies.user.username, { path: "/" })
+        }
+    }
 
     function search() {
         setIsAlert(false)
