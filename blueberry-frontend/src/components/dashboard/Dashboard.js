@@ -83,9 +83,10 @@ function Dashboard() {
                                     </div>
                                 </div>
                                 <div className="followed-by-city">{c.city}</div>
+                                {c.blogPosts.length>0 ? 
                                 <div className="boxed-news-followed">{c.blogPosts.map((p)=>{
                                 return(<p>{p.post}</p>)
-                            })}</div>
+                            })}</div> : <div></div>}
                             </article>
                             
                         </div>)} />
