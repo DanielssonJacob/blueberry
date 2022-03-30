@@ -18,19 +18,27 @@ function IndividualPage() {
     const [organization, setOrganization] = useState("")
     const [city, setCity] = useState("")
     const [searchBy, setSearchBy] = useState("Organization")
-    
+
 
     const { isLoading, data, error } = useFetch("http://localhost:8080/companies");
 
     const [isAlert, setIsAlert] = useState(false);
     const [snapshot, setSnapshot] = useState("");
-    if(cookies.username==null){
-        if(cookies.user!=null){
+
+    useEffect(() => {
+        if (cookies.user != null) {
             setCookie("username", cookies.user.username, { path: "/" })
+            
+        } else{
+            setCookie("username", "", { path: "/" })
         }
-    }
+    }, [])
+
+
+
 
     function search() {
+
         setIsAlert(false)
 
         if (searchBy === "Organization") {
@@ -70,7 +78,7 @@ function IndividualPage() {
         <div className="individual-page-body">
             {console.log(data)}
             {organization === "" ? <Alert hidden={!isAlert} severity="error">Error: You need to specify which {searchBy} you are looking for.</Alert> : <Alert hidden={!isAlert} severity="error">Error: Can't find {snapshot}.</Alert>}
-                <DefaultHeader></DefaultHeader>
+            <DefaultHeader></DefaultHeader>
             <div className="helping-text-we-help-you">"We help you help others"</div>
 
             <div className="individual-page-searchfield">

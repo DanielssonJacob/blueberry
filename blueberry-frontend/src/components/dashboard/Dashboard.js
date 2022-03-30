@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import useFetch from "react-fetch-hook";
@@ -16,17 +16,43 @@ import Logo from "../default/Logo";
 function Dashboard() {
     const [cookies, setCookie, removeCookie] = useCookies(["user", "username"]);
     const history = useHistory();
+    const [followedBy, setFollowedBy] = React.useState([])
 
+    /*
+        const { isLoading, data, error } = useFetch(`http://localhost:8080/followedby/${cookies.username}`);
+    
+    
+        const result = useFetch(`http://localhost:8080/exist/${cookies.user.username}`);
+    */
+    async function getFollowed() {
+        await fetch(`http://localhost:8080/followedby`, {
+            method: "post",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
 
-    const { isLoading, data, error } = useFetch(`http://localhost:8080/followedby/${cookies.username}`);
+            //make sure to serialize your JSON body
+            body: JSON.stringify({
+                user: cookies.username
+            }),
+        }).then(data => data.json()).then(data => setFollowedBy(data))
 
-    const result = useFetch(`http://localhost:8080/exist/${cookies.username}`);
-
-    if (!result.isLoading) {
-        console.log(result.data)
     }
 
 
+    useEffect(() => {
+        getFollowed()
+    }, [])
+
+
+    /*
+    if (!result.isLoading) {
+        console.log(result.data)
+    }
+    
+
+    */
     return (
         <div>
 
@@ -41,23 +67,29 @@ function Dashboard() {
             </div>
 
             <div className="followed-by-list container">
-                {isLoading || result.isLoading ? <h2>Loading...</h2> : result.data === false ? history.push("/")
-                    : data.map((c) =>
 
-                        <Route render={({ history }) => (
+                {followedBy.map((c) =>
+
+                    <Route render={({ history }) => (
+                        <div>
                             <article className='followedCompany' onClick={() => { history.push(`/company/${c.name}`) }}>
                                 <div className="information-company-followed-by">
 
                                     <img src="" alt="red cross" className="company-followed-by-img" />
 
                                     <div>
-                                        <div>{c.name}</div>
+                                        <div><h2>{c.name}</h2></div>
                                         <div >{c.description}</div>
                                     </div>
                                 </div>
-                                <div >{c.city}</div>
-                            </article>)} />
-                    )}
+                                <div className="followed-by-city">{c.city}</div>
+                                <div className="boxed-news-followed">{c.blogPosts.map((p)=>{
+                                return(<p>{p.post}</p>)
+                            })}</div>
+                            </article>
+                            
+                        </div>)} />
+                )}
             </div>
 
         </div>)
