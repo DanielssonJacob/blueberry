@@ -27,6 +27,7 @@
 }
 
 .companyName {
+    font-family: 'Open Sans', sans-serif;
     position: relative;
     left: 45%;
     padding: 60px;
@@ -60,4 +61,3 @@
     margin-top: 20px;
     margin-left: 20px;
   }
-
