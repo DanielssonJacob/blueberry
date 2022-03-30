@@ -142,8 +142,8 @@ function CompanyDetails() {
                                         </div>
                                     </div>
                                     <form hidden={toggleButton} onSubmit={() => editprofile(c.id)}>
-                                        <textarea type="text" value={newDescription} onChange={(e) => setNewDescription(e.target.value)}></textarea>
-                                        <button className='edit-button' type="submit">Update</button>
+                                        <textarea className='editprofile' type="text" value={newDescription} onChange={(e) => setNewDescription(e.target.value)}></textarea>
+                                        <button className='update-button' type="submit">Update</button>
                                     </form>
                                 </Grid>
                                 <Grid item xs={4}>
@@ -219,6 +219,7 @@ function CompanyDetails() {
                                             (<button onClick={() => {
                                                 setEditIndex(editIndex => editIndex === d.id ? null : d.id)
                                                 setToggleButtonBlog(!toggleButtonBlog)
+                                                setNewBlogPost(d.post)
                                             }} className='edit-button' >Edit</button>) : null) :
                                             <div>
                                             </div>
@@ -227,8 +228,8 @@ function CompanyDetails() {
                                 </Container>
                                 {editIndex === d.id &&
                                     <form hidden={toggleButtonBlog} onSubmit={() => editblogpost(d.id)}>
-                                        <textarea placeholder={d.post} className='editblog' type="text" value={newBlogPost} onChange={(e) => setNewBlogPost(e.target.value)}></textarea>
-                                        <button className='edit-button' type="submit">Update</button>
+                                        <textarea className='editblog' type="text" value={newBlogPost} onChange={(e) => setNewBlogPost(e.target.value)}></textarea>
+                                        <div><button className='updatepost-button' type="submit">Update</button></div>
                                     </form>}
 
                             </Grid>
