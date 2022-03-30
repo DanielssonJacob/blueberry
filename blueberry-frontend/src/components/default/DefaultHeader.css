@@ -8,6 +8,7 @@
     justify-content:center;   
     background-color: #0271BB;  
     height: 90px;
+
 }
 .defaultheader #logo{
     position: absolute;
@@ -25,13 +26,17 @@
     right: 20px;
     color: white;
     font-family: 'Open Sans', sans-serif;
-    padding: 0px;   
-
+    margin-right: 10px; 
+   
 }   
 .logged-in-field-profile h2{
     font-size: 25px;  
     margin-bottom: -0rem;
     padding-top: 10px;
+    margin-right: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    
 }
 .logged-in-field-profile p{
     font-size: 10px;
