@@ -15,22 +15,21 @@ function DefaultHeader() {
   const [cookies, setCookie, removeCookie] = useCookies(['user']);
   return (
 
-    <div> 
-    <Route render={({ history}) => (
-      <div className="defaultheader">
-        <Logo onClick={() => { history.push(`/home`) }}></Logo>
-        <div className='signed-in-area'>
-        {cookies.user!=null ?            
-               <div className="signin-field-div"><IndividualIcon/></div>
-               : <SignInField link="/signin"></SignInField>}
-               </div>
-      </div>)}/>
-      </div>
+    <div>
+      <Route render={({ history }) => (
+        <div className="defaultheader">
+          <Logo onClick={() => { history.push(`/home`) }}></Logo>
+          <div className='signed-in-area'>
+            {cookies.user != null ?
+              <div className="signin-field-div"><IndividualIcon /></div>
+              : <SignInField link="/signin"></SignInField>}
+          </div>
+        </div>)} />
+    </div>
   )
 }
 
 export default DefaultHeader
 
 
- 
-     
+
