@@ -15,6 +15,8 @@ import MapSection from '../map/Map'
 
 
 
+
+
 import { useCookies } from "react-cookie";
 
 function Registration() {
@@ -92,10 +94,11 @@ function Registration() {
 	}
   
   const location = {
-    address: '1600 Amphitheatre Parkway, Mountain View, california.',
-    lat: 37.42216,
-    lng: -122.08427,
-  }
+      address: '1600 Amphitheatre Parkway, Mountain View, california.',
+      lat: 59.32429193804371,
+      lng: 18.06285500502244,
+  }  
+  
 	const formData = {
 		cName: companyName,
 		cAddress: companyAddress,
@@ -224,10 +227,13 @@ function Registration() {
 				>
 					<DefaultButton onClick={sendForm} title="Register" />
 				</div>
-        <MapSection location={location} zoomLevel={17} />
+				<div>
+					<MapSection location={location} zoomLevel={10} />
+				</div>
+        
 				<Link to="/">Home</Link>
 			</div>
-
+          
 		</div>
 		//</form>
 	);
