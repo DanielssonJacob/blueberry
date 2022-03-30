@@ -10,6 +10,7 @@ import TextField from '@mui/material/TextField';
 import DefaultHeader from '../default/DefaultHeader'
 import { useEffect } from 'react';
 import useDrivePicker from 'react-google-drive-picker'
+import MapSection from '../map/Map'
 
 
 
@@ -32,7 +33,7 @@ function Registration() {
 	const handleOpenPicker = () => {
 		openPicker({
 			clientId: "821778059846-bgioocsj6ivr5ddnveppmm3vntttdver.apps.googleusercontent.com",
-			developerKey: "AIzaSyD9q-k9kmpOZYjIIwb-T6zxRrUPGWZQ9ok",
+			developerKey: "process.env.REACT_APP_MY_DRIVE_API_KEY",
 			viewId: "DOCS_IMAGES",
 			// token: token, // pass oauth token in case you already have one
 			showUploadView: true,
@@ -87,8 +88,14 @@ function Registration() {
     setIsAlert(true);
     history.push("/");
 
-	}
 
+	}
+  
+  const location = {
+    address: '1600 Amphitheatre Parkway, Mountain View, california.',
+    lat: 37.42216,
+    lng: -122.08427,
+  }
 	const formData = {
 		cName: companyName,
 		cAddress: companyAddress,
@@ -217,6 +224,7 @@ function Registration() {
 				>
 					<DefaultButton onClick={sendForm} title="Register" />
 				</div>
+        <MapSection location={location} zoomLevel={17} />
 				<Link to="/">Home</Link>
 			</div>
 
