@@ -19,36 +19,14 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import useFetch from "react-fetch-hook";
 import { useCookies } from "react-cookie";
 import DefaultButton from '../default/DefaultButton';
-import { sizeHeight } from '@mui/system';
 import "./CompanyDetails.css"
 import DefaultHeader from '../default/DefaultHeader';
 
-function createData(day, opening, closing) {
-    return { day, opening, closing };
-}
-
-const rows = [
-    createData('Monday', "10:00", "14.00"),
-    createData('Tuesday', "10:00", "14.00"),
-    createData('Wensday', "10:00", "14.00"),
-    createData('Thursday', "10:00", "14.00"),
-    createData('Friday', "10:00", "14.00"),
-    createData('Saturday', "10:00", "15.00"),
-    createData('Sunday', "10:00", "15.00"),
-];
-
-const currentBread = "Right now we need your help getting more fresh water for the people of Uganda."
-const currentCaption = "water for uganda"
 const googlemap = "MAP"
-
-
 
 function CompanyDetails() {
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
@@ -60,7 +38,6 @@ function CompanyDetails() {
     if (error) {
         return <h2>Error</h2>
     }
-
 
     async function editprofile(cId) {
         await fetch("http://localhost:8080/edit/", {
@@ -78,30 +55,28 @@ function CompanyDetails() {
         }).then(data => data.json())
             .then(data => console.log(data))
 
-
     }
 
     async function followCompany(companyId) {
-        if(cookies.user!=null){
+        if (cookies.user != null) {
 
-        
-        await fetch("http://localhost:8080/follow", {
-            method: "post",
-            headers: {
-                'Accept': "application/json",
-                "Content-Type": "application/json",
-            },
+            await fetch("http://localhost:8080/follow", {
+                method: "post",
+                headers: {
+                    'Accept': "application/json",
+                    "Content-Type": "application/json",
+                },
 
-            //make sure to serialize your JSON body
-            body: JSON.stringify({
-                companyId,
-                user: cookies.user.username
-                
-            }),
-        }).then(data => data.json())
-            .then(data => console.log(data))
+                //make sure to serialize your JSON body
+                body: JSON.stringify({
+                    companyId,
+                    user: cookies.user.username
+
+                }),
+            }).then(data => data.json())
+                .then(data => console.log(data))
         }
-        
+
     }
 
     return (
@@ -120,17 +95,12 @@ function CompanyDetails() {
                                 }} className='edit-button' >Edit</button>) : null) :
                                 <div>
                                 </div>
-
                         }
-
                     </div>
-
-
                     <div>
-
-
-
-                        <h1 className='companyName' >{c.name}</h1>
+                        <div className='companyheader'>
+                        <h1 className='companyName'>{c.name}</h1>
+                        </div>
                         <Box sx={{ flexGrow: 1 }}>
                             <Grid container spacing={2}>
                                 <Grid item xs={4}>
@@ -146,8 +116,6 @@ function CompanyDetails() {
                                         <textarea classname type="text" value={newDescription} onChange={(e) => setNewDescription(e.target.value)}></textarea>
                                         <button className='edit-button' type="submit">Update</button>
                                     </form>
-
-
                                 </Grid>
                                 <Grid item xs={4}>
                                     <Container maxWidth="sm">
@@ -158,7 +126,7 @@ function CompanyDetails() {
                                     <Container maxWidth="sm">
                                         <Card sx={{ minWidth: 275 }}>
                                             <CardContent>
-                                                Adress: {c.address} <br></br>Kontaktperson: {c.person.username}
+                                                Address: {c.address} <br></br>Contact person: {c.person.username}
                                             </CardContent>
                                         </Card>
                                     </Container>
@@ -169,28 +137,27 @@ function CompanyDetails() {
                                             <Table sx={{ minWidth: 50 }} aria-label="simple table">
                                                 <TableHead>
                                                     <TableRow>
-                                                        <TableCell>Veckodag</TableCell>
-                                                        <TableCell align="right">Öppnar</TableCell>
-                                                        <TableCell align="right">Stänger</TableCell>
+                                                        <TableCell>Day of the week</TableCell>
+                                                        <TableCell align="right">Open</TableCell>
+                                                        <TableCell align="right">Close</TableCell>
                                                     </TableRow>
                                                 </TableHead>
                                                 <TableBody>
                                                     <TableRow>
-                                                        <TableCell component="th"> Vardagar </TableCell>
+                                                        <TableCell component="th"> Weekday </TableCell>
                                                         <TableCell align="right">{c.openingTimes.weekdayOpen}</TableCell>
                                                         <TableCell align="right">{c.openingTimes.weekdayClose}</TableCell>
                                                     </TableRow>
                                                     <TableRow>
-                                                        <TableCell component="th"> Lördag </TableCell>
+                                                        <TableCell component="th"> Saturday </TableCell>
                                                         <TableCell align="right">{c.openingTimes.saturdayOpen}</TableCell>
                                                         <TableCell align="right">{c.openingTimes.saturdayClose}</TableCell>
                                                     </TableRow>
                                                     <TableRow>
-                                                        <TableCell component="th"> Söndag </TableCell>
+                                                        <TableCell component="th"> Sunday </TableCell>
                                                         <TableCell align="right">{c.openingTimes.sundayOpen}</TableCell>
                                                         <TableCell align="right">{c.openingTimes.sundayClose}</TableCell>
                                                     </TableRow>
-
                                                 </TableBody>
                                             </Table>
                                         </TableContainer>
@@ -198,11 +165,11 @@ function CompanyDetails() {
                                 </Grid>
                                 <Grid item xs={4}>
                                     <Container maxWidth="sm">
-                                    <div onClick={()=> followCompany(c.id)}>
-                                        <DefaultButton title="Följ oss"></DefaultButton>
+                                        <div onClick={() => followCompany(c.id)}>
+                                            <DefaultButton title="Follow us"></DefaultButton>
                                         </div>
                                         <div id="detailsButton"></div>
-                                        <DefaultButton title="Hjälp oss"></DefaultButton>
+                                        <DefaultButton title="Help us"></DefaultButton>
                                     </Container>
                                 </Grid>
                             </Grid>
