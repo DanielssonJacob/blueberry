@@ -38,7 +38,7 @@ function CompanyDetails() {
 
     let { companyname } = useParams();
     const { isLoading, data, error } = useFetch("http://localhost:8080/company/" + companyname);
-    const [editIndex, setEditIndex]= useState(null);
+    const [editIndex, setEditIndex] = useState(null);
 
     if (error) {
         return <h2>Error</h2>
@@ -79,7 +79,7 @@ function CompanyDetails() {
         }).then(data => data.json())
             .then(data => console.log(data))
     }
-    }
+
 
     async function followCompany(companyId) {
         if (cookies.user != null) {
@@ -100,6 +100,7 @@ function CompanyDetails() {
             }).then(data => data.json())
                 .then(data => console.log(data))
         }
+    }
 
 
     return (
@@ -113,9 +114,8 @@ function CompanyDetails() {
 
                     <div>
 
-                        <h1 className='companyName' >{c.name}</h1>
                         <div className='companyheader'>
-                        <h1 className='companyName'>{c.name}</h1>
+                            <h1 className='companyName'>{c.name}</h1>
                         </div>
                         <Box sx={{ flexGrow: 1 }}>
                             <Grid container spacing={2}>
@@ -215,21 +215,21 @@ function CompanyDetails() {
 
                                     </Card>
                                     {
-                                            cookies.user != null ? (cookies.user.role === "COMPANY" && cookies.user.username === c.person.username ?
-                                                (<button onClick={() => {
-                                                    setEditIndex(editIndex => editIndex === d.id ? null : d.id)
-                                                    setToggleButtonBlog(!toggleButtonBlog)
-                                                }} className='edit-button' >Edit</button>) : null) :
-                                                <div>
-                                                </div>
+                                        cookies.user != null ? (cookies.user.role === "COMPANY" && cookies.user.username === c.person.username ?
+                                            (<button onClick={() => {
+                                                setEditIndex(editIndex => editIndex === d.id ? null : d.id)
+                                                setToggleButtonBlog(!toggleButtonBlog)
+                                            }} className='edit-button' >Edit</button>) : null) :
+                                            <div>
+                                            </div>
 
-                                        }
+                                    }
                                 </Container>
                                 {editIndex === d.id &&
-                                <form hidden={toggleButtonBlog} onSubmit={() => editblogpost(d.id)}>
-                                    <textarea placeholder={d.post} className='editblog' type="text" value={newBlogPost} onChange={(e) => setNewBlogPost(e.target.value)}></textarea>
-                                    <button className='edit-button' type="submit">Update</button>
-                                </form>}
+                                    <form hidden={toggleButtonBlog} onSubmit={() => editblogpost(d.id)}>
+                                        <textarea placeholder={d.post} className='editblog' type="text" value={newBlogPost} onChange={(e) => setNewBlogPost(e.target.value)}></textarea>
+                                        <button className='edit-button' type="submit">Update</button>
+                                    </form>}
 
                             </Grid>
                         </div>
