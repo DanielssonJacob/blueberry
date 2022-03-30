@@ -20,19 +20,15 @@
 
 }
 .defaultheader .signed-in-area{
-    color:white;
-    padding: 0%;
-
-}   
-.defaultheader .signed-in-area .signin-field-div{
     position: absolute;
     top: 20px;
     right: 20px;
     color: white;
     font-family: 'Open Sans', sans-serif;
-    padding: 0px;
-    
-}
+    padding: 0px;   
+
+}   
+
 .defaultheader .signed-in-area .signin-field-div h2{
     font-size: 25px;
     
