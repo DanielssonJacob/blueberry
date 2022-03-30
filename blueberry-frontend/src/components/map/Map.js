@@ -36,7 +36,7 @@ const location = {
   const LocationPin = ({ text }) => (
     <div className="pin">
       <RiMapPin2Fill className="pin-icon" />
-      //<p className="pin-text">{text}</p>
+      <p className="pin-text">{text}</p>
     </div>
   )
   
