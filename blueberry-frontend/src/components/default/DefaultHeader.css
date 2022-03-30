@@ -23,17 +23,19 @@
 .defaultheader .signed-in-area{
     position: absolute;
     top: 20px;
-    right: 20px;
+    right: 30px;
     color: white;
-    font-family: 'Open Sans', sans-serif;
-    margin-right: 10px; 
-   
+    font-family: 'Open Sans', sans-serif;  
 }   
+.logged-in-field-profile{
+    position: fixed;
+    right: 60px;
+}
 .logged-in-field-profile h2{
-    font-size: 25px;  
+    font-size: 24px;  
     margin-bottom: -0rem;
     padding-top: 10px;
-    margin-right: 15px;
+    margin-right: 20px;
     overflow: hidden;
     white-space: nowrap;
     

@@ -29,7 +29,7 @@ function FullSearchResult() {
             <div className='wrapper'>
 
                 <div className='searchResultCompanies'>
-                    {isLoading ? <h2>Loading...</h2> : data.filter((c) => c.city === city).map((c) =>
+                    {isLoading ? <p>Loading...</p> : data.filter((c) => c.city === city).map((c) =>
 
                         <Route render={({ history }) => (
                             <article className='companyArticle' onClick={() => { history.push(`/company/${c.name}`) }}>
