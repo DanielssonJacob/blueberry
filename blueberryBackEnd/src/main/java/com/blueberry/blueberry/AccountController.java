@@ -4,6 +4,7 @@ package com.blueberry.blueberry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -87,7 +88,7 @@ public class AccountController {
         if(accountRepository.findByUsername(username)!=null){
             return accountRepository.findByUsername(username).getFollowedCompanies();
         } else{
-            throw new Exception();
+            return new ArrayList<>();
         }
     }
 
