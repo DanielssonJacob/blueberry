@@ -37,4 +37,5 @@ public class BlogPost {
     @JoinColumn(name="company_id")
     private Company company;
 
+
 }

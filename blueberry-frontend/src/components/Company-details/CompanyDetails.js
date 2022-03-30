@@ -31,10 +31,15 @@ const googlemap = "MAP"
 function CompanyDetails() {
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
     const [newDescription, setNewDescription] = useState("");
+    const [newBlogPost, setNewBlogPost] = useState("");
     const [toggleButton, setToggleButton] = useState(true);
+    const [toggleButtonBlog, setToggleButtonBlog] = useState(true);
+
 
     let { companyname } = useParams();
     const { isLoading, data, error } = useFetch("http://localhost:8080/company/" + companyname);
+    const [editIndex, setEditIndex]= useState(null);
+
     if (error) {
         return <h2>Error</h2>
     }
@@ -55,6 +60,25 @@ function CompanyDetails() {
         }).then(data => data.json())
             .then(data => console.log(data))
 
+
+    }
+
+    async function editblogpost(bId) {
+        await fetch("http://localhost:8080/editblogpost/", {
+            method: "put",
+            headers: {
+                'Accept': "application/json",
+                "Content-Type": "application/json",
+            },
+
+            //make sure to serialize your JSON body
+            body: JSON.stringify({
+                bId,
+                bBlogPost: newBlogPost
+            }),
+        }).then(data => data.json())
+            .then(data => console.log(data))
+    }
     }
 
     async function followCompany(companyId) {
@@ -77,7 +101,6 @@ function CompanyDetails() {
                 .then(data => console.log(data))
         }
 
-    }
 
     return (
 
@@ -86,18 +109,11 @@ function CompanyDetails() {
                 <div>
 
                     <DefaultHeader></DefaultHeader>
+
+
                     <div>
-                        {
-                            cookies.user != null ? (cookies.user.role === "COMPANY" && cookies.user.username === c.person.username ?
-                                (<button onClick={() => {
-                                    setNewDescription(c.description)
-                                    setToggleButton(!toggleButton)
-                                }} className='edit-button' >Edit</button>) : null) :
-                                <div>
-                                </div>
-                        }
-                    </div>
-                    <div>
+
+                        <h1 className='companyName' >{c.name}</h1>
                         <div className='companyheader'>
                         <h1 className='companyName'>{c.name}</h1>
                         </div>
@@ -111,9 +127,22 @@ function CompanyDetails() {
                                 <Grid item xs={4}>
                                     <div hidden={!toggleButton}>
                                         {c.description}
+                                        <div>
+                                            {
+                                                cookies.user != null ? (cookies.user.role === "COMPANY" && cookies.user.username === c.person.username ?
+                                                    (<button onClick={() => {
+                                                        setNewDescription(c.description)
+                                                        setToggleButton(!toggleButton)
+                                                    }} className='edit-button' >Edit</button>) : null) :
+                                                    <div>
+                                                    </div>
+
+                                            }
+
+                                        </div>
                                     </div>
                                     <form hidden={toggleButton} onSubmit={() => editprofile(c.id)}>
-                                        <textarea classname type="text" value={newDescription} onChange={(e) => setNewDescription(e.target.value)}></textarea>
+                                        <textarea type="text" value={newDescription} onChange={(e) => setNewDescription(e.target.value)}></textarea>
                                         <button className='edit-button' type="submit">Update</button>
                                     </form>
                                 </Grid>
@@ -178,18 +207,37 @@ function CompanyDetails() {
                     {c.blogPosts.map((d) =>
                         <div className='blogheader'>
                             <Grid item xs={12}>
-                                <Container className='blogpost'>
-                                    <Card>
+                                <Container hidden={!toggleButtonBlog} className='blogpost'>
+                                    <Card >
                                         <div className="time">{d.time}</div>
                                         <h5>{d.header}</h5>
                                         <div classname="post">{d.post}</div>
+
                                     </Card>
+                                    {
+                                            cookies.user != null ? (cookies.user.role === "COMPANY" && cookies.user.username === c.person.username ?
+                                                (<button onClick={() => {
+                                                    setEditIndex(editIndex => editIndex === d.id ? null : d.id)
+                                                    setToggleButtonBlog(!toggleButtonBlog)
+                                                }} className='edit-button' >Edit</button>) : null) :
+                                                <div>
+                                                </div>
+
+                                        }
                                 </Container>
+                                {editIndex === d.id &&
+                                <form hidden={toggleButtonBlog} onSubmit={() => editblogpost(d.id)}>
+                                    <textarea placeholder={d.post} className='editblog' type="text" value={newBlogPost} onChange={(e) => setNewBlogPost(e.target.value)}></textarea>
+                                    <button className='edit-button' type="submit">Update</button>
+                                </form>}
+
                             </Grid>
                         </div>
+
                     )}
                 </div>
             )}
+
         </div>
     )
 }
