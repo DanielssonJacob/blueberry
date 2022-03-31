@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 
-export const ImageUploadComponent = () => {
+export const ImageUploadComponent = (props) => {
     const [selectedFile, setSelectedFile] = useState()
     const [preview, setPreview] = useState()
 
@@ -28,10 +28,27 @@ export const ImageUploadComponent = () => {
         setSelectedFile(e.target.files[0])
     }
 
+    const sendFile = (cId) => {
+
+        let formData = new FormData();
+        formData.append('file', selectedFile);
+        
+
+        fetch("http://localhost:8080/changeimage/"+cId,
+            {
+                body: formData,
+                method: "post"
+            });
+        
+    }
+
     return (
         <div>
             <input type='file' onChange={onSelectFile} />
-            {selectedFile &&  <img src={preview} /> }
+            {selectedFile && <img style={{ width: "100px" }} src={preview} />}
+            {selectedFile && <button onClick={() => sendFile(props.cId)}>Submit</button>}
+
+
         </div>
     )
 }

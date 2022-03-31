@@ -35,7 +35,8 @@ function FullSearchResult() {
                             <article className='companyArticle' onClick={() => { history.push(`/company/${c.name}`) }}>
                                 <div className='companiesName'>{c.name}</div>
                                 <div className='companyImage'>
-                                    <img src={redcross} alt="red cross" />
+                                    
+                                    {c.imageUrl==null ? <img src={redcross} alt="red cross" /> : <img src={`http://localhost:3001/${c.imageUrl}`}></img>}
                                 </div>
                                 <div className='companyInfo'>{c.description}</div>
                                 <div className='companyCity'>{c.city}</div>
