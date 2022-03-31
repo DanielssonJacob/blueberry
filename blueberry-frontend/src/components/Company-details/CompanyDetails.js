@@ -25,6 +25,10 @@ import { useCookies } from "react-cookie";
 import DefaultButton from '../default/DefaultButton';
 import "./CompanyDetails.css"
 import DefaultHeader from '../default/DefaultHeader';
+
+function createData(day, opening, closing) {
+    return { day, opening, closing };
+}
 import { ImageUploadComponent } from '../imageUploadComponent/ImageUploadComponent';
 
 const googlemap = "MAP"
@@ -106,7 +110,7 @@ function CompanyDetails() {
     const editOptions = (cPerson, cIdParam) => {
         if(cookies.user!=null){
             if(cPerson.username === cookies.username){
-                return <ImageUploadComponent cId={cIdParam}></ImageUploadComponent> 
+                return <ImageUploadComponent cId={cIdParam}></ImageUploadComponent>
             }
         }
     }
@@ -130,10 +134,10 @@ function CompanyDetails() {
                             <Grid container spacing={2}>
                                 <Grid item xs={4}>
                                     <Container maxWidth="sm">
-                                    
+
                                     {c.imageUrl==null ? <img src={Image}></img> : <img style={{width: "200px"}} src={`http://localhost:3001/${c.imageUrl}`}></img>}
                                     {editOptions(c.person, c.id)}
-                                        
+
                                     </Container>
                                 </Grid>
                                 <Grid item xs={4}>
@@ -159,7 +163,7 @@ function CompanyDetails() {
                                     </form>
                                 </Grid>
                                 <Grid item xs={4}>
-                                    <Container maxWidth="sm">
+                                    <Container maxWidth="s">
                                         {googlemap}
                                     </Container>
                                 </Grid>
