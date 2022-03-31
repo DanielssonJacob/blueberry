@@ -79,11 +79,7 @@ function Registration() {
 			setErrorMessage("Please enter a company description.");
 			return;
 		}
-		if (companyOpeningHours === "") {
-			setIsAlert(true);
-			setErrorMessage("Invalid opening hours.");
-			return;
-		}
+	
 
 		setErrorMessage("1");
 		handleSubmit();
@@ -105,7 +101,6 @@ function Registration() {
 		cCity: companyCity,
 		cPerson: cookies.user.username,
 		cDescription: companyDescription,
-		cHours: companyOpeningHours,
 	};
 
 	function handleSubmit() {
@@ -205,16 +200,7 @@ function Registration() {
 							onChange={(e) => setCompanyDescription(e.target.value)}
 						/>
 					</div>
-					<div className="inputField">
-						<label for="openinghours">Opening hours: </label>
-						<input
-							type="text"
-							id="companyOpeningHours"
-							name="openinghours"
-							value={companyOpeningHours}
-							onChange={(e) => setCompanyOpeningHours(e.target.value)}
-						/>
-					</div>
+					
 					<div onClick={() => { handleOpenPicker(); }} className="pictureButton" >
 						<DefaultButton onClick={() => handleOpenPicker} title="Add profile picture" />
 					</div>

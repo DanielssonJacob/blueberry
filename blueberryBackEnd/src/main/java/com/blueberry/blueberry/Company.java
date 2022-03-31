@@ -27,7 +27,6 @@ public class Company {
     private Account person;
     @Lob
     private String description;
-    private String openingHours;
 
     public Company(Long id, String name){
         this.id=id;
