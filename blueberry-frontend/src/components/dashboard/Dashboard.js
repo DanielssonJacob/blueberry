@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import useFetch from "react-fetch-hook";
@@ -14,7 +14,7 @@ import DefaultHeader from '../default/DefaultHeader';
 function Dashboard() {
     const [cookies, setCookie, removeCookie] = useCookies(["user", "username"]);
     const history = useHistory();
-    const [followedBy, setFollowedBy] = React.useState([])
+    const [followedBy, setFollowedBy] = useState([])
 
     /*
         const { isLoading, data, error } = useFetch(`http://localhost:8080/followedby/${cookies.username}`);
