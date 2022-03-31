@@ -103,6 +103,7 @@ function CompanyDetails() {
                 .then(data => console.log(data))
         }
     }
+    {/* 
     async function unFollowCompany(companyId) {
         if (cookies.user != null) {
             await fetch("http://localhost:8080/follow", {
@@ -138,7 +139,7 @@ function CompanyDetails() {
         }).then(data => data.json()).then(data => setFollowedBy(data))
 
     }
-
+*/}
 
     return (
 
