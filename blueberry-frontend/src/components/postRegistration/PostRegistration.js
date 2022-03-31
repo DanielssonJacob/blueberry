@@ -19,7 +19,7 @@ function PostRegistration() {
             <DefaultHeader></DefaultHeader>
           </div>
           <div className="title1">
-            <label for="mamasita">Mamasita.</label> 
+            
           </div>
         </body>
     )
