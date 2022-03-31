@@ -67,7 +67,7 @@ function SignUpForm() {
               Specify:
               <div className="radio-company-individual-input">
                 <span>
-                  <input
+                  <input className="radio-specify"
                     type="radio"
                     value="INDIVIDUAL"
                     name="role"
@@ -76,7 +76,7 @@ function SignUpForm() {
                   Individual
                 </span>
                 <span>
-                  <input
+                  <input className="radio-specify"
                     type="radio"
                     value="COMPANY"
                     name="role"
@@ -94,7 +94,7 @@ function SignUpForm() {
               onClick={handleSubmit}
               className="signin-page-button"
             >
-              <DefaultButton title={"Sign-up"}></DefaultButton>
+              <DefaultButton title={"Sign Up"}></DefaultButton>
             </div>
           </form>
         </section>

@@ -116,7 +116,7 @@ const LoginForm = () => {
               <button hidden></button>
               <div onClick={handleSubmit}className="signin-page-button">
 
-                <DefaultButton title={"Sign-in"}></DefaultButton>
+                <DefaultButton title={"Sign in"}></DefaultButton>
               </div>
               <p>
                 Need an Account?
