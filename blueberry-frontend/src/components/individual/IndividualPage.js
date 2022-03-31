@@ -157,7 +157,7 @@ function IndividualPage() {
                 </div>
 
             </div>
-            <ImageUploadComponent></ImageUploadComponent>
+
         </div>
     )
 }
