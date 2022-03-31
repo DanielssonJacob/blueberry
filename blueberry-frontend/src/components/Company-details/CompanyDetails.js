@@ -26,7 +26,7 @@ import DefaultButton from '../default/DefaultButton';
 import "./CompanyDetails.css"
 import DefaultHeader from '../default/DefaultHeader';
 import { ImageUploadComponent } from '../imageUploadComponent/ImageUploadComponent';
-
+import MapSection from '../map/Map'
 
 
 
@@ -37,7 +37,12 @@ function CompanyDetails() {
     const [newBlogPost, setNewBlogPost] = useState("");
     const [toggleButton, setToggleButton] = useState(true);
     const [toggleButtonBlog, setToggleButtonBlog] = useState(true);
-
+    
+    const location = {
+        address: '1600 Amphitheatre Parkway, Mountain View, california.',
+        lat: 59.32429193804371,
+        lng: 18.06285500502244,
+    }  
 
     let { companyname } = useParams();
     const { isLoading, data, error } = useFetch("http://localhost:8080/company/" + companyname);
@@ -164,8 +169,14 @@ function CompanyDetails() {
                                     </form>
                                 </Grid>
                                 <Grid item xs={4}>
-                                    <Container maxWidth="s">
-                                        {googlemap}
+                                
+                                    <Container maxWidth="sm">
+                
+                                    <div onClick={() => followCompany(c.id)}>
+                                            <DefaultButton title="Follow us"></DefaultButton>
+                                        </div>
+                                        <div id="detailsButton"></div>
+                                        <DefaultButton title="Help us"></DefaultButton>
                                     </Container>
                                 </Grid>
                                 <Grid item xs={4}>
@@ -211,11 +222,7 @@ function CompanyDetails() {
                                 </Grid>
                                 <Grid item xs={4}>
                                     <Container maxWidth="sm">
-                                        <div onClick={() => followCompany(c.id)}>
-                                            <DefaultButton title="Follow us"></DefaultButton>
-                                        </div>
-                                        <div id="detailsButton"></div>
-                                        <DefaultButton title="Help us"></DefaultButton>
+                                    {<MapSection location={location} zoomLevel={17} />}
                                     </Container>
                                 </Grid>
                             </Grid>

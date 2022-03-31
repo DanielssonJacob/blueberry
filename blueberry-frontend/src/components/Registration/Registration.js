@@ -228,7 +228,7 @@ function Registration() {
 					<DefaultButton onClick={sendForm} title="Register" />
 				</div>
 				<div>
-					<MapSection location={location} zoomLevel={10} />
+					
 				</div>
         
 				<Link to="/">Home</Link>

@@ -1,7 +1,6 @@
 import React from 'react'
 import GoogleMapReact from 'google-map-react'
 import './map.css'
-import {RiMapPin2Fill} from "react-icons/ri"
 
 
 
@@ -21,21 +20,12 @@ const location = {
           defaultCenter={location}
           defaultZoom={zoomLevel}
         >
-          <LocationPin
-            lat={location.lat}
-            lng={location.lng}
-            text={location.address}
-          />
+
         </GoogleMapReact>
       </div>
     </div>
   )
-  const LocationPin = ({ text }) => (
-    <div className="pin">
-      <RiMapPin2Fill className="pin-icon" />
-      <p className="pin-text">{text}</p>
-    </div>
-  )
+
   
   
   export default Map
