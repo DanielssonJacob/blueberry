@@ -27,8 +27,6 @@ public class Company {
     private Account person;
     @Lob
     private String description;
-    private String openingHours;
-
 
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -53,7 +51,6 @@ public class Company {
         this.city = city;
         this.person = person;
         this.description = description;
-        this.openingHours = openingHours;
         this.openingTimes = openingTimes;
         this.blogPosts = blogPosts;
     }
