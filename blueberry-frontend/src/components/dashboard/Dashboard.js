@@ -65,7 +65,7 @@ function Dashboard() {
                             <article className='followedCompany' onClick={() => { history.push(`/company/${c.name}`) }}>
                                 <div className="information-company-followed-by">
 
-                                    <img src="" alt="red cross" className="company-followed-by-img" />
+                                {c.imageUrl==null ? <img alt="no-image" /> : <img style={{width: "100px", borderRadius: 100}} src={`http://localhost:3001/${c.imageUrl}`}></img>}
 
                                     <div>
                                         <div><h2>{c.name}</h2></div>
