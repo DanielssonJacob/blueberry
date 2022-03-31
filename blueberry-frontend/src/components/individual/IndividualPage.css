@@ -11,7 +11,7 @@
 }
 
 .individual-page-body {
-  background-color: whitesmoke;
+  background-color: #0271bb15;
   height: 100vh;
 }
 
@@ -19,7 +19,9 @@
   padding: 40px;
   display: flex;
   justify-content: space-evenly;
-  margin: 100px;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-bottom: 100px;
   flex-wrap: wrap;
 }
 
@@ -46,6 +48,7 @@
   font-size: 90px;
   text-align: center;
   vertical-align: middle;
+  margin-top: 60px;
 }
 
 .search {
@@ -73,5 +76,6 @@
     vertical-align: middle;
     font-family: "Caveat", cursive;
     font-size: 50px;
+    
   }
 }

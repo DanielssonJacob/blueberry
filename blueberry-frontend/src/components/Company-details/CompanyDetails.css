@@ -30,7 +30,8 @@
     font-family: 'Open Sans', sans-serif;
     position: relative;
     left: 45%;
-    padding: 60px;
+    padding-top: 60px;
+    padding-bottom: 60px;
 }
 
 .blogheader {
