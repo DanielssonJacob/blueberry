@@ -121,7 +121,9 @@ function CompanyDetails() {
                             <Grid container spacing={2}>
                                 <Grid item xs={4}>
                                     <Container maxWidth="sm">
-                                        <img src={Image}></img>
+                                    {c.imageUrl==null ? <img src={Image}></img> : <img style={{width: "200px"}} src={`http://localhost:3001/${c.imageUrl}`}></img>}
+                                        
+                                        
                                     </Container>
                                 </Grid>
                                 <Grid item xs={4}>

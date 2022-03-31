@@ -11,6 +11,7 @@ import { useHistory } from "react-router-dom";
 import Alert from '@mui/material/Alert';
 import DefaultHeader from '../default/DefaultHeader';
 import { useCookies } from 'react-cookie'
+import { ImageUploadComponent } from '../imageUploadComponent/ImageUploadComponent';
 
 
 function IndividualPage() {
@@ -156,6 +157,7 @@ function IndividualPage() {
                 </div>
 
             </div>
+            <ImageUploadComponent></ImageUploadComponent>
         </div>
     )
 }
