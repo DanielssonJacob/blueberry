@@ -1,14 +1,19 @@
 package com.blueberry.blueberry;
 
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
 
+import org.apache.commons.io.IOUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @CrossOrigin(origins ="http://localhost:3000")
 @RestController
@@ -87,6 +92,68 @@ public class CompanyController {
         blogpost.setPost((String)description.get("bBlogPost"));
         blogpostRepository.save(blogpost);
         return blogpost.getPost();
+    }
+
+
+    @RequestMapping(value = "/changeimage/{id}",
+            produces = { "application/json" },
+            consumes = { "multipart/form-data" },
+            method = RequestMethod.POST)
+    public String changeImage(@RequestParam("file") MultipartFile file, @PathVariable("id") Long id) throws IOException {
+
+
+
+            InputStream inputStream = null;
+            OutputStream outputStream = null;
+            String fileName = file.getOriginalFilename();
+            File newFile = new File("C:\\Programming\\JS\\blueberryPictureService\\public\\" + fileName);
+
+                try {
+                    inputStream = file.getInputStream();
+
+                    if (!newFile.exists()) {
+                        newFile.createNewFile();
+                    }
+                    outputStream = new FileOutputStream(newFile);
+                    int read = 0;
+                    byte[] bytes = new byte[1024];
+
+                    while ((read = inputStream.read(bytes)) != -1) {
+                        outputStream.write(bytes, 0, read);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                if(companyRepository.findById(id).isPresent()){
+                    Company company = companyRepository.findById(id).get();
+                    company.setImageUrl(fileName);
+                    companyRepository.save(company);
+                }
+
+                return newFile.getAbsolutePath();
+
+
+
+           /* Byte[] byteObjects = new Byte[file.getBytes().length];
+
+            int i = 0;
+
+            for (byte b : file.getBytes()){
+                byteObjects[i++] = b;
+            }
+
+            company.setImage(byteObjects);
+
+            companyRepository.save(company);
+            System.out.println(company);*/
+
+    }
+
+
+    @GetMapping(value = "profilepic/{filename}", produces = MediaType.IMAGE_JPEG_VALUE)
+    public @ResponseBody byte[] getImage(@PathVariable("filename") String filename) throws IOException {
+        return IOUtils.toByteArray(Objects.requireNonNull(getClass()
+                .getResourceAsStream("/static/pictures/"+filename)));
     }
 
 
