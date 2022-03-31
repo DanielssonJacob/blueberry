@@ -4,6 +4,7 @@ package com.blueberry.blueberry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -82,13 +83,19 @@ public class AccountController {
         return new Company();
     }
 
-    @GetMapping("/followedby/{username}")
-    List<Company> followedBy(@PathVariable("username") String username) throws Exception {
-        if(accountRepository.findByUsername(username)!=null){
-            return accountRepository.findByUsername(username).getFollowedCompanies();
+    @PostMapping("/followedby")
+    List<Company> followedBy(@RequestBody Map<String, Object> user) throws Exception {
+        System.out.println(user);
+        if(accountRepository.findByUsername((String) user.get("user"))!=null){
+            return accountRepository.findByUsername((String) user.get("user")).getFollowedCompanies();
         } else{
-            throw new Exception();
+            return new ArrayList<>();
         }
+    }
+
+    @GetMapping("/exist/{username}")
+    Account existUser(@PathVariable("username") String username) throws Exception {
+        return accountRepository.findByUsername(username);
     }
 
 }

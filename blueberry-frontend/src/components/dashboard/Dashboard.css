@@ -3,6 +3,10 @@
     border-style: solid;
     padding:10px;
     margin-bottom: 30px;
+    display: flex;
+    border-color: black;
+    flex-direction: column;
+    cursor: pointer;
 }
 
 .followed-by-list{
@@ -22,4 +26,20 @@
 .information-company-followed-by{
     display: flex;
 
+}
+.followed-by-city{
+
+}
+.followedCompany:hover{
+    border-color: #0271BB;
+    padding: 30px;
+}
+
+.boxed-news-followed{
+    display: flex;
+    flex-direction: column;
+    border-color: black;
+    border-style: solid;
+    font-size: small;
+    padding:5px;
 }

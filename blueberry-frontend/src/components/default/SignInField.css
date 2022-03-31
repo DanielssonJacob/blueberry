@@ -18,6 +18,14 @@
     height:35px;
     display: flex;
     align-items: center;
+    margin-top: 10px;
+    margin-right: 5px;
+    transition: 0.3s;
+}
+
+.sign-in-button:hover{
+    background-color: #0271AA;
+    border: 1px solid white;   
 }
 
 .pointer{

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link, useHistory } from "react-router-dom";
 import DefaultButton from "../default/DefaultButton";
 import Logo from "../default/Logo";
 import "./Registration.css";
@@ -10,6 +10,10 @@ import TextField from '@mui/material/TextField';
 import DefaultHeader from '../default/DefaultHeader'
 import { useEffect } from 'react';
 import useDrivePicker from 'react-google-drive-picker'
+import MapSection from '../map/Map'
+
+
+
 
 
 
@@ -22,7 +26,7 @@ function Registration() {
 	const [companyPerson, setCompanyPerson] = useState("");
 	const [companyDescription, setCompanyDescription] = useState("");
 	const [companyOpeningHours, setCompanyOpeningHours] = useState("");
-	const [errorMessage, setErrorMessage] = useState("");
+	const [errorMessage, setErrorMessage] = useState("1");
 	const [isAlert, setIsAlert] = useState(false);
 	const [cookies, setCookie, removeCookie] = useCookies(["user"]);
 
@@ -31,7 +35,7 @@ function Registration() {
 	const handleOpenPicker = () => {
 		openPicker({
 			clientId: "821778059846-bgioocsj6ivr5ddnveppmm3vntttdver.apps.googleusercontent.com",
-			developerKey: "AIzaSyD9q-k9kmpOZYjIIwb-T6zxRrUPGWZQ9ok",
+			developerKey: "process.env.REACT_APP_MY_DRIVE_API_KEY",
 			viewId: "DOCS_IMAGES",
 			// token: token, // pass oauth token in case you already have one
 			showUploadView: true,
@@ -42,6 +46,7 @@ function Registration() {
 		})
 	}
 
+
 	useEffect(() => {
 		// do anything with the selected/uploaded files
 		// funktion som sparar användarens bild
@@ -50,6 +55,9 @@ function Registration() {
 		}
 	}, [data])
 
+  let history = useHistory();
+
+  
 	const sendForm = () => {
 		if (companyName === "") {
 			setIsAlert(true);
@@ -77,10 +85,20 @@ function Registration() {
 			return;
 		}
 
-		setErrorMessage("");
+		setErrorMessage("1");
 		handleSubmit();
-	};
+    setIsAlert(true);
+    history.push("/");
 
+
+	}
+  
+  const location = {
+      address: '1600 Amphitheatre Parkway, Mountain View, california.',
+      lat: 59.32429193804371,
+      lng: 18.06285500502244,
+  }  
+  
 	const formData = {
 		cName: companyName,
 		cAddress: companyAddress,
@@ -120,9 +138,9 @@ function Registration() {
 					<DefaultHeader></DefaultHeader>
 				</div>
 
-				<Alert hidden={!isAlert} severity="error">{errorMessage}</Alert>
+				{isAlert === true && errorMessage !== "1" ? <Alert hidden={!isAlert} severity="error">{errorMessage}</Alert> :  null}
 				<div classname="inputField">
-					{errorMessage === "" ? <label hidden for="registrationBanner">You're in!</label> : <Alert hidden={!isAlert} severity="error">Registration failed.</Alert>}
+					{errorMessage === "1" ? <Alert hidden={!isAlert} variant="success">Registration sucessful.</Alert> : <Alert hidden={!isAlert} severity="error">Registration failed.</Alert>}
 				</div>
 				<div className="header1">
 					<div className="title">
@@ -209,9 +227,13 @@ function Registration() {
 				>
 					<DefaultButton onClick={sendForm} title="Register" />
 				</div>
+				<div>
+					<MapSection location={location} zoomLevel={10} />
+				</div>
+        
 				<Link to="/">Home</Link>
 			</div>
-
+          
 		</div>
 		//</form>
 	);

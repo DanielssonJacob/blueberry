@@ -24,18 +24,19 @@ function FullSearchResult() {
 
         <div>
             <DefaultHeader></DefaultHeader>
-            <Link to="/">Back</Link>
+           
             <h1 className='searchHeader'>Hjälporganisationer i {city}</h1>
             <div className='wrapper'>
 
                 <div className='searchResultCompanies'>
-                    {isLoading ? <h2>Loading...</h2> : data.filter((c) => c.city === city).map((c) =>
+                    {isLoading ? <p>Loading...</p> : data.filter((c) => c.city === city).map((c) =>
 
                         <Route render={({ history }) => (
                             <article className='companyArticle' onClick={() => { history.push(`/company/${c.name}`) }}>
                                 <div className='companiesName'>{c.name}</div>
                                 <div className='companyImage'>
-                                    <img src={redcross} alt="red cross" />
+                                    
+                                    {c.imageUrl==null ? <img src={redcross} alt="red cross" /> : <img src={`http://localhost:3001/${c.imageUrl}`}></img>}
                                 </div>
                                 <div className='companyInfo'>{c.description}</div>
                                 <div className='companyCity'>{c.city}</div>

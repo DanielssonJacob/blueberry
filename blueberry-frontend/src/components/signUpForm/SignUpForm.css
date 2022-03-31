@@ -7,8 +7,12 @@
     display: flex;
     flex-direction: column;
 }
-
-.radio-company-individual-input .child {
-   
+.radio-company-individual{
+    margin-top: 10px;
+}
+.radio-company-individual-input .child {   
     width: 25%;
+}
+.radio-specify{
+    margin-right: 5px;
 }

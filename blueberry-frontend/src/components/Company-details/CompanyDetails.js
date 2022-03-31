@@ -19,47 +19,37 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
 import useFetch from "react-fetch-hook";
 import { useCookies } from "react-cookie";
 import DefaultButton from '../default/DefaultButton';
-import { sizeHeight } from '@mui/system';
 import "./CompanyDetails.css"
+import DefaultHeader from '../default/DefaultHeader';
+import { ImageUploadComponent } from '../imageUploadComponent/ImageUploadComponent';
 
-function createData(day, opening, closing) {
-    return { day, opening, closing };
-}
 
-const rows = [
-    createData('Monday', "10:00", "14.00"),
-    createData('Tuesday', "10:00", "14.00"),
-    createData('Wensday', "10:00", "14.00"),
-    createData('Thursday', "10:00", "14.00"),
-    createData('Friday', "10:00", "14.00"),
-    createData('Saturday', "10:00", "15.00"),
-    createData('Sunday', "10:00", "15.00"),
-];
-
-const currentBread = "Right now we need your help getting more fresh water for the people of Uganda."
-const currentCaption = "water for uganda"
-const googlemap = "MAP"
 
 
 
 function CompanyDetails() {
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
     const [newDescription, setNewDescription] = useState("");
+    const [newBlogPost, setNewBlogPost] = useState("");
+    const [toggleButton, setToggleButton] = useState(true);
+    const [toggleButtonBlog, setToggleButtonBlog] = useState(true);
+
 
     let { companyname } = useParams();
     const { isLoading, data, error } = useFetch("http://localhost:8080/company/" + companyname);
+    const [editIndex, setEditIndex] = useState(null);
+    const googlemap = "MAP"
     if (error) {
         return <h2>Error</h2>
     }
 
-
+    function createData(day, opening, closing) {
+        return { day, opening, closing };
+    }
     async function editprofile(cId) {
         await fetch("http://localhost:8080/edit/", {
             method: "put",
@@ -79,48 +69,102 @@ function CompanyDetails() {
 
     }
 
+    async function editblogpost(bId) {
+        await fetch("http://localhost:8080/editblogpost/", {
+            method: "put",
+            headers: {
+                'Accept': "application/json",
+                "Content-Type": "application/json",
+            },
+
+            //make sure to serialize your JSON body
+            body: JSON.stringify({
+                bId,
+                bBlogPost: newBlogPost
+            }),
+        }).then(data => data.json())
+            .then(data => console.log(data))
+    }
+
+
+    async function followCompany(companyId) {
+        if (cookies.user != null) {
+
+            await fetch("http://localhost:8080/follow", {
+                method: "post",
+                headers: {
+                    'Accept': "application/json",
+                    "Content-Type": "application/json",
+                },
+
+                //make sure to serialize your JSON body
+                body: JSON.stringify({
+                    companyId,
+                    user: cookies.user.username
+
+                }),
+            }).then(data => data.json())
+                .then(data => console.log(data))
+        }
+    }
+
+    const editOptions = (cPerson, cIdParam) => {
+        if(cookies.user!=null){
+            if(cPerson.username === cookies.username){
+                return <ImageUploadComponent cId={cIdParam}></ImageUploadComponent>
+            }
+        }
+    }
+
+
     return (
 
         <div>
             {isLoading ? <h2>Loading...</h2> : data.map((c) =>
                 <div>
 
-
-                    <div>
-                        {
-                            cookies.user != null ? (cookies.user.role === "COMPANY" && cookies.user.username === c.person.username ?
-                                (<button onClick={() => setNewDescription(c.description)} className='edit-button' >Edit</button>) : null) :
-                                <div>
-                                </div>
-
-                        }
-
-                    </div>
+                    <DefaultHeader></DefaultHeader>
 
 
                     <div>
 
-
-
-                        <h1 className='companyName' >{c.name}</h1>
+                        <div className='companyheader'>
+                            <h1 className='companyName'>{c.name}</h1>
+                        </div>
                         <Box sx={{ flexGrow: 1 }}>
                             <Grid container spacing={2}>
                                 <Grid item xs={4}>
                                     <Container maxWidth="sm">
-                                        <img src={Image}></img>
+
+                                    {c.imageUrl==null ? <img src={Image}></img> : <img style={{width: "200px"}} src={`http://localhost:3001/${c.imageUrl}`}></img>}
+                                    {editOptions(c.person, c.id)}
+
                                     </Container>
                                 </Grid>
                                 <Grid item xs={4}>
-                                    {c.description}
-                                    <form onSubmit={()=> editprofile(c.id)}>
-                                    <textarea type="text" value={newDescription} onChange={(e)=> setNewDescription(e.target.value)}></textarea>
-                                    <button type="submit" hidden ></button>
+                                    <div hidden={!toggleButton}>
+                                        {c.description}
+                                        <div>
+                                            {
+                                                cookies.user != null ? (cookies.user.role === "COMPANY" && cookies.user.username === c.person.username ?
+                                                    (<button onClick={() => {
+                                                        setNewDescription(c.description)
+                                                        setToggleButton(!toggleButton)
+                                                    }} className='edit-button' >Edit</button>) : null) :
+                                                    <div>
+                                                    </div>
+
+                                            }
+
+                                        </div>
+                                    </div>
+                                    <form hidden={toggleButton} onSubmit={() => editprofile(c.id)}>
+                                        <textarea className='editprofile' type="text" value={newDescription} onChange={(e) => setNewDescription(e.target.value)}></textarea>
+                                        <button className='update-button' type="submit">Update</button>
                                     </form>
-
-
                                 </Grid>
                                 <Grid item xs={4}>
-                                    <Container maxWidth="sm">
+                                    <Container maxWidth="s">
                                         {googlemap}
                                     </Container>
                                 </Grid>
@@ -128,7 +172,7 @@ function CompanyDetails() {
                                     <Container maxWidth="sm">
                                         <Card sx={{ minWidth: 275 }}>
                                             <CardContent>
-                                                Adress: {c.address} <br></br>Kontaktperson: {c.person.username}
+                                                Address: {c.address} <br></br>Contact person: {c.person.username}
                                             </CardContent>
                                         </Card>
                                     </Container>
@@ -139,39 +183,40 @@ function CompanyDetails() {
                                             <Table sx={{ minWidth: 50 }} aria-label="simple table">
                                                 <TableHead>
                                                     <TableRow>
-                                                        <TableCell>Veckodag</TableCell>
-                                                        <TableCell align="right">Öppnar</TableCell>
-                                                        <TableCell align="right">Stänger</TableCell>
+                                                        <TableCell>Day of the week</TableCell>
+                                                        <TableCell align="right">Open</TableCell>
+                                                        <TableCell align="right">Close</TableCell>
                                                     </TableRow>
                                                 </TableHead>
                                                 <TableBody>
                                                     <TableRow>
-                                                        <TableCell component="th"> Vardagar </TableCell>
+                                                        <TableCell component="th"> Weekday </TableCell>
                                                         <TableCell align="right">{c.openingTimes.weekdayOpen}</TableCell>
                                                         <TableCell align="right">{c.openingTimes.weekdayClose}</TableCell>
                                                     </TableRow>
                                                     <TableRow>
-                                                        <TableCell component="th"> Lördag </TableCell>
+                                                        <TableCell component="th"> Saturday </TableCell>
                                                         <TableCell align="right">{c.openingTimes.saturdayOpen}</TableCell>
                                                         <TableCell align="right">{c.openingTimes.saturdayClose}</TableCell>
                                                     </TableRow>
                                                     <TableRow>
-                                                        <TableCell component="th"> Söndag </TableCell>
+                                                        <TableCell component="th"> Sunday </TableCell>
                                                         <TableCell align="right">{c.openingTimes.sundayOpen}</TableCell>
                                                         <TableCell align="right">{c.openingTimes.sundayClose}</TableCell>
                                                     </TableRow>
-
                                                 </TableBody>
                                             </Table>
                                         </TableContainer>
                                     </Container>
                                 </Grid>
                                 <Grid item xs={4}>
-                                <Container maxWidth="sm">
-                                   <DefaultButton title="Följ oss"></DefaultButton>
-                                   <div id="detailsButton"></div>
-                                   <DefaultButton title="Hjälp oss"></DefaultButton>
-                                   </Container>
+                                    <Container maxWidth="sm">
+                                        <div onClick={() => followCompany(c.id)}>
+                                            <DefaultButton title="Follow us"></DefaultButton>
+                                        </div>
+                                        <div id="detailsButton"></div>
+                                        <DefaultButton title="Help us"></DefaultButton>
+                                    </Container>
                                 </Grid>
                             </Grid>
                         </Box>
@@ -179,18 +224,38 @@ function CompanyDetails() {
                     {c.blogPosts.map((d) =>
                         <div className='blogheader'>
                             <Grid item xs={12}>
-                                <Container className='blogpost'>
-                                    <Card>
+                                <Container hidden={!toggleButtonBlog} className='blogpost'>
+                                    <Card >
                                         <div className="time">{d.time}</div>
                                         <h5>{d.header}</h5>
                                         <div classname="post">{d.post}</div>
+
                                     </Card>
+                                    {
+                                        cookies.user != null ? (cookies.user.role === "COMPANY" && cookies.user.username === c.person.username ?
+                                            (<button onClick={() => {
+                                                setEditIndex(editIndex => editIndex === d.id ? null : d.id)
+                                                setToggleButtonBlog(!toggleButtonBlog)
+                                                setNewBlogPost(d.post)
+                                            }} className='edit-button' >Edit</button>) : null) :
+                                            <div>
+                                            </div>
+
+                                    }
                                 </Container>
+                                {editIndex === d.id &&
+                                    <form hidden={toggleButtonBlog} onSubmit={() => editblogpost(d.id)}>
+                                        <textarea className='editblog' type="text" value={newBlogPost} onChange={(e) => setNewBlogPost(e.target.value)}></textarea>
+                                        <div><button className='updatepost-button' type="submit">Update</button></div>
+                                    </form>}
+
                             </Grid>
                         </div>
+
                     )}
                 </div>
             )}
+
         </div>
     )
 }

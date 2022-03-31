@@ -29,10 +29,7 @@ public class Company {
     private String description;
     private String openingHours;
 
-    public Company(Long id, String name){
-        this.id=id;
-        this.name=name;
-    }
+
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "opening_times_id")
@@ -42,5 +39,22 @@ public class Company {
     @JsonManagedReference
     @JoinColumn(name = "company_id")
     private List<BlogPost> blogPosts = new ArrayList<>();
+    private String imageUrl;
 
+    public Company(Long id, String name){
+        this.id=id;
+        this.name=name;
+    }
+
+    public Company(Long id, String name, String address, String city, Account person, String description, String openingHours, OpeningTimes openingTimes, List<BlogPost> blogPosts) {
+        this.id = id;
+        this.name = name;
+        this.address = address;
+        this.city = city;
+        this.person = person;
+        this.description = description;
+        this.openingHours = openingHours;
+        this.openingTimes = openingTimes;
+        this.blogPosts = blogPosts;
+    }
 }

@@ -1,5 +1,7 @@
 package com.blueberry.blueberry;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,10 +36,13 @@ public class Account {
         this.followedCompanies=new ArrayList<>();
     }
 
+
     @Override
     public String toString() {
         return username;
     }
+
+
 
 
 

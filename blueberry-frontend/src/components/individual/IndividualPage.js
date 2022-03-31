@@ -9,45 +9,61 @@ import useFetch from "react-fetch-hook";
 import { useState, useContext } from 'react'
 import { useHistory } from "react-router-dom";
 import Alert from '@mui/material/Alert';
-import IndividualIcon from './IndividualLoggedInField';
+import DefaultHeader from '../default/DefaultHeader';
 import { useCookies } from 'react-cookie'
+import { ImageUploadComponent } from '../imageUploadComponent/ImageUploadComponent';
+
 
 function IndividualPage() {
-    const [cookies, setCookie, removeCookie] = useCookies(['user']);
+    const [cookies, setCookie, removeCookie] = useCookies(['user', 'username']);
     const [organization, setOrganization] = useState("")
     const [city, setCity] = useState("")
     const [searchBy, setSearchBy] = useState("Organization")
+
 
     const { isLoading, data, error } = useFetch("http://localhost:8080/companies");
 
     const [isAlert, setIsAlert] = useState(false);
     const [snapshot, setSnapshot] = useState("");
 
-    function search() {
-        setIsAlert(false)
-        
-   if (searchBy === "Organization"){
-    if (data.find(c => c.name === organization) != null) {
-        setIsAlert(false)
-        history.push(`/company/${organization}`)
-    } else {
-        setSnapshot(organization)
-        setIsAlert(true)
-    }
-   }
+    useEffect(() => {
+        if (cookies.user != null) {
+            setCookie("username", cookies.user.username, { path: "/" })
+            
+        } else{
+            setCookie("username", "", { path: "/" })
+        }
+    }, [])
 
-   if (searchBy === "City"){
-    if (data.find(c => c.city === city) != null) {
+
+
+
+    function search() {
+
         setIsAlert(false)
-        history.push(`/searchresult/${city}`)
-    } else {
-        setSnapshot(city)
-        setIsAlert(true)
+
+        if (searchBy === "Organization") {
+            if (data.find(c => c.name === organization) != null) {
+                setIsAlert(false)
+                history.push(`/company/${organization}`)
+            } else {
+                setSnapshot(organization)
+                setIsAlert(true)
+            }
+        }
+
+        if (searchBy === "City") {
+            if (data.find(c => c.city === city) != null) {
+                setIsAlert(false)
+                history.push(`/searchresult/${city}`)
+            } else {
+                setSnapshot(city)
+                setIsAlert(true)
+            }
+        }
+
+
     }
-   }
-   
-        
-}
 
 
     let history = useHistory();
@@ -56,23 +72,16 @@ function IndividualPage() {
         return <h2>Error</h2>
     }
     if (isLoading) {
-        return <h2>Loading...</h2>
+        return <p>Loading...</p>
     }
     return (
 
         <div className="individual-page-body">
             {console.log(data)}
-            {organization === "" ? <Alert hidden={!isAlert} severity="error">Error: You need to specify which organization you are looking for.</Alert> : <Alert hidden={!isAlert} severity="error">Error: Can't find {snapshot}.</Alert>}
+            {organization === "" ? <Alert hidden={!isAlert} severity="error">Error: You need to specify which {searchBy} you are looking for.</Alert> : <Alert hidden={!isAlert} severity="error">Error: Can't find {snapshot}.</Alert>}
+            <DefaultHeader></DefaultHeader>
+            <div className="helping-text-we-help-you">"We help you help others"</div>
 
-            <div className="individual-page-header">
-                <Logo></Logo>
-                
-                {cookies.user!=null ?
-               
-                <div className="signin-field-div"><IndividualIcon/></div>
-                : <SignInField link="/signin"></SignInField>}
-                
-            </div>
             <div className="individual-page-searchfield">
                 <div className="company-search-individual">
                     <label htmlFor='company-search-input'></label>
@@ -123,7 +132,7 @@ function IndividualPage() {
                                     // your handler code
                                     if (data.find(c => c.city === city) != null) {
                                         setIsAlert(false)
-                                        
+
                                         history.push(`/searchresult/${city}`)
                                     } else {
                                         setSnapshot(city)
@@ -148,6 +157,7 @@ function IndividualPage() {
                 </div>
 
             </div>
+
         </div>
     )
 }

@@ -1,24 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 .defaultheader{
     position: relative;
     margin: 0 auto;
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     justify-content:center;   
-    background-color: #0271BB;  
-    height: 80px;
+    background-color: #0271BB;
+    height: 90px;
+
 }
 .defaultheader #logo{
     position: absolute;
-    top: 5px;
+    top: 20px;
     left: 20px;
+    transition: 0.3s;
 }
 .defaultheader #logo:hover{
   background-color: #0271AA;
   border: 1px solid white;   
-
 }
-.defaultheader .sign-in-field{
+.defaultheader .signed-in-area{
     position: absolute;
     top: 20px;
+    right: 30px;
+    color: white;
+    font-family: 'Open Sans', sans-serif;  
+}   
+.logged-in-field-profile{
+    position: absolute;
     right: 20px;
-
+}
+.logged-in-field-profile h2{
+    font-size: 24px;  
+    margin-bottom: -0rem;
+    padding-top: 10px;
+    margin-right: 20px;
+    overflow: hidden;
+    white-space: nowrap;
+    
+}
+.logged-in-field-profile p{
+    font-size: 10px;
 }
