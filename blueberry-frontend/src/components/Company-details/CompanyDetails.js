@@ -29,6 +29,7 @@ import DefaultButton from '../default/DefaultButton';
 import { sizeHeight } from '@mui/system';
 import "./CompanyDetails.css"
 import DefaultHeader from '../default/DefaultHeader';
+import MapSection from '../map/Map'
 
 function createData(day, opening, closing) {
     return { day, opening, closing };
@@ -47,6 +48,11 @@ const rows = [
 const currentBread = "Right now we need your help getting more fresh water for the people of Uganda."
 const currentCaption = "water for uganda"
 const googlemap = "MAP"
+const location = {
+    address: '1600 Amphitheatre Parkway, Mountain View, california.',
+    lat: 59.32429193804371,
+    lng: 18.06285500502244,
+}  
 
 
 
@@ -150,8 +156,8 @@ function CompanyDetails() {
 
                                 </Grid>
                                 <Grid item xs={4}>
-                                    <Container maxWidth="sm">
-                                        {googlemap}
+                                    <Container maxWidth="s">
+                                        {<MapSection location={location} zoomLevel={10} />}
                                     </Container>
                                 </Grid>
                                 <Grid item xs={4}>
