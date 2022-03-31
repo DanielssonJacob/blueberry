@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useCookies } from "react-cookie";
-import useFetch from "react-fetch-hook";
 import {
     BrowserRouter as Router,
     Route,
@@ -16,12 +15,6 @@ function Dashboard() {
     const history = useHistory();
     const [followedBy, setFollowedBy] = useState([])
 
-    /*
-        const { isLoading, data, error } = useFetch(`http://localhost:8080/followedby/${cookies.username}`);
-    
-    
-        const result = useFetch(`http://localhost:8080/exist/${cookies.user.username}`);
-    */
     async function getFollowed() {
         await fetch(`http://localhost:8080/followedby`, {
             method: "post",
@@ -38,19 +31,10 @@ function Dashboard() {
 
     }
 
-
     useEffect(() => {
         getFollowed()
     }, [])
 
-
-    /*
-    if (!result.isLoading) {
-        console.log(result.data)
-    }
-    
-
-    */
     return (
         <div>
 
