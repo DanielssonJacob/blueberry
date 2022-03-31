@@ -25,13 +25,11 @@ import { useCookies } from "react-cookie";
 import DefaultButton from '../default/DefaultButton';
 import "./CompanyDetails.css"
 import DefaultHeader from '../default/DefaultHeader';
-
-function createData(day, opening, closing) {
-    return { day, opening, closing };
-}
 import { ImageUploadComponent } from '../imageUploadComponent/ImageUploadComponent';
 
-const googlemap = "MAP"
+
+
+
 
 function CompanyDetails() {
     const [cookies, setCookie, removeCookie] = useCookies(["user"]);
@@ -44,11 +42,14 @@ function CompanyDetails() {
     let { companyname } = useParams();
     const { isLoading, data, error } = useFetch("http://localhost:8080/company/" + companyname);
     const [editIndex, setEditIndex] = useState(null);
-
+    const googlemap = "MAP"
     if (error) {
         return <h2>Error</h2>
     }
 
+    function createData(day, opening, closing) {
+        return { day, opening, closing };
+    }
     async function editprofile(cId) {
         await fetch("http://localhost:8080/edit/", {
             method: "put",
