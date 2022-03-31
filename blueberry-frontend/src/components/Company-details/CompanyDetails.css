@@ -29,8 +29,9 @@
 .companyName {
     font-family: 'Open Sans', sans-serif;
     position: relative;
-    left: 45%;
-    padding: 60px;
+    left: 33.5%;
+    padding-top: 60px;
+    
 }
 
 .blogheader {
