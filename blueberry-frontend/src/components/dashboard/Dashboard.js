@@ -9,9 +9,7 @@ import {
     useParams
 } from "react-router-dom";
 import "./Dashboard.css"
-import SignInField from "../default/SignInField";
-import IndividualIcon from "../individual/IndividualLoggedInField";
-import Logo from "../default/Logo";
+import DefaultHeader from '../default/DefaultHeader';
 
 function Dashboard() {
     const [cookies, setCookie, removeCookie] = useCookies(["user", "username"]);
@@ -56,15 +54,7 @@ function Dashboard() {
     return (
         <div>
 
-            <div className="individual-page-header">
-                <Logo></Logo>
-
-                {cookies.user != null ?
-
-                    <div className="signin-field-div"><IndividualIcon /></div>
-                    : <SignInField link="/signin"></SignInField>}
-
-            </div>
+            <DefaultHeader></DefaultHeader>
 
             <div className="followed-by-list container">
 
