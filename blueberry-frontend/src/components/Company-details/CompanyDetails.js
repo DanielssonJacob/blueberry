@@ -33,6 +33,7 @@ function CompanyDetails() {
     const [newDescription, setNewDescription] = useState("");
     const [newBlogPost, setNewBlogPost] = useState("");
     const [toggleButton, setToggleButton] = useState(true);
+    const [toggleButtonFollow, setToggleButtonFollow] = useState(true);
     const [toggleButtonBlog, setToggleButtonBlog] = useState(true);
 
 
@@ -84,6 +85,7 @@ function CompanyDetails() {
     async function followCompany(companyId) {
         if (cookies.user != null) {
 
+
             await fetch("http://localhost:8080/follow", {
                 method: "post",
                 headers: {
@@ -101,6 +103,41 @@ function CompanyDetails() {
                 .then(data => console.log(data))
         }
     }
+    async function unFollowCompany(companyId) {
+        if (cookies.user != null) {
+            await fetch("http://localhost:8080/follow", {
+                method: "post",
+                headers: {
+                    'Accept': "application/json",
+                    "Content-Type": "application/json",
+                },
+
+                //make sure to serialize your JSON body
+                body: JSON.stringify({
+                    companyId,
+                    user: cookies.user.username
+
+                }),
+            }).then(data => data.json())
+                .then(data => console.log(data))
+        }
+    }
+    
+    async function getFollowed() {
+        await fetch(`http://localhost:8080/followedby`, {
+            method: "post",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+
+            //make sure to serialize your JSON body
+            body: JSON.stringify({
+                user: cookies.username
+            }),
+        }).then(data => data.json()).then(data => setFollowedBy(data))
+
+    }
 
 
     return (
@@ -108,9 +145,7 @@ function CompanyDetails() {
         <div>
             {isLoading ? <h2>Loading...</h2> : data.map((c) =>
                 <div>
-
                     <DefaultHeader></DefaultHeader>
-
 
                     <div>
 
@@ -138,7 +173,6 @@ function CompanyDetails() {
                                                     </div>
 
                                             }
-
                                         </div>
                                     </div>
                                     <form hidden={toggleButton} onSubmit={() => editprofile(c.id)}>
@@ -194,9 +228,23 @@ function CompanyDetails() {
                                 </Grid>
                                 <Grid item xs={4}>
                                     <Container maxWidth="sm">
+
+                                        {/*
+                                        {
+                                            cookies.user != null ? (cookies.user.role === "INDIVIDUAL" && cookies.user.username === c.person.username ?
+                                            (<DefaultButton title = "Unfollow us" onClick={() => {
+                                                setToggleButtonFollow(!toggleButtonFollow)
+                                                setNewFollow(c.id)
+                                            }} className='' ></DefaultButton>) : null) :
+                                            <div>
+                                            </div>
+                                        }
+                                    */}
+
                                         <div onClick={() => followCompany(c.id)}>
                                             <DefaultButton title="Follow us"></DefaultButton>
                                         </div>
+                                        
                                         <div id="detailsButton"></div>
                                         <DefaultButton title="Help us"></DefaultButton>
                                     </Container>
