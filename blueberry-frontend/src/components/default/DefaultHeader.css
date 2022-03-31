@@ -28,8 +28,8 @@
     font-family: 'Open Sans', sans-serif;  
 }   
 .logged-in-field-profile{
-    position: fixed;
-    right: 60px;
+    position: absolute;
+    right: 20px;
 }
 .logged-in-field-profile h2{
     font-size: 24px;  

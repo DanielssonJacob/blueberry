@@ -24,7 +24,7 @@ function FullSearchResult() {
 
         <div>
             <DefaultHeader></DefaultHeader>
-            <Link to="/">Back</Link>
+           
             <h1 className='searchHeader'>Hjälporganisationer i {city}</h1>
             <div className='wrapper'>
 
